@@ -137,19 +137,22 @@ npx tsx script.ts
 
 ## Now build it
 
-Create a new project in the `exercises/` folder:
+This module already has a `package.json` with `nanoid` installed. You'll create your own project inside the `exercises/` folder to practice the full workflow.
 
 1. Navigate to the `exercises/` folder in your terminal
-2. Run `npm init -y`
-3. Install `nanoid` as a dependency: `npm install nanoid`
+2. Run `npm init -y` to create your own `package.json`
+3. Install `nanoid`: `npm install nanoid`
 4. Install `tsx` as a dev dependency: `npm install --save-dev tsx`
-5. Create `exercises/src/main.ts` that imports `nanoid` and generates IDs:
-   - Generate a default ID and print it
-   - Generate a 10-char ID for a link
-   - Generate 5 link IDs in a loop and print them
+5. Create `src/main.ts` with the following:
+   - Import `nanoid`
+   - Define a type `ProfileLink` with `id`, `title`, `url`, `order`
+   - Write a function `createLink(title: string, url: string, order: number): ProfileLink` that generates a `nanoid(10)` for the id
+   - Create an array of 3 links using this function and print each one
 6. Add a script to `package.json`: `"dev": "tsx src/main.ts"`
 7. Run with `npm run dev`
-8. Add `node_modules/` to a `.gitignore` file in the `exercises/` folder
+8. Create a `.gitignore` file in the `exercises/` folder and add `node_modules/`
+
+> **Tip:** Your `exercises/` folder will have its own `node_modules/` separate from the module root. That's normal — each project has its own dependencies.
 
 ---
 📖 **Deep dive:**

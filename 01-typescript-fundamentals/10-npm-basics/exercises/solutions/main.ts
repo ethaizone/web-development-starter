@@ -1,5 +1,5 @@
-// Solution: main.ts — Place in exercises/solutions/src/main.ts
-// Run with: npx tsx exercises/solutions/src/main.ts
+// Solution: main.ts — matches the file students create at exercises/src/main.ts
+// Run from exercises/ folder: npx tsx src/main.ts
 
 import { nanoid } from "nanoid"
 
