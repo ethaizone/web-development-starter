@@ -304,7 +304,7 @@ function RegisterPage() {
 Update `src/routes/login.tsx`:
 
 ```tsx
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import { loginFn } from '../server/auth.functions'
 import { Button } from '@/components/ui/button'
@@ -321,6 +321,7 @@ function LoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -330,6 +331,8 @@ function LoginPage() {
     const result = await loginFn({ data: { email, password } })
     if (result?.error) {
       setError(result.error)
+    } else if (result?.success) {
+      navigate({ to: '/dashboard' })
     }
     setIsLoading(false)
   }
@@ -429,7 +432,7 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale= 1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'DevStack Bio' },
     ],
     links: [{ rel: 'stylesheet', href: appCss }],
