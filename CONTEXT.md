@@ -32,7 +32,7 @@ _Avoid_: Mini project, sandbox, playground
 
 All choices for the Web Dev Track. The TS Track uses only Node.js + `tsx`.
 
-- **Runtime**: Node.js 24 LTS (codename "Krypton", Active LTS until April 2028) — target version for all tracks. Compatibility with all stack components verified against official docs.
+- **Runtime**: Node.js 24 LTS (codename "Krypton", LTS until April 2028) — target version for all tracks. Compatibility with all stack components verified against official docs.
 - **Language**: TypeScript throughout. Strict mode encouraged.
 - **Meta-framework**: TanStack Start (React-based, file-based routing, SSR/CSR).
 - **Database**: SQLite — zero-config, file-based, perfect for learning.

@@ -79,9 +79,11 @@ One project, built incrementally across 14 modules:
 ├── 01-how-the-web-works/
 │   └── README.md              ← Read, then build
 ├── 02-your-first-server/
-│   ├── README.md              ← Step-by-step instructions
-│   └── examples/              ← Tiny isolated examples (when needed)
+│   └── README.md              ← Step-by-step instructions
 ...
+
+Some modules may include an `examples/` folder for isolated concept
+demonstrations ("Tiny Examples"). These appear only when needed.
 ```
 
 - Each module adds features to your **DevStack Bio** project
