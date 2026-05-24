@@ -218,4 +218,4 @@ Create `advanced-types.ts` and write:
 - [TypeScript Handbook — Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)
 - [TypeScript Handbook — Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 - [TypeScript Handbook — Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
-- [TypeScript Handbook — Discriminated Unions](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#discriminated-unions)
+- [TypeScript Handbook — Discriminated Unions](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions)
