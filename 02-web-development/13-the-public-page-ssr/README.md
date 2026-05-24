@@ -25,15 +25,10 @@ The `head` function on a route sets HTML `<head>` content:
 
 ```tsx
 export const Route = createFileRoute('/$username')({
-  head: ({ loaderData }) => ({
+  head: () => ({
     meta: [
-      { title: `${loaderData.displayName} — DevStack Bio` },
-      { name: 'description', content: loaderData.bio ?? 'Developer profile' },
-      // Open Graph (social previews)
-      { property: 'og:title', content: loaderData.displayName },
-      { property: 'og:description', content: loaderData.bio ?? '' },
-      { property: 'og:image', content: loaderData.avatarUrl ?? '' },
-      { property: 'og:type', content: 'profile' },
+      { title: 'DevStack Bio' },
+      { name: 'description', content: 'Developer profile on DevStack Bio' },
     ],
   }),
   loader: ...,
@@ -42,6 +37,8 @@ export const Route = createFileRoute('/$username')({
 ```
 
 When someone shares `devstack.bio/alice` on Slack or Twitter, the meta tags control what preview card appears.
+
+> **Why not dynamic meta tags?** The `head` function can accept `loaderData` for dynamic meta tags (e.g., `{ title: loaderData.displayName }`). However, when the loader throws `notFound()`, TypeScript types `loaderData` as `never` — so a static `head` is used instead. For routes where the loader always returns data, use `head: ({ loaderData }) => ({ meta: [...] })` for richer SEO.
 
 ### Analytics Tracking
 
@@ -120,7 +117,7 @@ import { getPublicProfile, recordProfileView } from '../server/profile.functions
 import { ProfileHeader } from '../components/profile-header'
 import { LinkList } from '../components/link-list'
 import { Badge } from '@/components/ui/badge'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 export const Route = createFileRoute('/$username')({
   head: () => ({
@@ -258,7 +255,7 @@ git commit -m "Add SSR with SEO meta tags, analytics tracking, custom 404, and t
 
 | Pattern | Code |
 |---------|------|
-| SSR meta tags | `head: ({ loaderData }) => ({ meta: [...] })` |
+| SSR meta tags | `head: () => ({ meta: [...] })` (static when loader throws `notFound()`) |
 | Open Graph tags | `{ property: 'og:title', content: '...' }` |
 | Server-side analytics | In the loader: `await recordView({ data: { ... } })` |
 | Custom 404 | `notFoundComponent: MyComponent` + `throw notFound()` in loader |
