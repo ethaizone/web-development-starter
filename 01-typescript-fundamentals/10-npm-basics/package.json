@@ -1,0 +1,19 @@
+{
+  "name": "10-npm-basics",
+  "version": "1.0.0",
+  "description": "Use npm to install and manage third-party packages in your projects.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "nanoid": "^5.1.11"
+  }
+}
