@@ -98,11 +98,10 @@ devstack.db
 devstack.db-wal
 devstack.db-shm
 .env
-drizzle/
-!drizzle/meta/
+.output/
 ```
 
-> **Note:** The `drizzle/` folder contains migration SQL files. You should commit these. The `.gitignore` pattern above ignores generated artifacts but keeps the migration files. Adjust based on your `drizzle-kit` output.
+> **Note:** The `drizzle/` folder contains migration SQL files. These should be committed to version control, so do **not** add `drizzle/` to `.gitignore`. The `.output/` folder is the production build artifact — it should be ignored.
 
 ### Step 2: Build for production
 
