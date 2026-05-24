@@ -87,7 +87,7 @@ For this to work, the server needs your public key in `~/.ssh/authorized_keys`. 
 
 | Type | Recommendation |
 |------|---------------|
-| **Ed25519** | Best choice. Modern, fast, secure. Default since OpenSSH 6.5 (2014). |
+| **Ed25519** | Best choice. Modern, fast, secure. Supported since OpenSSH 6.5 (2014). |
 | **RSA 4096** | Fallback if Ed25519 isn't supported. Use `-b 4096` for adequate security. |
 | **DSA** | **Deprecated.** Do not use. |
 

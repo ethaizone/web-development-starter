@@ -30,7 +30,7 @@ You've learned TypeScript, built a web app, and know what professional tools exi
 |----------|---------------|
 | [Tailwind CSS Docs](https://tailwindcss.com/docs) | Utility class reference and guides |
 | [shadcn/ui Docs](https://ui.shadcn.com/) | Component usage and theming |
-| [Refactoring UI](https://www.refactoringui.com/) | Design tips for developers (free book) |
+| [Refactoring UI](https://www.refactoringui.com/) | Design tips for developers (paid) |
 
 ### Databases & Drizzle ORM
 
