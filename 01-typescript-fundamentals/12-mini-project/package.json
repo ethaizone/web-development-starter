@@ -1,0 +1,16 @@
+{
+  "name": "12-mini-project",
+  "version": "1.0.0",
+  "description": "Build a complete CLI tool that uses everything from modules 02–11: types, functions, control flow, arrays, async, error handling, modules, and npm packages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "nanoid": "^5.1.11"
+  }
+}
