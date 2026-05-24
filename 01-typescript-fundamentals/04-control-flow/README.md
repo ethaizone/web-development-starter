@@ -32,7 +32,7 @@ const label = isActive ? "Active" : "Inactive"
 
 ### `switch`
 
-Useful when checking one value against many options. cleaner than long `if/else if` chains.
+Useful when checking one value against many options. Cleaner than long `if/else if` chains.
 
 ```ts
 function getRoleLabel(role: string): string {
