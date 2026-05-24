@@ -83,7 +83,7 @@ const user = {
 user.name          // "Alice"
 user["age"]        // 25
 
-// Modify a property (only if the object is `let`, or you're changing a nested value)
+// Modify a property — works even with `const` (const prevents reassignment, not mutation)
 user.isActive = false
 ```
 
