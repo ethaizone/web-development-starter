@@ -127,4 +127,4 @@ Run with: `npx tsx variables.ts`
 ---
 📖 **Deep dive:**
 - [TypeScript Handbook — Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
-- [MDN — JavaScript data types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+- [MDN — JavaScript data types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures)
