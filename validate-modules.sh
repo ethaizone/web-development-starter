@@ -489,4 +489,4 @@ git branch --list 'fix/*'
 
 echo ""
 echo "Current branch: $(git branch --show-current)"
-echo "Working tree: $(git status --porcelain | head -1 && echo 'DIRTY' || echo 'clean')"
+echo "Working tree: $(git diff --quiet 2>/dev/null && echo 'clean' || echo 'DIRTY')"
