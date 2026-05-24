@@ -70,13 +70,15 @@ Every file in `src/routes/` becomes a URL path:
 Open a terminal and navigate to where you want the project. Then run:
 
 ```bash
-npx @tanstack/cli@latest create
+npm create @tanstack/start@latest
 ```
 
-Choose the following options when prompted:
-- **Framework:** TanStack Start
-- **React** as the library
-- Accept the recommended defaults
+Follow the interactive prompts:
+- **Project name:** `devstack-bio`
+- **Package manager:** `npm`
+- **Toolchain:** Accept the default
+- **Git:** Accept the default
+- **Add-ons:** Do **not** select any add-ons
 
 > ⚠️ Do **not** add the `shadcn` add-on when prompted. We'll set up shadcn/ui manually in Module 08 so you understand each step.
 
@@ -86,6 +88,8 @@ Choose the following options when prompted:
 cd devstack-bio
 npm install
 ```
+
+> If you used a different project name in Step 1, `cd` into that directory instead.
 
 ### Step 3: Open the project in your editor
 
