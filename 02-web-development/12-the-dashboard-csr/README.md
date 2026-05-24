@@ -146,6 +146,15 @@ export function ProfileEditForm({ profile, onSaved }: ProfileEditFormProps) {
   const [isSaving, setIsSaving] = useState(false)
   const [message, setMessage] = useState('')
 
+  const handleThemeChange = (value: string) => {
+    setTheme(value)
+    if (value === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }
+
   const handleSave = async () => {
     const result = updateProfileSchema.safeParse({
       displayName,
@@ -222,14 +231,13 @@ export function ProfileEditForm({ profile, onSaved }: ProfileEditFormProps) {
         </div>
         <div className="space-y-2">
           <Label>Theme</Label>
-          <Select value={theme} onValueChange={setTheme}>
+          <Select value={theme} onValueChange={handleThemeChange}>
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="light">Light</SelectItem>
               <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="matrix">Matrix</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -270,7 +278,8 @@ const handleRemoveLink = async (id: string) => {
 Update `src/routes/_authed/dashboard.tsx`:
 
 ```tsx
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, useRouter } from '@tanstack/react-router'
+import { useEffect } from 'react'
 import { getMyProfile } from '../../server/profile.functions'
 import { ProfileEditForm } from '../../components/profile-edit-form'
 import { LinkEditor } from '../../components/link-editor'
@@ -286,7 +295,16 @@ export const Route = createFileRoute('/_authed/dashboard')({
 
 function DashboardPage() {
   const { profile } = Route.useLoaderData()
-  const router = Route.useRouter()
+  const router = useRouter()
+
+  // Apply saved theme on load
+  useEffect(() => {
+    if (profile.theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [profile.theme])
 
   const handleRefresh = () => {
     router.invalidate()

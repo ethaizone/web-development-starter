@@ -185,7 +185,7 @@ export const updateProfileSchema = z.object({
   displayName: z.string().min(1, 'Display name is required'),
   bio: z.string().max(500, 'Bio must be at most 500 characters').optional(),
   avatarUrl: z.string().url('Must be a valid URL').optional().or(z.literal('')),
-  theme: z.enum(['light', 'dark', 'matrix']).optional(),
+  theme: z.enum(['light', 'dark']).optional(),
 })
 
 export const addLinkSchema = z.object({
@@ -257,7 +257,7 @@ export async function addLinkToProfile(
     where: eq(profiles.id, profileId),
     with: { links: true },
   })
-  const maxOrder = Math.max(0, ...profile?.links.map((l) => l.order ?? 0))
+  const maxOrder = profile ? Math.max(0, ...profile.links.map((l) => l.order ?? 0)) : 0
 
   await db.insert(links).values({
     id: crypto.randomUUID(),
@@ -381,6 +381,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -446,6 +447,7 @@ export function LinkEditor({ initialLinks, onRefresh }: LinkEditorProps) {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Add a New Link</DialogTitle>
+              <DialogDescription>Add a link to your public profile.</DialogDescription>
             </DialogHeader>
             <div className="space-y-4 pt-4">
               <div className="space-y-2">

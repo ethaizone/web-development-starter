@@ -123,31 +123,12 @@ import { Badge } from '@/components/ui/badge'
 import { useEffect, useState } from 'react'
 
 export const Route = createFileRoute('/$username')({
-  head: ({ loaderData }) => {
-    if (!loaderData) {
-      return {
-        meta: [{ title: 'Profile Not Found — DevStack Bio' }],
-      }
-    }
-    return {
-      meta: [
-        { title: `${loaderData.displayName} — DevStack Bio` },
-        {
-          name: 'description',
-          content: loaderData.bio ?? `Check out ${loaderData.displayName}'s developer profile`,
-        },
-        { property: 'og:title', content: loaderData.displayName },
-        {
-          property: 'og:description',
-          content: loaderData.bio ?? `Developer profile on DevStack Bio`,
-        },
-        { property: 'og:type', content: 'profile' },
-        ...(loaderData.avatarUrl
-          ? [{ property: 'og:image' as const, content: loaderData.avatarUrl }]
-          : []),
-      ],
-    }
-  },
+  head: () => ({
+    meta: [
+      { title: 'DevStack Bio' },
+      { name: 'description', content: 'Developer profile on DevStack Bio' },
+    ],
+  }),
   loader: async ({ params }) => {
     const profile = await getPublicProfile({ data: { username: params.username } })
 
@@ -187,18 +168,18 @@ function ProfileNotFound() {
 function PublicProfilePage() {
   const profile = Route.useLoaderData()
 
-  // Theme classes
-  const themeClasses = {
-    light: 'bg-gray-50 text-gray-900',
-    dark: 'bg-gray-900 text-gray-100',
-    matrix: 'bg-black text-green-400',
-  }
-
-  const theme = (profile.theme as keyof typeof themeClasses) ?? 'light'
+  // Apply theme to <html> so the whole page (header, footer) changes
+  useEffect(() => {
+    if (profile.theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [profile.theme])
 
   return (
     <article
-      className={`max-w-md mx-auto py-12 min-h-[calc(100vh-200px)] ${themeClasses[theme]}`}
+      className="max-w-md mx-auto py-12 min-h-[calc(100vh-200px)]"
     >
       <ProfileHeader
         username={profile.username}
@@ -234,17 +215,15 @@ type LinkCardProps = {
   title: string
   url: string
   iconName?: string
-  theme?: 'light' | 'dark' | 'matrix'
+  theme?: 'light' | 'dark'
 }
 
 export function LinkCard({ title, url, iconName, theme = 'light' }: LinkCardProps) {
   const themeStyles = {
     light:
-      'border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700',
+      'border-border text-foreground hover:bg-accent hover:border-ring hover:text-accent-foreground',
     dark:
-      'border-gray-700 text-gray-200 hover:bg-gray-800 hover:border-gray-600',
-    matrix:
-      'border-green-900 text-green-400 hover:bg-green-950 hover:border-green-500',
+      'border-border text-card-foreground hover:bg-accent hover:border-ring',
   }
 
   return (

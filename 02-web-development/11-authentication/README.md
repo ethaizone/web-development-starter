@@ -195,7 +195,7 @@ export const registerFn = createServerFn({ method: 'POST' })
     const session = await useAppSession()
     await session.update({ userId })
 
-    throw redirect({ to: '/dashboard' })
+    return { success: true }
   })
 
 export const loginFn = createServerFn({ method: 'POST' })
@@ -214,14 +214,14 @@ export const loginFn = createServerFn({ method: 'POST' })
     const session = await useAppSession()
     await session.update({ userId: user.id })
 
-    throw redirect({ to: '/dashboard' })
+    return { success: true }
   })
 
 export const logoutFn = createServerFn({ method: 'POST' })
   .handler(async () => {
     const session = await useAppSession()
     await session.clear()
-    throw redirect({ to: '/' })
+    return { success: true }
   })
 
 export const getCurrentUserFn = createServerFn({ method: 'GET' })
@@ -245,12 +245,10 @@ export const getCurrentUserFn = createServerFn({ method: 'GET' })
 Update `src/routes/register.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import { RegisterForm } from '../components/register-form'
 import { registerFn } from '../server/auth.functions'
-import { Button } from '@/components/ui/button'
-import { Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/register')({
   component: RegisterPage,
@@ -258,6 +256,7 @@ export const Route = createFileRoute('/register')({
 
 function RegisterPage() {
   const [serverError, setServerError] = useState('')
+  const navigate = useNavigate()
 
   const handleRegister = async (data: {
     email: string
@@ -268,8 +267,9 @@ function RegisterPage() {
     const result = await registerFn({ data })
     if (result?.error) {
       setServerError(result.error)
+    } else if (result?.success) {
+      navigate({ to: '/dashboard' })
     }
-    // On success, registerFn throws a redirect — this line won't be reached
   }
 
   return (
@@ -387,10 +387,11 @@ function LoginPage() {
 
 Update `src/routes/_authed.tsx`:
 
+The `_authed` layout's only job is **route protection** — checking if the user is logged in. If not, redirect to login. The nav bar is handled by the root layout.
+
 ```tsx
-import { Outlet, createFileRoute, Link, redirect } from '@tanstack/react-router'
-import { getCurrentUserFn, logoutFn } from '../server/auth.functions'
-import { Button } from '@/components/ui/button'
+import { Outlet, createFileRoute, redirect } from '@tanstack/react-router'
+import { getCurrentUserFn } from '../server/auth.functions'
 
 export const Route = createFileRoute('/_authed')({
   beforeLoad: async ({ location }) => {
@@ -407,39 +408,131 @@ export const Route = createFileRoute('/_authed')({
 })
 
 function AuthedLayout() {
-  const { user } = Route.useRouteContext()
+  return <Outlet />
+}
+```
+
+### Step 8: Make the root nav auth-aware
+
+Update `src/routes/__root.tsx` to show different nav links depending on login state:
+
+```tsx
+import { HeadContent, Scripts, createRootRoute, Link, Outlet, useRouterState, useNavigate } from '@tanstack/react-router'
+import { useEffect, useState, useCallback } from 'react'
+import type { ReactNode } from 'react'
+
+import appCss from '../styles.css?url'
+import { getCurrentUserFn, logoutFn } from '../server/auth.functions'
+import { Button } from '@/components/ui/button'
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale= 1' },
+      { title: 'DevStack Bio' },
+    ],
+    links: [{ rel: 'stylesheet', href: appCss }],
+  }),
+  component: RootComponent,
+})
+
+function RootComponent() {
+  const [user, setUser] = useState<{ id: string; email: string } | null>(null)
+  const [checked, setChecked] = useState(false)
+
+  const locationHref = useRouterState({ select: (s) => s.location.href })
+
+  const refreshUser = useCallback(() => {
+    getCurrentUserFn()
+      .then((result) => setUser(result))
+      .catch(() => setUser(null))
+      .finally(() => setChecked(true))
+  }, [])
+
+  useEffect(() => {
+    refreshUser()
+  }, [locationHref, refreshUser])
+
+  const navigate = useNavigate()
 
   const handleLogout = async () => {
     await logoutFn()
+    setUser(null)
+    navigate({ to: '/' })
   }
 
   return (
-    <div>
-      <div className="mb-6 flex items-center justify-between border-b pb-4">
-        <div className="flex gap-4">
-          <Link to="/dashboard" activeProps={{ className: 'font-bold' }}>
-            Dashboard
-          </Link>
-        </div>
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-muted-foreground">{user.email}</span>
-          <Button variant="ghost" size="sm" onClick={handleLogout}>
-            Log Out
-          </Button>
-        </div>
+    <RootDocument>
+      <div className="min-h-screen bg-background flex flex-col">
+        <header>
+          <nav className="border-b bg-card px-6 py-4">
+            <div className="flex items-center justify-between max-w-4xl mx-auto">
+              <Link to="/" className="text-xl font-bold">
+                DevStack Bio
+              </Link>
+              {checked && (
+                <div className="flex items-center gap-4">
+                  {user ? (
+                    <>
+                      <Link
+                        to="/dashboard"
+                        activeProps={{ className: 'font-bold' }}
+                      >
+                        Dashboard
+                      </Link>
+                      <span className="text-sm text-muted-foreground">
+                        {user.email}
+                      </span>
+                      <Button variant="ghost" size="sm" onClick={handleLogout}>
+                        Log Out
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Link to="/login">Log In</Link>
+                      <Link to="/register">Sign Up</Link>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+          </nav>
+        </header>
+        <main className="max-w-4xl mx-auto px-6 py-8 flex-1">
+          <Outlet />
+        </main>
+        <footer className="border-t py-4 text-center text-sm text-muted-foreground">
+          DevStack Bio — A learning project
+        </footer>
       </div>
-      <Outlet />
-    </div>
+    </RootDocument>
+  )
+}
+
+function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <HeadContent />
+      </head>
+      <body className="font-sans antialiased">
+        {children}
+        <Scripts />
+      </body>
+    </html>
   )
 }
 ```
 
-### Step 8: Update the dashboard to use real data
+> **How it works:** `useRouterState` gives us the current URL. Every time the URL changes (navigation), the `useEffect` re-calls `getCurrentUserFn()` to check the session. After login, the session cookie is set — the next navigation triggers a refresh and the nav updates to show Dashboard/Log Out.
+
+### Step 9: Update the dashboard to use real data
 
 Update `src/routes/_authed/dashboard.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { getMyProfile } from '../../server/profile.functions'
 import { LinkEditor } from '../../components/link-editor'
 
@@ -453,7 +546,7 @@ export const Route = createFileRoute('/_authed/dashboard')({
 
 function DashboardPage() {
   const { profile } = Route.useLoaderData()
-  const router = Route.useRouter()
+  const router = useRouter()
 
   const handleRefresh = () => {
     router.invalidate() // Re-run loaders
@@ -481,7 +574,7 @@ function DashboardPage() {
 }
 ```
 
-### Step 9: Verify the full auth flow
+### Step 10: Verify the full auth flow
 
 1. Visit `/dashboard` without being logged in → should redirect to `/login`
 2. Click "Create one" → go to `/register`
@@ -491,7 +584,7 @@ function DashboardPage() {
 6. Log back in with the same credentials → should work
 7. Visit `/your-username` → should see your public profile
 
-### Step 10: Commit
+### Step 11: Commit
 
 ```bash
 git add .

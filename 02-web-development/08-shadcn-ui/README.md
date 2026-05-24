@@ -114,18 +114,134 @@ function MyForm() {
 Run the init command in your project directory:
 
 ```bash
-npx shadcn@latest init
+npx shadcn@latest init -t start -b radix
 ```
 
-Follow the prompts:
+Follow the prompts to select a preset theme. If the prompts don't appear or the command fails, create the configuration manually:
 - **Style:** Choose `default` (or whichever you prefer)
 - **Base color:** Choose `slate` (neutral, professional)
 - **CSS variables:** Yes
 
 This creates:
 - `components.json` — configuration file
+- `src/lib/utils.ts` — utility function for class merging
 - `src/components/ui/` — directory for components
-- Updates your CSS file with shadcn/ui CSS variables
+- Installs required dependencies (`clsx`, `tailwind-merge`, `class-variance-authority`)
+
+If the interactive init doesn't work, create these files manually:
+
+**`components.json`:**
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide"
+}
+```
+
+**`src/lib/utils.ts`:**
+```ts
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+Then install the dependencies:
+```bash
+npm install clsx tailwind-merge class-variance-authority
+```
+
+**`src/styles.css` (theme variables for shadcn/ui):**
+
+If `npx shadcn@latest init` ran successfully, it updated your CSS file automatically. If you created the config manually, you **must** add the theme variables. Without them, components like `<Button>` will have no background color and look invisible.
+
+The CSS file needs two things:
+1. **`@theme inline`** — tells Tailwind v4 to map `bg-primary` → `var(--color-primary)` → `var(--primary)` → your oklch color
+2. **`:root` / `.dark`** — defines the actual color values
+
+```css
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 265.755);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 265.755);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 265.755);
+  --primary: oklch(0.205 0.042 265.755);
+  --primary-foreground: oklch(0.985 0.002 247.839);
+  --secondary: oklch(0.968 0.007 247.839);
+  --secondary-foreground: oklch(0.205 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.839);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.839);
+  --accent-foreground: oklch(0.205 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+```
+
+> **Why the double indirection?** Tailwind v4 expects `--color-*` variables in `@theme`. shadcn/ui uses `--primary`, `--secondary`, etc. The `@theme inline` block bridges them: `--color-primary: var(--primary)` lets `bg-primary` work while keeping shadcn/ui's naming convention.
 
 ### Step 2: Add the components you need
 

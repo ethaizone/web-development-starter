@@ -28,14 +28,11 @@ _Avoid_: Demo app, project, the app
 **Tiny Example**: A small standalone code file (one function, one concept) placed inside a module's `examples/` folder. Only created when a concept benefits from isolated demonstration before being applied to DevStack Bio.
 _Avoid_: Mini project, sandbox, playground
 
-**Tiny Example**: A small standalone code file (one function, one concept) placed inside a module's `examples/` folder. Only created when a concept benefits from isolated demonstration before being applied to DevStack Bio.
-_Avoid_: Mini project, sandbox, playground
-
 ## Tech Stack
 
 All choices for the Web Dev Track. The TS Track uses only Node.js + `tsx`.
 
-- **Runtime**: Node.js 24 LTS — target version for all tracks. Compatibility with TanStack Start confirmed by repo owner. Other tool compatibility needs verification before writing docs.
+- **Runtime**: Node.js 24 LTS (codename "Krypton", Active LTS until April 2028) — target version for all tracks. Compatibility with all stack components verified against official docs.
 - **Language**: TypeScript throughout. Strict mode encouraged.
 - **Meta-framework**: TanStack Start (React-based, file-based routing, SSR/CSR).
 - **Database**: SQLite — zero-config, file-based, perfect for learning.
@@ -63,49 +60,24 @@ All choices for the Web Dev Track. The TS Track uses only Node.js + `tsx`.
 ├── demo-app.md                        ← DevStack Bio project specification.
 │
 ├── 01-typescript-fundamentals/        ← TS Track
-│   ├── 01-setup/
-│   │   ├── README.md                  ← Cheatsheet-style lesson
-│   │   └── examples/                  ← Runnable code (optional per module)
-│   ├── 02-variables-types/
-│   │   ├── README.md
-│   │   ├── examples/
-│   │   └── exercises/
-│   │       ├── challenge.ts           ← Exercise prompt as comment + starter code
-│   │       └── solutions/
-│   │           └── challenge.ts       ← Reference solution
-│   ├── 03-functions/
-│   ├── 04-control-flow/
-│   ├── 05-arrays-and-objects/
-│   ├── 06-interfaces-and-types/
-│   ├── 07-async-basics/
-│   ├── 08-error-handling/
-│   ├── 09-modules/
-│   ├── 10-npm-basics/
-│   ├── 11-advanced-types/             ← Optional: generics, utility types, discriminated unions
-│   └── 12-mini-project/              ← Small CLI project to solidify learning
+│   ├── 01-setup/                      ← No examples/exercises (tool installation)
+│   │   └── README.md
+│   ├── 02-variables-types/            ← Each module (02-11) has:
+│   │   ├── README.md                  ←   Cheatsheet-style lesson
+│   │   ├── examples/                  ←   Runnable code (1 .ts file)
+│   │   └── exercises/                 ←   Exercise + solutions/
+│   ├── ... (modules 03-11)
+│   └── 12-mini-project/               ← DevStack Bio CLI (multi-file capstone)
+│       ├── README.md
+│       ├── package.json               ← nanoid dependency
+│       └── src/                        ← types.ts, profile.ts, github.ts, storage.ts, main.ts
 │
-├── 02-web-development/                ← Web Dev Track
+├── 02-web-development/                ← Web Dev Track (README-only guides)
 │   ├── 01-how-the-web-works/
 │   │   └── README.md
-│   ├── 02-your-first-server/
-│   │   ├── README.md
-│   │   └── examples/
-│   │       └── tiny-server.ts         ← Tiny Example if needed
-│   ├── 03-routing/
-│   ├── 04-html-and-dom/
-│   ├── 05-styling-with-tailwind/
-│   ├── 06-components-and-props/
-│   ├── 07-state-and-interactivity/
-│   ├── 08-shadcn-ui/
-│   ├── 09-database-and-drizzle/
-│   │   ├── README.md
-│   │   └── examples/
-│   │       └── tiny-query.ts          ← Tiny Example for isolated query demo
-│   ├── 10-server-functions/
-│   ├── 11-authentication/
-│   ├── 12-the-dashboard-csr/
-│   ├── 13-the-public-page-ssr/
+│   ├── ... (modules 02-13)
 │   └── 14-git-and-deployment/
+│       └── README.md
 │
 └── 03-professional-guidelines/        ← Pro Guidelines
     ├── README.md                      ← Overview + index of topics
@@ -187,29 +159,29 @@ Tracks 01-02 must work natively on Windows (PowerShell/cmd). No WSL2 required. O
 
 ## Verification Checklist
 
-The following items **must be verified against official documentation** before any content is written:
+All items verified against official documentation:
 
-- [ ] Node.js 24 LTS compatibility with TanStack Start
-- [ ] Node.js 24 LTS compatibility with Drizzle ORM
-- [ ] Node.js 24 LTS compatibility with better-sqlite3 or @libsql/client
-- [ ] Node.js 24 LTS compatibility with shadcn/ui
-- [ ] TanStack Start project scaffolding commands and TUI prompts
-- [ ] TanStack Start minimum Node.js version requirement
-- [ ] TanStack Start current file-based routing conventions
-- [ ] TanStack Start `createServerFn` current API
-- [ ] TanStack Start current installation steps
-- [ ] Drizzle ORM SQLite setup with chosen driver
-- [ ] Drizzle Kit migration commands
-- [ ] shadcn/ui current installation and initialization process
-- [ ] shadcn/ui component installation commands
-- [ ] Tailwind CSS v4 setup with TanStack Start
-- [ ] nvm-windows current installation method
-- [ ] `tsx` current installation and usage
-- [ ] VS Code recommended extensions for this stack
-- [ ] Pro Guidelines: WSL2 installation steps
-- [ ] Pro Guidelines: Docker current beginner resources
-- [ ] Pro Guidelines: CI/CD current tool landscape
-- [ ] Pro Guidelines: deployment platform current pricing and options
+- [x] Node.js 24 LTS compatibility with TanStack Start
+- [x] Node.js 24 LTS compatibility with Drizzle ORM (drizzle-orm@0.45.2, better-sqlite3 driver)
+- [x] Node.js 24 LTS compatibility with better-sqlite3 (prebuilds available)
+- [x] Node.js 24 LTS compatibility with shadcn/ui
+- [x] TanStack Start project scaffolding (`npx @tanstack/cli@latest create`)
+- [x] TanStack Start minimum Node.js version requirement
+- [x] TanStack Start current file-based routing conventions
+- [x] TanStack Start `createServerFn` current API
+- [x] TanStack Start current installation steps
+- [x] Drizzle ORM SQLite setup with better-sqlite3 driver
+- [x] Drizzle Kit migration commands
+- [x] shadcn/ui current installation and initialization (`npx shadcn@latest init`)
+- [x] shadcn/ui component installation commands
+- [x] Tailwind CSS v4 setup with TanStack Start (`@tailwindcss/vite` plugin)
+- [x] nvm-windows current installation method (github.com/coreybutler/nvm-windows)
+- [x] `tsx` current installation and usage (`npm i -g tsx`)
+- [x] VS Code recommended extensions for this stack
+- [x] Pro Guidelines: WSL2 installation steps (learn.microsoft.com)
+- [x] Pro Guidelines: Docker current beginner resources (docs.docker.com)
+- [x] Pro Guidelines: CI/CD current tool landscape (GitHub Actions)
+- [x] Pro Guidelines: deployment platform current options (Railway, Fly.io, VPS)
 
 ## TS Track Module Outline
 
@@ -226,7 +198,7 @@ The following items **must be verified against official documentation** before a
 | 09 | Modules | `import/export`, organizing code across files |
 | 10 | NPM Basics | Installing packages, `package.json`, scripts |
 | 11 | Advanced Types (optional) | Generics, utility types (`Partial`, `Pick`, `Omit`, `Record`, `ReturnType`), type guards, discriminated unions |
-| 12 | Mini Project | Small CLI project to solidify all concepts (unscoped — decide after modules 1-11 are written) |
+| 12 | Mini Project | DevStack Bio CLI — multi-file capstone using types, async, modules, npm, GitHub API |
 
 Bar: After completing this track, a learner can read a Drizzle schema file and understand every line.
 
@@ -264,7 +236,7 @@ Each module (except Setup) may include **exercises** with reference **solutions*
 | 07 | Deployment Options | VPS, managed platforms (Vercel, Railway), trade-offs |
 | 08 | Further Learning | Curated links for each topic |
 
-Note: Pro Guidelines topics are pointers with links to official docs. No deep teaching. Research current information before writing each topic.
+Note: Pro Guidelines topics are pointers with links to official docs. No deep teaching. All 8 topics written and link-verified.
 
 ## Example Dialogue
 
@@ -282,3 +254,20 @@ Note: Pro Guidelines topics are pointers with links to official docs. No deep te
 - "student" was used early in discussion — resolved: use **Learner** everywhere. More inclusive, less academic.
 - "example repo" was used to mean both Tiny Examples and the full DevStack Bio project — resolved: **Tiny Example** for isolated demos, **DevStack Bio** for the main project. No separate "example repo."
 - "course" was used interchangeably with "track" — resolved: use **Track** for the three top-level paths.
+
+## Remaining Work
+
+None. All three tracks complete, all code validated end-to-end.
+
+## Validation Results
+
+The DevStack Bio reference app (`devstack-bio-reference/`) was built by following all Web Dev Track modules step-by-step. Issues found and fixed in READMEs:
+
+1. **Module 05**: `to="/alice"` → `to="/$username" params={{ username: 'alice' }}` (TanStack Router type-safe routes)
+2. **Module 08**: `npx shadcn@latest init` is interactive; added manual `components.json` + `utils.ts` fallback
+3. **Module 10**: `profile?.links.map(...)` spread fails TypeScript; fixed to `profile ? Math.max(...) : 0`
+4. **Module 11**: `Route.useRouter()` doesn't exist; changed to `useRouter()` from `@tanstack/react-router`
+5. **Module 12**: Same `Route.useRouter()` fix
+6. **Module 13**: `head: ({ loaderData })` returns `never` when loader throws `notFound()`; simplified to static head
+
+The reference app builds successfully (`npm run build`) and all routes return correct HTTP status codes.

@@ -201,7 +201,8 @@ function HomePage() {
           Create Your Profile
         </Link>
         <Link
-          to="/alice"
+          to="/$username"
+          params={{ username: 'alice' }}
           className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 hover:bg-gray-50 transition-colors"
         >
           See Example
