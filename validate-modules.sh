@@ -472,9 +472,11 @@ key_from_dir() {
   # "02-web-development/11-authentication/" => "wd-11"
   local dir="$1"
   if [[ "$dir" =~ ^01-typescript-fundamentals/([0-9]+) ]]; then
-    printf "ts-%02d" "${BASH_REMATCH[1]}"
+    local num=$((10#${BASH_REMATCH[1]}))
+    printf "ts-%02d" "$num"
   elif [[ "$dir" =~ ^02-web-development/([0-9]+) ]]; then
-    printf "wd-%02d" "${BASH_REMATCH[1]}"
+    local num=$((10#${BASH_REMATCH[1]}))
+    printf "wd-%02d" "$num"
   else
     echo "$dir" | tr '/' '-' | sed 's/-$//'
   fi
