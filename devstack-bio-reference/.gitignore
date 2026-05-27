@@ -15,5 +15,3 @@ devstack.db
 devstack.db-wal
 devstack.db-shm
 .env
-drizzle/
-!drizzle/meta/
