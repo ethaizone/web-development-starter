@@ -137,18 +137,13 @@ better choice here.
 A: This repo is called _starter_. If you're asking this question, this repo
 isn't for you.
 
-**Q: I found incorrect information.**
-
-A: I don't have enough time to review all of this right now. I created most of
-it with AI, and it's free. What more do you need from me?
-
 **Q: Why TypeScript?**
 
-A: TypeScript is the only language that lets you build a web app end-to-end,
-and its strict type system builds a solid foundation for anyone starting with
-their first language.
+A: TypeScript is the only language that lets you build a web app end-to-end, and
+its strict type system builds a solid foundation for anyone starting with their
+first language.
 
-**Q: I need more features.**
+**Q: I need more.**
 
 A: File an issue, but I don't promise anything — this isn't my day job.
 
