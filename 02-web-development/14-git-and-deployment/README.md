@@ -82,7 +82,7 @@ Before deploying:
 - [ ] `npm run start` works locally
 - [ ] All features work in the production build (not just dev)
 - [ ] `.env` is in `.gitignore`
-- [ ] `.gitignore` excludes `devstack.db`, `node_modules/`, `.env`
+- [ ] `.gitignore` excludes `devstack.db`, `node_modules/`, `.env`, `.output/`
 - [ ] `SESSION_SECRET` is a strong, random value (not the dev fallback)
 - [ ] No `console.log` statements in production code (optional but good practice)
 
@@ -208,7 +208,7 @@ Your app is live on the internet! 🎉
 - [Railway — Documentation](https://docs.railway.app)
 - [Fly.io — Documentation](https://fly.io/docs/)
 - [GitHub — Create a Repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository)
-- [Git — Documentation](https://git-scm.com/doc)
+- [Git — Documentation](https://git-scm.com/docs)
 
 ---
 
