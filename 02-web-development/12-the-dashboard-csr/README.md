@@ -286,8 +286,8 @@ import { LinkEditor } from '../../components/link-editor'
 import { Button } from '@/components/ui/button'
 
 export const Route = createFileRoute('/_authed/dashboard')({
-  loader: async ({ context }) => {
-    const profile = await getMyProfile({ data: { userId: context.user.id } })
+  loader: async () => {
+    const profile = await getMyProfile()
     return { profile }
   },
   component: DashboardPage,

@@ -225,10 +225,33 @@ The CSS file needs two things:
   --accent: oklch(0.968 0.007 247.839);
   --accent-foreground: oklch(0.205 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
   --radius: 0.625rem;
+}
+
+.dark {
+  --background: oklch(0.129 0.042 265.755);
+  --foreground: oklch(0.985 0.002 247.839);
+  --card: oklch(0.129 0.042 265.755);
+  --card-foreground: oklch(0.985 0.002 247.839);
+  --popover: oklch(0.129 0.042 265.755);
+  --popover-foreground: oklch(0.985 0.002 247.839);
+  --primary: oklch(0.985 0.002 247.839);
+  --primary-foreground: oklch(0.205 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.985 0.002 247.839);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.985 0.002 247.839);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.279 0.041 260.031);
+  --input: oklch(0.279 0.041 260.031);
+  --ring: oklch(0.446 0.043 257.281);
 }
 
 @layer base {

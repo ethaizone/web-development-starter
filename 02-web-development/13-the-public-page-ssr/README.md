@@ -203,32 +203,24 @@ function PublicProfilePage() {
 }
 ```
 
-### Step 3: Add theme styles for the profile page
+### Step 3: Update link cards to use semantic color tokens
 
-The profile themes need different styling for links. Update `src/components/link-card.tsx` to accept an optional theme prop:
+Now that the `.dark` theme is defined in CSS, the link cards can use shadcn/ui semantic color tokens (`border-border`, `text-foreground`, etc.) which automatically respond when the `.dark` class is toggled on `<html>`. Update `src/components/link-card.tsx`:
 
 ```tsx
 type LinkCardProps = {
   title: string
   url: string
   iconName?: string
-  theme?: 'light' | 'dark'
 }
 
-export function LinkCard({ title, url, iconName, theme = 'light' }: LinkCardProps) {
-  const themeStyles = {
-    light:
-      'border-border text-foreground hover:bg-accent hover:border-ring hover:text-accent-foreground',
-    dark:
-      'border-border text-card-foreground hover:bg-accent hover:border-ring',
-  }
-
+export function LinkCard({ title, url, iconName }: LinkCardProps) {
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`flex items-center gap-3 rounded-lg border p-4 font-medium transition-colors ${themeStyles[theme]}`}
+      className="flex items-center gap-3 rounded-lg border border-border p-4 text-foreground font-medium hover:bg-accent hover:border-ring hover:text-accent-foreground transition-colors"
     >
       {iconName && <span className="text-xl">{iconName}</span>}
       <span>{title}</span>
@@ -236,6 +228,8 @@ export function LinkCard({ title, url, iconName, theme = 'light' }: LinkCardProp
   )
 }
 ```
+
+> **Why no `theme` prop?** The shadcn/ui color tokens (`text-foreground`, `bg-accent`, `border-border`) automatically change when the `.dark` class is on `<html>`. Since the profile page already toggles that class in a `useEffect`, the link cards respond automatically — no manual prop threading needed.
 
 ### Step 4: Verify SSR
 
@@ -259,7 +253,7 @@ git commit -m "Add SSR with SEO meta tags, analytics tracking, custom 404, and t
 | Open Graph tags | `{ property: 'og:title', content: '...' }` |
 | Server-side analytics | In the loader: `await recordView({ data: { ... } })` |
 | Custom 404 | `notFoundComponent: MyComponent` + `throw notFound()` in loader |
-| Theme classes | Conditional Tailwind classes based on a theme variable |
+| Theme | Toggle `.dark` class on `<html>` — semantic color tokens respond automatically |
 
 ## Deep Dive
 

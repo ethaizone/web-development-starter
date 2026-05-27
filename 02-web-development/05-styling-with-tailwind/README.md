@@ -125,7 +125,6 @@ Update `vite.config.ts`:
 
 ```ts
 import { defineConfig } from 'vite'
-import tsConfigPaths from 'vite-tsconfig-paths'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 import viteReact from '@vitejs/plugin-react'
@@ -134,21 +133,23 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  resolve: {
+    tsconfigPaths: true,
+  },
   plugins: [
-    tsConfigPaths(),
+    tailwindcss(),
     tanstackStart(),
     viteReact(),
-    tailwindcss(),
   ],
 })
 ```
 
 ### Step 3: Create the CSS file
 
-Create `src/styles/app.css`:
+Create `src/styles.css`:
 
 ```css
-@import 'tailwindcss' source('../');
+@import 'tailwindcss';
 ```
 
 ### Step 4: Import the CSS in the root route
@@ -157,7 +158,7 @@ Update `src/routes/__root.tsx` — add the CSS import and link:
 
 ```tsx
 // Add this import at the top (with other imports):
-import appCss from '../styles/app.css?url'
+import appCss from '../styles.css?url'
 
 // In the Route definition, add the links array to head:
 export const Route = createRootRoute({
