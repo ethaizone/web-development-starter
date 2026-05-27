@@ -123,6 +123,28 @@ Features you'll build:
 - Public bio pages with dynamic routing (`/username`)
 - View analytics tracking
 
+## FAQ
+
+**Why not Next.js?**
+I've used Next.js before — that's exactly why I know TanStack Start is the
+better choice here.
+
+**Why SQLite?**
+This repo is called _starter_. If you're asking this question, this repo
+isn't for you.
+
+**I found incorrect information.**
+I don't have enough time to review all of this right now. I created most of
+it with AI, and it's free. What more do you need from me?
+
+**Why TypeScript?**
+TypeScript is the only language that lets you build a web app end-to-end, and
+its strict type system builds a solid foundation for anyone starting with their
+first language.
+
+**I need more features.**
+File an issue, but I don't promise anything — this isn't my day job.
+
 ## Feedback
 
 Found a mistake? Have a suggestion?
