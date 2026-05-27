@@ -70,15 +70,17 @@ Every file in `src/routes/` becomes a URL path:
 Open a terminal and navigate to where you want the project. Then run:
 
 ```bash
-npm create @tanstack/start@latest
+npx @tanstack/cli@latest create
 ```
 
 Follow the interactive prompts:
+- **Framework:** `React`
 - **Project name:** `devstack-bio`
-- **Package manager:** `npm`
-- **Toolchain:** Accept the default
-- **Git:** Accept the default
+- **Toolchain:** `None`
+- **Deployment adapter:** `Nitro (agnostic)`
+- **Demo/example pages:** `No`
 - **Add-ons:** Do **not** select any add-ons
+- **Git:** `Yes`
 
 > ⚠️ Do **not** add the `shadcn` add-on when prompted. We'll set up shadcn/ui manually in Module 08 so you understand each step.
 
