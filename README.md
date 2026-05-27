@@ -1,5 +1,7 @@
 # Web Development Starter
 
+> **Disclaimer:** This repository was created with the help of AI (~99% of the content). I cannot guarantee the correctness of everything here, but I'm open to accepting PRs with fixes and improvements.
+
 A self-paced learning repository that takes you from zero to building a
 full-stack web application. Choose your starting point based on your experience
 level, follow the step-by-step guides, and build real projects along the way.
