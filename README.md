@@ -1,6 +1,8 @@
 # Web Development Starter
 
-> **Disclaimer:** This repository was created with the help of AI (~99% of the content). I cannot guarantee the correctness of everything here, but I'm open to accepting PRs with fixes and improvements.
+> **Disclaimer:** This repository was created with the help of AI (~99% of the
+> content). I cannot guarantee the correctness of everything here, but I'm open
+> to accepting PRs with fixes and improvements.
 
 A self-paced learning repository that takes you from zero to building a
 full-stack web application. Choose your starting point based on your experience
@@ -125,25 +127,30 @@ Features you'll build:
 
 ## FAQ
 
-**Why not Next.js?**
-I've used Next.js before — that's exactly why I know TanStack Start is the
+**Q: Why not Next.js?**
+
+A: I've used Next.js before — that's exactly why I know TanStack Start is the
 better choice here.
 
-**Why SQLite?**
-This repo is called _starter_. If you're asking this question, this repo
+**Q: Why SQLite?**
+
+A: This repo is called _starter_. If you're asking this question, this repo
 isn't for you.
 
-**I found incorrect information.**
-I don't have enough time to review all of this right now. I created most of
+**Q: I found incorrect information.**
+
+A: I don't have enough time to review all of this right now. I created most of
 it with AI, and it's free. What more do you need from me?
 
-**Why TypeScript?**
-TypeScript is the only language that lets you build a web app end-to-end, and
-its strict type system builds a solid foundation for anyone starting with their
-first language.
+**Q: Why TypeScript?**
 
-**I need more features.**
-File an issue, but I don't promise anything — this isn't my day job.
+A: TypeScript is the only language that lets you build a web app end-to-end,
+and its strict type system builds a solid foundation for anyone starting with
+their first language.
+
+**Q: I need more features.**
+
+A: File an issue, but I don't promise anything — this isn't my day job.
 
 ## Feedback
 
