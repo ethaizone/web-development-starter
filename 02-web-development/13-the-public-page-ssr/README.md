@@ -2,7 +2,8 @@
 
 ## What you'll learn
 
-Optimize the public profile page for performance and SEO with server-side rendering, track profile views, and handle 404 pages.
+Optimize the public profile page for performance and SEO with server-side
+rendering, track profile views, and handle 404 pages.
 
 ## Key Concepts
 
@@ -10,14 +11,16 @@ Optimize the public profile page for performance and SEO with server-side render
 
 The public profile page (`/$username`) benefits from SSR because:
 
-| Benefit | How it helps |
-|---------|-------------|
-| **Fast first paint** | HTML is ready immediately — no waiting for JavaScript to load and render |
-| **SEO** | Search engines can index the full page content |
-| **Social previews** | Twitter, Slack, Discord can show link previews (Open Graph meta tags) |
-| **Analytics accuracy** | View is recorded even if JavaScript fails to load |
+| Benefit                | How it helps                                                             |
+| ---------------------- | ------------------------------------------------------------------------ |
+| **Fast first paint**   | HTML is ready immediately — no waiting for JavaScript to load and render |
+| **SEO**                | Search engines can index the full page content                           |
+| **Social previews**    | Twitter, Slack, Discord can show link previews (Open Graph meta tags)    |
+| **Analytics accuracy** | View is recorded even if JavaScript fails to load                        |
 
-TanStack Start renders route loaders on the server by default. Your `loader` function runs on the server, fetches data, and the page is rendered to HTML before being sent to the browser.
+TanStack Start renders route loaders on the server by default. Your `loader`
+function runs on the server, fetches data, and the page is rendered to HTML
+before being sent to the browser.
 
 ### SEO: Meta Tags and Open Graph
 
@@ -36,9 +39,14 @@ export const Route = createFileRoute('/$username')({
 })
 ```
 
-When someone shares `devstack.bio/alice` on Slack or Twitter, the meta tags control what preview card appears.
+When someone shares `devstack.bio/alice` on Slack or Twitter, the meta tags
+control what preview card appears.
 
-> **Why not dynamic meta tags?** The `head` function can accept `loaderData` for dynamic meta tags (e.g., `{ title: loaderData.displayName }`). However, when the loader throws `notFound()`, TypeScript types `loaderData` as `never` — so a static `head` is used instead. For routes where the loader always returns data, use `head: ({ loaderData }) => ({ meta: [...] })` for richer SEO.
+> **Why not dynamic meta tags?** The `head` function can accept `loaderData` for
+> dynamic meta tags (e.g., `{ title: loaderData.displayName }`). However, when
+> the loader throws `notFound()`, TypeScript types `loaderData` as `never` — so
+> a static `head` is used instead. For routes where the loader always returns
+> data, use `head: ({ loaderData }) => ({ meta: [...] })` for richer SEO.
 
 ### Analytics Tracking
 
@@ -49,23 +57,25 @@ Record each profile view in the database:
 await db.insert(analytics).values({
   id: crypto.randomUUID(),
   profileId: profile.id,
-})
+});
 ```
 
-This happens on the server, so it's reliable — no JavaScript needed on the client.
+This happens on the server, so it's reliable — no JavaScript needed on the
+client.
 
 ### Custom 404 Page
 
-When a profile isn't found, `throw notFound()` in the loader. TanStack Start renders a `notFoundComponent` if you define one:
+When a profile isn't found, `throw notFound()` in the loader. TanStack Start
+renders a `notFoundComponent` if you define one:
 
 ```tsx
-export const Route = createFileRoute('/$username')({
+export const Route = createFileRoute("/$username")({
   notFoundComponent: ProfileNotFound,
   // ...
-})
+});
 
 function ProfileNotFound() {
-  const { username } = Route.useParams()
+  const { username } = Route.useParams();
   return (
     <div className="text-center py-20">
       <h1 className="text-4xl font-bold">Profile Not Found</h1>
@@ -73,7 +83,7 @@ function ProfileNotFound() {
         No one at <strong>@{username}</strong> yet.
       </p>
     </div>
-  )
+  );
 }
 ```
 
@@ -84,27 +94,27 @@ function ProfileNotFound() {
 Add to `src/server/profile.functions.ts`:
 
 ```ts
-import { analytics } from '../db/schema'
+import { analytics } from "../db/schema";
 
-export const recordProfileView = createServerFn({ method: 'POST' })
+export const recordProfileView = createServerFn({ method: "POST" })
   .inputValidator((data: { profileId: string }) => data)
   .handler(async ({ data }) => {
     await db.insert(analytics).values({
       id: crypto.randomUUID(),
       profileId: data.profileId,
-    })
-    return { success: true }
-  })
+    });
+    return { success: true };
+  });
 
-export const getViewCount = createServerFn({ method: 'GET' })
+export const getViewCount = createServerFn({ method: "GET" })
   .inputValidator((data: { profileId: string }) => data)
   .handler(async ({ data }) => {
     const views = await db
       .select()
       .from(analytics)
-      .where(eq(analytics.profileId, data.profileId))
-    return { count: views.length }
-  })
+      .where(eq(analytics.profileId, data.profileId));
+    return { count: views.length };
+  });
 ```
 
 ### Step 2: Update the public profile route with SSR, analytics, SEO, and 404
@@ -112,40 +122,45 @@ export const getViewCount = createServerFn({ method: 'GET' })
 Update `src/routes/$username.tsx`:
 
 ```tsx
-import { createFileRoute, notFound } from '@tanstack/react-router'
-import { getPublicProfile, recordProfileView } from '../server/profile.functions'
-import { ProfileHeader } from '../components/profile-header'
-import { LinkList } from '../components/link-list'
-import { Badge } from '@/components/ui/badge'
-import { useEffect } from 'react'
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import {
+  getPublicProfile,
+  recordProfileView,
+} from "../server/profile.functions";
+import { ProfileHeader } from "../components/profile-header";
+import { LinkList } from "../components/link-list";
+import { Badge } from "@/components/ui/badge";
+import { useEffect } from "react";
 
-export const Route = createFileRoute('/$username')({
+export const Route = createFileRoute("/$username")({
   head: () => ({
     meta: [
-      { title: 'DevStack Bio' },
-      { name: 'description', content: 'Developer profile on DevStack Bio' },
+      { title: "DevStack Bio" },
+      { name: "description", content: "Developer profile on DevStack Bio" },
     ],
   }),
   loader: async ({ params }) => {
-    const profile = await getPublicProfile({ data: { username: params.username } })
+    const profile = await getPublicProfile({
+      data: { username: params.username },
+    });
 
     if (!profile) {
-      throw notFound()
+      throw notFound();
     }
 
     // Record the profile view (server-side, reliable)
     await recordProfileView({ data: { profileId: profile.id } }).catch(() => {
       // Don't fail the page load if analytics fails
-    })
+    });
 
-    return profile
+    return profile;
   },
   notFoundComponent: ProfileNotFound,
   component: PublicProfilePage,
-})
+});
 
 function ProfileNotFound() {
-  const { username } = Route.useParams()
+  const { username } = Route.useParams();
   return (
     <div className="text-center py-20">
       <h1 className="text-4xl font-bold">Profile Not Found</h1>
@@ -153,31 +168,29 @@ function ProfileNotFound() {
         No one at <strong>@{username}</strong> yet.
       </p>
       <p className="mt-4 text-sm text-muted-foreground">
-        Want this username?{' '}
+        Want this username?{" "}
         <a href="/register" className="text-blue-600 hover:underline">
           Create your profile
         </a>
       </p>
     </div>
-  )
+  );
 }
 
 function PublicProfilePage() {
-  const profile = Route.useLoaderData()
+  const profile = Route.useLoaderData();
 
   // Apply theme to <html> so the whole page (header, footer) changes
   useEffect(() => {
-    if (profile.theme === 'dark') {
-      document.documentElement.classList.add('dark')
+    if (profile.theme === "dark") {
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove("dark");
     }
-  }, [profile.theme])
+  }, [profile.theme]);
 
   return (
-    <article
-      className="max-w-md mx-auto py-12 min-h-[calc(100vh-200px)]"
-    >
+    <article className="max-w-md mx-auto py-12 min-h-[calc(100vh-200px)]">
       <ProfileHeader
         username={profile.username}
         displayName={profile.displayName}
@@ -199,20 +212,23 @@ function PublicProfilePage() {
         Powered by DevStack Bio
       </footer>
     </article>
-  )
+  );
 }
 ```
 
 ### Step 3: Update link cards to use semantic color tokens
 
-Now that the `.dark` theme is defined in CSS, the link cards can use shadcn/ui semantic color tokens (`border-border`, `text-foreground`, etc.) which automatically respond when the `.dark` class is toggled on `<html>`. Update `src/components/link-card.tsx`:
+Now that the `.dark` theme is defined in CSS, the link cards can use shadcn/ui
+semantic color tokens (`border-border`, `text-foreground`, etc.) which
+automatically respond when the `.dark` class is toggled on `<html>`. Update
+`src/components/link-card.tsx`:
 
 ```tsx
 type LinkCardProps = {
-  title: string
-  url: string
-  iconName?: string
-}
+  title: string;
+  url: string;
+  iconName?: string;
+};
 
 export function LinkCard({ title, url, iconName }: LinkCardProps) {
   return (
@@ -225,18 +241,26 @@ export function LinkCard({ title, url, iconName }: LinkCardProps) {
       {iconName && <span className="text-xl">{iconName}</span>}
       <span>{title}</span>
     </a>
-  )
+  );
 }
 ```
 
-> **Why no `theme` prop?** The shadcn/ui color tokens (`text-foreground`, `bg-accent`, `border-border`) automatically change when the `.dark` class is on `<html>`. Since the profile page already toggles that class in a `useEffect`, the link cards respond automatically — no manual prop threading needed.
+> **Why no `theme` prop?** The shadcn/ui color tokens (`text-foreground`,
+> `bg-accent`, `border-border`) automatically change when the `.dark` class is
+> on `<html>`. Since the profile page already toggles that class in a
+> `useEffect`, the link cards respond automatically — no manual prop threading
+> needed.
 
 ### Step 4: Verify SSR
 
-1. Visit `/alice` — check the page source (right-click → View Page Source). You should see the full HTML with Alice's name and links — no JavaScript required to display the content.
-2. Use the browser's Network tab to verify that the initial HTML response contains the profile data.
+1. Visit `/alice` — check the page source (right-click → View Page Source). You
+   should see the full HTML with Alice's name and links — no JavaScript required
+   to display the content.
+2. Use the browser's Network tab to verify that the initial HTML response
+   contains the profile data.
 3. Visit `/nonexistent` — should see the custom 404 page.
-4. Check Drizzle Studio (`npx drizzle-kit studio`) — the `analytics` table should have entries for each profile view.
+4. Check Drizzle Studio (`npx drizzle-kit studio`) — the `analytics` table
+   should have entries for each profile view.
 
 ### Step 5: Commit
 
@@ -247,13 +271,13 @@ git commit -m "Add SSR with SEO meta tags, analytics tracking, custom 404, and t
 
 ## Common Patterns
 
-| Pattern | Code |
-|---------|------|
-| SSR meta tags | `head: () => ({ meta: [...] })` (static when loader throws `notFound()`) |
-| Open Graph tags | `{ property: 'og:title', content: '...' }` |
-| Server-side analytics | In the loader: `await recordView({ data: { ... } })` |
-| Custom 404 | `notFoundComponent: MyComponent` + `throw notFound()` in loader |
-| Theme | Toggle `.dark` class on `<html>` — semantic color tokens respond automatically |
+| Pattern               | Code                                                                           |
+| --------------------- | ------------------------------------------------------------------------------ |
+| SSR meta tags         | `head: () => ({ meta: [...] })` (static when loader throws `notFound()`)       |
+| Open Graph tags       | `{ property: 'og:title', content: '...' }`                                     |
+| Server-side analytics | In the loader: `await recordView({ data: { ... } })`                           |
+| Custom 404            | `notFoundComponent: MyComponent` + `throw notFound()` in loader                |
+| Theme                 | Toggle `.dark` class on `<html>` — semantic color tokens respond automatically |
 
 ## Deep Dive
 
@@ -264,4 +288,5 @@ git commit -m "Add SSR with SEO meta tags, analytics tracking, custom 404, and t
 
 ---
 
-**Next:** [Module 14 — Git & Deployment](../14-git-and-deployment/) → Build for production and deploy.
+**Next:** [Module 14 — Git & Deployment](../14-git-and-deployment/) → Build for
+production and deploy.

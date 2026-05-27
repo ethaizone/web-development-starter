@@ -2,7 +2,8 @@
 
 ## What you'll learn
 
-A mental model of what happens when you type a URL and press Enter — from DNS lookup to rendered page.
+A mental model of what happens when you type a URL and press Enter — from DNS
+lookup to rendered page.
 
 ## Key Concepts
 
@@ -15,13 +16,16 @@ Every web interaction has two sides:
 | **Client** | Sends requests, displays responses      | Your browser (Chrome, Firefox, Safari)                 |
 | **Server** | Receives requests, sends back responses | A computer running code that listens for HTTP requests |
 
-Your browser is a **client** — it asks for things. A **server** is a program running on a machine somewhere that answers.
+Your browser is a **client** — it asks for things. A **server** is a program
+running on a machine somewhere that answers.
 
-When you visit `https://example.com`, your browser sends an **HTTP request** to a server. The server processes it and sends back an **HTTP response**.
+When you visit `https://example.com`, your browser sends an **HTTP request** to
+a server. The server processes it and sends back an **HTTP response**.
 
 ### HTTP: The Language of the Web
 
-HTTP (HyperText Transfer Protocol) is the set of rules for how clients and servers communicate.
+HTTP (HyperText Transfer Protocol) is the set of rules for how clients and
+servers communicate.
 
 **An HTTP request contains:**
 
@@ -63,7 +67,9 @@ DevStack Bio will use all of these. For example:
 
 ### DNS: The Internet's Phone Book
 
-When you type `https://devstack.bio`, your browser doesn't know where that server is. It asks a **DNS resolver** to translate the domain name into an IP address (like `203.0.113.42`).
+When you type `https://devstack.bio`, your browser doesn't know where that
+server is. It asks a **DNS resolver** to translate the domain name into an IP
+address (like `203.0.113.42`).
 
 ```
 You type a URL
@@ -75,7 +81,8 @@ You type a URL
     → Renders the page
 ```
 
-You won't configure DNS in this course — hosting platforms handle it for you. But understanding it removes the mystery of how a name becomes a connection.
+You won't configure DNS in this course — hosting platforms handle it for you.
+But understanding it removes the mystery of how a name becomes a connection.
 
 ### What Gets Sent Back: Content Types
 
@@ -100,7 +107,8 @@ The `Content-Type` header tells the client what format the response body is in:
 7. Page is fully loaded and interactive
 ```
 
-This is why we put `<link>` tags in `<head>` (for CSS) and `<script>` tags at the end of `<body>` (for JS) — the order matters for performance.
+This is why we put `<link>` tags in `<head>` (for CSS) and `<script>` tags at
+the end of `<body>` (for JS) — the order matters for performance.
 
 ### Client-Side Rendering (CSR) vs Server-Side Rendering (SSR)
 
@@ -111,18 +119,25 @@ This is why we put `<link>` tags in `<head>` (for CSS) and `<script>` tags at th
 | **Good for**              | Interactive apps (dashboards, editors) | Public pages (SEO, fast first paint)    |
 | **DevStack Bio example**  | The dashboard where you edit links     | The public profile page at `/$username` |
 
-TanStack Start supports **both**. You'll use SSR for public profile pages and CSR for the interactive dashboard — this is a key architectural decision we'll revisit in Module 12 and Module 13.
+TanStack Start supports **both**. You'll use SSR for public profile pages and
+CSR for the interactive dashboard — this is a key architectural decision we'll
+revisit in Module 12 and Module 13.
 
 ### What is an API?
 
-An API (Application Programming Interface) is a set of rules for how software components communicate. In web development, "API" usually means a **web API** — a server endpoint that returns data (often JSON) instead of HTML.
+An API (Application Programming Interface) is a set of rules for how software
+components communicate. In web development, "API" usually means a **web API** —
+a server endpoint that returns data (often JSON) instead of HTML.
 
 ```
 Browser → GET /api/links → Server → JSON response → Browser processes data
 Browser → GET /alice     → Server → HTML response  → Browser renders page
 ```
 
-In TanStack Start, you'll use **server functions** instead of building a separate API. They achieve the same goal — your client code calls a function, and it runs on the server — but with type safety and no manual endpoint setup. (More in Module 10.)
+In TanStack Start, you'll use **server functions** instead of building a
+separate API. They achieve the same goal — your client code calls a function,
+and it runs on the server — but with type safety and no manual endpoint setup.
+(More in Module 10.)
 
 ### Full Picture: What Happens When You Visit a DevStack Bio Profile
 
@@ -152,7 +167,8 @@ In TanStack Start, you'll use **server functions** instead of building a separat
 
 ## Commands You'll Use
 
-There are no commands in this module — it's all concepts. Starting from Module 02, you'll be running commands to set up your project.
+There are no commands in this module — it's all concepts. Starting from Module
+02, you'll be running commands to set up your project.
 
 ## Deep Dive
 
@@ -165,4 +181,5 @@ There are no commands in this module — it's all concepts. Starting from Module
 
 ---
 
-**Next:** [Module 02 — Your First Server](../02-your-first-server/) → Set up TanStack Start and see your first page render.
+**Next:** [Module 02 — Your First Server](../02-your-first-server/) → Set up
+TanStack Start and see your first page render.

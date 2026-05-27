@@ -2,15 +2,19 @@
 
 ## What you'll learn
 
-Implement registration, login, cookie-based sessions, and route protection using TanStack Start's built-in session support.
+Implement registration, login, cookie-based sessions, and route protection using
+TanStack Start's built-in session support.
 
 ## Key Concepts
 
 ### How Web Authentication Works
 
-1. **Register** — user submits email + password → server hashes the password → stores in database
-2. **Login** — user submits email + password → server compares against stored hash → creates a session
-3. **Session** — server sends a cookie to the browser → browser sends it back on every request → server reads the cookie to identify the user
+1. **Register** — user submits email + password → server hashes the password →
+   stores in database
+2. **Login** — user submits email + password → server compares against stored
+   hash → creates a session
+3. **Session** — server sends a cookie to the browser → browser sends it back on
+   every request → server reads the cookie to identify the user
 4. **Logout** — server clears the session → cookie is removed
 
 ### Password Hashing
@@ -18,13 +22,13 @@ Implement registration, login, cookie-based sessions, and route protection using
 **Never store plain-text passwords.** Use a one-way hash function:
 
 ```ts
-import bcrypt from 'bcryptjs'
+import bcrypt from "bcryptjs";
 
 // Hashing (registration)
-const hash = await bcrypt.hash(password, 12) // 12 = salt rounds (cost factor)
+const hash = await bcrypt.hash(password, 12); // 12 = salt rounds (cost factor)
 
 // Verifying (login)
-const isValid = await bcrypt.compare(password, hash) // → true or false
+const isValid = await bcrypt.compare(password, hash); // → true or false
 ```
 
 - `bcrypt.hash()` turns a password into an irreversible hash
@@ -36,24 +40,26 @@ const isValid = await bcrypt.compare(password, hash) // → true or false
 TanStack Start provides `useSession()` for secure HTTP-only cookies:
 
 ```ts
-import { useSession } from '@tanstack/react-start/server'
+import { useSession } from "@tanstack/react-start/server";
 
 export function useAppSession() {
   return useSession({
-    name: 'devstack-session',
+    name: "devstack-session",
     password: process.env.SESSION_SECRET!, // Must be 32+ characters
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      httpOnly: true,  // JavaScript cannot read this cookie (XSS protection)
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      httpOnly: true, // JavaScript cannot read this cookie (XSS protection)
       maxAge: 60 * 60 * 24 * 7, // 7 days
     },
-  })
+  });
 }
 ```
 
 Key cookie options:
-- **`httpOnly: true`** — prevents JavaScript from reading the cookie (protects against XSS)
+
+- **`httpOnly: true`** — prevents JavaScript from reading the cookie (protects
+  against XSS)
 - **`secure: true`** — only sent over HTTPS in production
 - **`sameSite: 'lax'`** — protects against CSRF attacks
 - **`maxAge`** — how long the session lasts
@@ -64,34 +70,37 @@ Use a layout route's `beforeLoad` to check authentication before rendering:
 
 ```tsx
 // src/routes/_authed.tsx
-import { createFileRoute, redirect } from '@tanstack/react-router'
-import { getCurrentUserFn } from '../server/auth.functions'
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { getCurrentUserFn } from "../server/auth.functions";
 
-export const Route = createFileRoute('/_authed')({
+export const Route = createFileRoute("/_authed")({
   beforeLoad: async ({ location }) => {
-    const user = await getCurrentUserFn()
+    const user = await getCurrentUserFn();
     if (!user) {
       throw redirect({
-        to: '/login',
+        to: "/login",
         search: { redirect: location.href },
-      })
+      });
     }
-    return { user }
+    return { user };
   },
   component: AuthedLayout,
-})
+});
 ```
 
 Child routes access the user via route context:
 
 ```tsx
 function DashboardPage() {
-  const { user } = Route.useRouteContext()
-  return <p>Welcome, {user.email}</p>
+  const { user } = Route.useRouteContext();
+  return <p>Welcome, {user.email}</p>;
 }
 ```
 
-> **Important:** Route protection is a **UX concern** — it redirects users who aren't logged in. For **security**, always enforce auth in the server function itself (auth middleware or in-handler checks). A server function is an RPC endpoint that can be called directly.
+> **Important:** Route protection is a **UX concern** — it redirects users who
+> aren't logged in. For **security**, always enforce auth in the server function
+> itself (auth middleware or in-handler checks). A server function is an RPC
+> endpoint that can be called directly.
 
 ## Now Build It: Add Authentication
 
@@ -111,6 +120,7 @@ SESSION_SECRET=change-this-to-a-random-32-character-string-in-production
 ```
 
 Add `.env` to `.gitignore`:
+
 ```
 .env
 ```
@@ -120,23 +130,25 @@ Add `.env` to `.gitignore`:
 Create `src/server/session.ts`:
 
 ```ts
-import { useSession } from '@tanstack/react-start/server'
+import { useSession } from "@tanstack/react-start/server";
 
 type SessionData = {
-  userId?: string
-}
+  userId?: string;
+};
 
 export function useAppSession() {
   return useSession({
-    name: 'devstack-session',
-    password: process.env.SESSION_SECRET ?? 'fallback-dev-secret-change-in-production-32ch',
+    name: "devstack-session",
+    password:
+      process.env.SESSION_SECRET ??
+      "fallback-dev-secret-change-in-production-32ch",
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax' as const,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax" as const,
       httpOnly: true,
       maxAge: 60 * 60 * 24 * 7, // 7 days
     },
-  })
+  });
 }
 ```
 
@@ -145,43 +157,43 @@ export function useAppSession() {
 Create `src/server/auth.functions.ts`:
 
 ```ts
-import { createServerFn } from '@tanstack/react-start'
-import { redirect } from '@tanstack/react-router'
-import bcrypt from 'bcryptjs'
-import { db } from '../db'
-import { users, profiles } from '../db/schema'
-import { eq } from 'drizzle-orm'
-import { useAppSession } from './session'
-import { registerSchema, loginSchema } from './schemas'
-import { findUserByEmail } from './db.server'
+import { createServerFn } from "@tanstack/react-start";
+import { redirect } from "@tanstack/react-router";
+import bcrypt from "bcryptjs";
+import { db } from "../db";
+import { users, profiles } from "../db/schema";
+import { eq } from "drizzle-orm";
+import { useAppSession } from "./session";
+import { registerSchema, loginSchema } from "./schemas";
+import { findUserByEmail } from "./db.server";
 
-export const registerFn = createServerFn({ method: 'POST' })
+export const registerFn = createServerFn({ method: "POST" })
   .inputValidator(registerSchema)
   .handler(async ({ data }) => {
     // Check if email already exists
-    const existingUser = await findUserByEmail(data.email)
+    const existingUser = await findUserByEmail(data.email);
     if (existingUser) {
-      return { error: 'An account with this email already exists' }
+      return { error: "An account with this email already exists" };
     }
 
     // Check if username is taken
     const existingProfile = await db.query.profiles.findFirst({
       where: eq(profiles.username, data.username),
-    })
+    });
     if (existingProfile) {
-      return { error: 'This username is already taken' }
+      return { error: "This username is already taken" };
     }
 
     // Hash the password
-    const passwordHash = await bcrypt.hash(data.password, 12)
+    const passwordHash = await bcrypt.hash(data.password, 12);
 
     // Create user
-    const userId = crypto.randomUUID()
+    const userId = crypto.randomUUID();
     await db.insert(users).values({
       id: userId,
       email: data.email,
       passwordHash,
-    })
+    });
 
     // Create profile
     await db.insert(profiles).values({
@@ -189,55 +201,55 @@ export const registerFn = createServerFn({ method: 'POST' })
       userId,
       username: data.username,
       displayName: data.username, // Default to username; can be changed later
-    })
+    });
 
     // Create session
-    const session = await useAppSession()
-    await session.update({ userId })
+    const session = await useAppSession();
+    await session.update({ userId });
 
-    return { success: true }
-  })
+    return { success: true };
+  });
 
-export const loginFn = createServerFn({ method: 'POST' })
+export const loginFn = createServerFn({ method: "POST" })
   .inputValidator(loginSchema)
   .handler(async ({ data }) => {
-    const user = await findUserByEmail(data.email)
+    const user = await findUserByEmail(data.email);
     if (!user) {
-      return { error: 'Invalid email or password' }
+      return { error: "Invalid email or password" };
     }
 
-    const isValid = await bcrypt.compare(data.password, user.passwordHash)
+    const isValid = await bcrypt.compare(data.password, user.passwordHash);
     if (!isValid) {
-      return { error: 'Invalid email or password' }
+      return { error: "Invalid email or password" };
     }
 
-    const session = await useAppSession()
-    await session.update({ userId: user.id })
+    const session = await useAppSession();
+    await session.update({ userId: user.id });
 
-    return { success: true }
-  })
+    return { success: true };
+  });
 
-export const logoutFn = createServerFn({ method: 'POST' })
-  .handler(async () => {
-    const session = await useAppSession()
-    await session.clear()
-    return { success: true }
-  })
+export const logoutFn = createServerFn({ method: "POST" }).handler(async () => {
+  const session = await useAppSession();
+  await session.clear();
+  return { success: true };
+});
 
-export const getCurrentUserFn = createServerFn({ method: 'GET' })
-  .handler(async () => {
-    const session = await useAppSession()
-    const userId = session.data.userId
-    if (!userId) return null
+export const getCurrentUserFn = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const session = await useAppSession();
+    const userId = session.data.userId;
+    if (!userId) return null;
 
     const user = await db.query.users.findFirst({
       where: eq(users.id, userId),
-    })
-    if (!user) return null
+    });
+    if (!user) return null;
 
     // Don't expose the password hash
-    return { id: user.id, email: user.email }
-  })
+    return { id: user.id, email: user.email };
+  },
+);
 ```
 
 ### Step 5: Update the registration form to use the real server function
@@ -245,32 +257,32 @@ export const getCurrentUserFn = createServerFn({ method: 'GET' })
 Update `src/routes/register.tsx`:
 
 ```tsx
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
-import { useState } from 'react'
-import { RegisterForm } from '../components/register-form'
-import { registerFn } from '../server/auth.functions'
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
+import { RegisterForm } from "../components/register-form";
+import { registerFn } from "../server/auth.functions";
 
-export const Route = createFileRoute('/register')({
+export const Route = createFileRoute("/register")({
   component: RegisterPage,
-})
+});
 
 function RegisterPage() {
-  const [serverError, setServerError] = useState('')
-  const navigate = useNavigate()
+  const [serverError, setServerError] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (data: {
-    email: string
-    username: string
-    password: string
+    email: string;
+    username: string;
+    password: string;
   }) => {
-    setServerError('')
-    const result = await registerFn({ data })
+    setServerError("");
+    const result = await registerFn({ data });
     if (result?.error) {
-      setServerError(result.error)
+      setServerError(result.error);
     } else if (result?.success) {
-      navigate({ to: '/dashboard' })
+      navigate({ to: "/dashboard" });
     }
-  }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
@@ -288,14 +300,14 @@ function RegisterPage() {
           <RegisterForm onSubmit={handleRegister} />
         </div>
         <p className="mt-4 text-center text-sm text-muted-foreground">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/login" className="text-blue-600 hover:underline">
             Log in
           </Link>
         </p>
       </div>
     </div>
-  )
+  );
 }
 ```
 
@@ -304,38 +316,38 @@ function RegisterPage() {
 Update `src/routes/login.tsx`:
 
 ```tsx
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
-import { useState } from 'react'
-import { loginFn } from '../server/auth.functions'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
+import { loginFn } from "../server/auth.functions";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export const Route = createFileRoute('/login')({
+export const Route = createFileRoute("/login")({
   component: LoginPage,
-})
+});
 
 function LoginPage() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault()
-    setError('')
-    setIsLoading(true)
+    event.preventDefault();
+    setError("");
+    setIsLoading(true);
 
-    const result = await loginFn({ data: { email, password } })
+    const result = await loginFn({ data: { email, password } });
     if (result?.error) {
-      setError(result.error)
+      setError(result.error);
     } else if (result?.success) {
-      navigate({ to: '/dashboard' })
+      navigate({ to: "/dashboard" });
     }
-    setIsLoading(false)
-  }
+    setIsLoading(false);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
@@ -370,11 +382,11 @@ function LoginPage() {
               />
             </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? 'Logging in...' : 'Log In'}
+              {isLoading ? "Logging in..." : "Log In"}
             </Button>
           </form>
           <p className="mt-4 text-center text-sm text-muted-foreground">
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <Link to="/register" className="text-blue-600 hover:underline">
               Create one
             </Link>
@@ -382,7 +394,7 @@ function LoginPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
 ```
 
@@ -390,80 +402,91 @@ function LoginPage() {
 
 Update `src/routes/_authed.tsx`:
 
-The `_authed` layout's only job is **route protection** — checking if the user is logged in. If not, redirect to login. The nav bar is handled by the root layout.
+The `_authed` layout's only job is **route protection** — checking if the user
+is logged in. If not, redirect to login. The nav bar is handled by the root
+layout.
 
 ```tsx
-import { Outlet, createFileRoute, redirect } from '@tanstack/react-router'
-import { getCurrentUserFn } from '../server/auth.functions'
+import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
+import { getCurrentUserFn } from "../server/auth.functions";
 
-export const Route = createFileRoute('/_authed')({
+export const Route = createFileRoute("/_authed")({
   beforeLoad: async ({ location }) => {
-    const user = await getCurrentUserFn()
+    const user = await getCurrentUserFn();
     if (!user) {
       throw redirect({
-        to: '/login',
+        to: "/login",
         search: { redirect: location.href },
-      })
+      });
     }
-    return { user }
+    return { user };
   },
   component: AuthedLayout,
-})
+});
 
 function AuthedLayout() {
-  return <Outlet />
+  return <Outlet />;
 }
 ```
 
 ### Step 8: Make the root nav auth-aware
 
-Update `src/routes/__root.tsx` to show different nav links depending on login state:
+Update `src/routes/__root.tsx` to show different nav links depending on login
+state:
 
 ```tsx
-import { HeadContent, Scripts, createRootRoute, Link, Outlet, useRouterState, useNavigate } from '@tanstack/react-router'
-import { useEffect, useState, useCallback } from 'react'
-import type { ReactNode } from 'react'
+import {
+  HeadContent,
+  Scripts,
+  createRootRoute,
+  Link,
+  Outlet,
+  useRouterState,
+  useNavigate,
+} from "@tanstack/react-router";
+import { useEffect, useState, useCallback } from "react";
+import type { ReactNode } from "react";
 
-import appCss from '../styles.css?url'
-import { getCurrentUserFn, logoutFn } from '../server/auth.functions'
-import { Button } from '@/components/ui/button'
+import appCss from "../styles.css?url";
+import { getCurrentUserFn, logoutFn } from "../server/auth.functions";
+import { Button } from "@/components/ui/button";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'DevStack Bio' },
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "DevStack Bio" },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [{ rel: "stylesheet", href: appCss }],
   }),
   component: RootComponent,
-})
+});
 
 function RootComponent() {
-  const [user, setUser] = useState<{ id: string; email: string } | null>(null)
-  const [checked, setChecked] = useState(false)
+  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
+  const [checked, setChecked] = useState(false);
 
-  const locationHref = useRouterState({ select: (s) => s.location.href })
+  const locationHref = useRouterState({ select: (s) => s.location.href });
 
   const refreshUser = useCallback(() => {
     getCurrentUserFn()
       .then((result) => setUser(result))
       .catch(() => setUser(null))
-      .finally(() => setChecked(true))
-  }, [])
+      .finally(() => setChecked(true));
+  }, []);
 
   useEffect(() => {
-    refreshUser()
-  }, [locationHref, refreshUser])
+    refreshUser();
+  }, [locationHref, refreshUser]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await logoutFn()
-    setUser(null)
-    navigate({ to: '/' })
-  }
+    await logoutFn();
+    setUser(null);
+    navigate({ to: "/" });
+  };
 
   return (
     <RootDocument>
@@ -480,7 +503,7 @@ function RootComponent() {
                     <>
                       <Link
                         to="/dashboard"
-                        activeProps={{ className: 'font-bold' }}
+                        activeProps={{ className: "font-bold" }}
                       >
                         Dashboard
                       </Link>
@@ -510,7 +533,7 @@ function RootComponent() {
         </footer>
       </div>
     </RootDocument>
-  )
+  );
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
@@ -524,99 +547,118 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <Scripts />
       </body>
     </html>
-  )
+  );
 }
 ```
 
-> **How it works:** `useRouterState` gives us the current URL. Every time the URL changes (navigation), the `useEffect` re-calls `getCurrentUserFn()` to check the session. After login, the session cookie is set — the next navigation triggers a refresh and the nav updates to show Dashboard/Log Out.
+> **How it works:** `useRouterState` gives us the current URL. Every time the
+> URL changes (navigation), the `useEffect` re-calls `getCurrentUserFn()` to
+> check the session. After login, the session cookie is set — the next
+> navigation triggers a refresh and the nav updates to show Dashboard/Log Out.
 
 ### Step 9: Update server functions to use session-based auth
 
-In Module 10, `getMyProfile` and `addLink` accepted a `userId` from the client (or hardcoded the test user). Now that we have sessions, update them to read the user ID from the session instead. This is more secure — the client can't pass an arbitrary user ID.
+In Module 10, `getMyProfile` and `addLink` accepted a `userId` from the client
+(or hardcoded the test user). Now that we have sessions, update them to read the
+user ID from the session instead. This is more secure — the client can't pass an
+arbitrary user ID.
 
 Update `src/server/profile.functions.ts`:
 
 ```ts
-import { createServerFn } from '@tanstack/react-start'
-import { notFound } from '@tanstack/react-router'
-import { findProfileByUsername, findProfileByUserId, addLinkToProfile, removeLinkById } from './db.server'
-import { addLinkSchema, removeLinkSchema, updateProfileSchema } from './schemas'
-import { z } from 'zod'
-import { eq } from 'drizzle-orm'
-import { db } from '../db'
-import { profiles, analytics } from '../db/schema'
-import { useAppSession } from './session'
+import { createServerFn } from "@tanstack/react-start";
+import { notFound } from "@tanstack/react-router";
+import {
+  findProfileByUsername,
+  findProfileByUserId,
+  addLinkToProfile,
+  removeLinkById,
+} from "./db.server";
+import {
+  addLinkSchema,
+  removeLinkSchema,
+  updateProfileSchema,
+} from "./schemas";
+import { z } from "zod";
+import { eq } from "drizzle-orm";
+import { db } from "../db";
+import { profiles, analytics } from "../db/schema";
+import { useAppSession } from "./session";
 
-export const getPublicProfile = createServerFn({ method: 'GET' })
+export const getPublicProfile = createServerFn({ method: "GET" })
   .inputValidator((data: { username: string }) => data)
   .handler(async ({ data }) => {
-    const profile = await findProfileByUsername(data.username)
+    const profile = await findProfileByUsername(data.username);
     if (!profile) {
-      throw notFound()
+      throw notFound();
     }
-    return profile
-  })
+    return profile;
+  });
 
-export const getMyProfile = createServerFn({ method: 'GET' })
-  .handler(async () => {
-    const session = await useAppSession()
-    const userId = session.data.userId
-    if (!userId) throw notFound()
+export const getMyProfile = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const session = await useAppSession();
+    const userId = session.data.userId;
+    if (!userId) throw notFound();
 
-    const profile = await findProfileByUserId(userId)
+    const profile = await findProfileByUserId(userId);
     if (!profile) {
-      throw notFound()
+      throw notFound();
     }
-    return profile
-  })
+    return profile;
+  },
+);
 
-export const addLink = createServerFn({ method: 'POST' })
+export const addLink = createServerFn({ method: "POST" })
   .inputValidator(addLinkSchema)
   .handler(async ({ data }) => {
-    const session = await useAppSession()
-    const userId = session.data.userId
-    if (!userId) throw notFound()
+    const session = await useAppSession();
+    const userId = session.data.userId;
+    if (!userId) throw notFound();
 
-    const profile = await findProfileByUserId(userId)
-    if (!profile) throw notFound()
-    await addLinkToProfile(profile.id, data)
-    return { success: true }
-  })
+    const profile = await findProfileByUserId(userId);
+    if (!profile) throw notFound();
+    await addLinkToProfile(profile.id, data);
+    return { success: true };
+  });
 
-export const removeLink = createServerFn({ method: 'POST' })
+export const removeLink = createServerFn({ method: "POST" })
   .inputValidator(removeLinkSchema)
   .handler(async ({ data }) => {
-    await removeLinkById(data.linkId)
-    return { success: true }
-  })
+    await removeLinkById(data.linkId);
+    return { success: true };
+  });
 ```
 
-> **What changed:** `getMyProfile` no longer takes `{ userId }` as input — it reads the user ID from the session. `addLink` no longer hardcodes the test user — it reads the session and looks up the profile. Both are now properly secured.
+> **What changed:** `getMyProfile` no longer takes `{ userId }` as input — it
+> reads the user ID from the session. `addLink` no longer hardcodes the test
+> user — it reads the session and looks up the profile. Both are now properly
+> secured.
 
 ### Step 10: Update the dashboard to use real data
 
 Update `src/routes/_authed/dashboard.tsx`:
 
 ```tsx
-import { createFileRoute, useRouter } from '@tanstack/react-router'
-import { getMyProfile } from '../../server/profile.functions'
-import { LinkEditor } from '../../components/link-editor'
+import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { getMyProfile } from "../../server/profile.functions";
+import { LinkEditor } from "../../components/link-editor";
 
-export const Route = createFileRoute('/_authed/dashboard')({
+export const Route = createFileRoute("/_authed/dashboard")({
   loader: async () => {
-    const profile = await getMyProfile()
-    return { profile }
+    const profile = await getMyProfile();
+    return { profile };
   },
   component: DashboardPage,
-})
+});
 
 function DashboardPage() {
-  const { profile } = Route.useLoaderData()
-  const router = useRouter()
+  const { profile } = Route.useLoaderData();
+  const router = useRouter();
 
   const handleRefresh = () => {
-    router.invalidate() // Re-run loaders
-  }
+    router.invalidate(); // Re-run loaders
+  };
 
   return (
     <div className="space-y-8">
@@ -636,7 +678,7 @@ function DashboardPage() {
         onRefresh={handleRefresh}
       />
     </div>
-  )
+  );
 }
 ```
 
@@ -663,16 +705,16 @@ No new commands — authentication is implemented in code.
 
 ## Common Patterns
 
-| Pattern | Code |
-|---------|------|
-| Hash password | `await bcrypt.hash(password, 12)` |
-| Verify password | `await bcrypt.compare(password, hash)` |
-| Create session | `await session.update({ userId })` |
-| Read session | `const userId = session.data.userId` |
-| Clear session | `await session.clear()` |
-| Protect a route | `beforeLoad: async () => { ... throw redirect(...) }` |
-| Read route context | `const { user } = Route.useRouteContext()` |
-| Invalidate data | `router.invalidate()` |
+| Pattern            | Code                                                  |
+| ------------------ | ----------------------------------------------------- |
+| Hash password      | `await bcrypt.hash(password, 12)`                     |
+| Verify password    | `await bcrypt.compare(password, hash)`                |
+| Create session     | `await session.update({ userId })`                    |
+| Read session       | `const userId = session.data.userId`                  |
+| Clear session      | `await session.clear()`                               |
+| Protect a route    | `beforeLoad: async () => { ... throw redirect(...) }` |
+| Read route context | `const { user } = Route.useRouteContext()`            |
+| Invalidate data    | `router.invalidate()`                                 |
 
 ## Deep Dive
 
@@ -683,4 +725,5 @@ No new commands — authentication is implemented in code.
 
 ---
 
-**Next:** [Module 12 — The Dashboard (CSR)](../12-the-dashboard-csr/) → Build the full interactive dashboard.
+**Next:** [Module 12 — The Dashboard (CSR)](../12-the-dashboard-csr/) → Build
+the full interactive dashboard.

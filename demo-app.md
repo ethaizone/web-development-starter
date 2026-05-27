@@ -2,15 +2,21 @@
 
 ## 📝 Project Specification: DevStack Bio## 1. Project Overview
 
-DevStack Bio is a self-hosted, developer-focused profile hub (a customizable "Linktree" alternative). Users can register an account, set up a public profile matching their developer handles, display custom links, showcase their technology stack, and track profile view analytics.
-This project explicitly demonstrates the boundary between Client-Side Rendering (CSR) for the interactive management dashboard and Server-Side Rendering (SSR) for the fast, SEO-friendly public profile pages.
+DevStack Bio is a self-hosted, developer-focused profile hub (a customizable
+"Linktree" alternative). Users can register an account, set up a public profile
+matching their developer handles, display custom links, showcase their
+technology stack, and track profile view analytics. This project explicitly
+demonstrates the boundary between Client-Side Rendering (CSR) for the
+interactive management dashboard and Server-Side Rendering (SSR) for the fast,
+SEO-friendly public profile pages.
 
 ---
 
 ## 2. Core Tech Stack
 
 - Meta-Framework: TanStack Start (React, TypeScript)
-- Database & ORM: SQLite (better-sqlite3 or @libsql/client) managed via Drizzle ORM
+- Database & ORM: SQLite (better-sqlite3 or @libsql/client) managed via Drizzle
+  ORM
 - Styling & UI: Tailwind CSS & shadcn/ui
 - Authentication: Cookie-based sessions handled via stateful server functions
 
@@ -18,7 +24,8 @@ This project explicitly demonstrates the boundary between Client-Side Rendering 
 
 ## 3. Database Schema (Drizzle ORM Layout)
 
-Your database architecture will consist of four relational tables. Students will define these schemas using TypeScript and execute migrations via drizzle-kit.
+Your database architecture will consist of four relational tables. Students will
+define these schemas using TypeScript and execute migrations via drizzle-kit.
 
 ```ts
 // Conceptual schema overview for students
@@ -64,30 +71,47 @@ export const analytics = sqliteTable("analytics", {
 ## 4. Feature Requirements## Module 1: Authentication & Layout (SSR Core)
 
 - Registration: Users can sign up with an email and a unique username.
-- Validation: The username must be safe for URL parameters (no spaces or special characters).
-- Session Management: Valid logins generate a cryptographically secure token stored in an httpOnly cookie.
-- Security Guard: Implement a TanStack Router layout middleware that blocks unauthenticated visitors from accessing the dashboard routes.
+- Validation: The username must be safe for URL parameters (no spaces or special
+  characters).
+- Session Management: Valid logins generate a cryptographically secure token
+  stored in an httpOnly cookie.
+- Security Guard: Implement a TanStack Router layout middleware that blocks
+  unauthenticated visitors from accessing the dashboard routes.
 
 ## Module 2: The Interactive Admin Dashboard (CSR & Server Functions)
 
 - Route: /dashboard
-- Profile Editing: Form inputs using shadcn Input, Textarea, and a theme selection Select component. Clicking "Save Changes" invokes a type-safe updateProfile server function.
+- Profile Editing: Form inputs using shadcn Input, Textarea, and a theme
+  selection Select component. Clicking "Save Changes" invokes a type-safe
+  updateProfile server function.
 - Dynamic Link Builder: A full CRUD system managing user links.
 - Clicking "Add Link" opens a shadcn Dialog.
   - Links are displayed in a clean list format utilizing shadcn Card styling.
-  - CSR Teaching Goal: Removing or appending links must run entirely client-side via native React asynchronous states, interacting seamlessly through createServerFn endpoints without a full page refresh.
+  - CSR Teaching Goal: Removing or appending links must run entirely client-side
+    via native React asynchronous states, interacting seamlessly through
+    createServerFn endpoints without a full page refresh.
 
 ## Module 3: The Public Bio Page (SSR & Analytics)
 
 - Route: /$username (Dynamic File Route)
-- Behavior: When a guest navigates to this URL, TanStack Start uses a route Loader to execute a Drizzle query targeting the specific username.
-- Server-Side Rendering: If the user is found, the server updates the analytics view log table and completely pre-renders the developer page HTML before sending it down to the client.
-- Error Boundaries: If the query returns empty, the route automatically throws a clean redirect or exhibits a custom shadcn 404 block page.
+- Behavior: When a guest navigates to this URL, TanStack Start uses a route
+  Loader to execute a Drizzle query targeting the specific username.
+- Server-Side Rendering: If the user is found, the server updates the analytics
+  view log table and completely pre-renders the developer page HTML before
+  sending it down to the client.
+- Error Boundaries: If the query returns empty, the route automatically throws a
+  clean redirect or exhibits a custom shadcn 404 block page.
 
 ---
 
 ## 5. Key Learning Objectives for Students
 
-1.  Type Safety Execution: Understand how changing a column definition inside schema.ts instantly generates compilation feedback inside frontend React files via Drizzle and TypeScript.
-2.  State vs Network Syncing: Learn how to implement simple native state wrappers (isLoading, error) around standard async/await server function transactions.
-3.  Network Borders: Distinguish code blocks that run on the client from securely executed SQL operations running within the .handler() ecosystem of the server.
+1.  Type Safety Execution: Understand how changing a column definition inside
+    schema.ts instantly generates compilation feedback inside frontend React
+    files via Drizzle and TypeScript.
+2.  State vs Network Syncing: Learn how to implement simple native state
+    wrappers (isLoading, error) around standard async/await server function
+    transactions.
+3.  Network Borders: Distinguish code blocks that run on the client from
+    securely executed SQL operations running within the .handler() ecosystem of
+    the server.

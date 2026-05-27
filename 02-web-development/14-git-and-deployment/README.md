@@ -2,7 +2,8 @@
 
 ## What you'll learn
 
-Review your Git workflow, build the project for production, and deploy it to the internet.
+Review your Git workflow, build the project for production, and deploy it to the
+internet.
 
 ## Key Concepts
 
@@ -36,7 +37,8 @@ Use descriptive commit messages that explain **why**, not just what:
 
 ### Building for Production
 
-The dev server (`npm run dev`) is not suitable for production. Build an optimized version:
+The dev server (`npm run dev`) is not suitable for production. Build an
+optimized version:
 
 ```bash
 npm run build
@@ -63,7 +65,9 @@ npm run start
 | **Fly.io**                      | Full control, Docker-based, global deployment      | More setup required     | Free tier available |
 | **VPS (DigitalOcean, Hetzner)** | Full control, cheapest at scale                    | You manage everything   | $4–5/mo             |
 
-For DevStack Bio (SQLite), you need a platform that supports **persistent file storage** — the database file must survive redeployments. Vercel's serverless functions don't support this. **Railway** or **Fly.io** are better fits.
+For DevStack Bio (SQLite), you need a platform that supports **persistent file
+storage** — the database file must survive redeployments. Vercel's serverless
+functions don't support this. **Railway** or **Fly.io** are better fits.
 
 ### Environment Variables
 
@@ -74,7 +78,8 @@ In production, set these environment variables on your hosting platform:
 | `SESSION_SECRET` | A random 32+ character string for session encryption |
 | `NODE_ENV`       | `production`                                         |
 
-Never commit `.env` files to Git. Always use the hosting platform's environment variable settings.
+Never commit `.env` files to Git. Always use the hosting platform's environment
+variable settings.
 
 ### Pre-Deployment Checklist
 
@@ -86,7 +91,8 @@ Before deploying:
 - [ ] `.env` is in `.gitignore`
 - [ ] `.gitignore` excludes `devstack.db`, `node_modules/`, `.env`
 - [ ] `SESSION_SECRET` is a strong, random value (not the dev fallback)
-- [ ] No `console.log` statements in production code (optional but good practice)
+- [ ] No `console.log` statements in production code (optional but good
+      practice)
 
 ## Now Build It: Deploy DevStack Bio
 
@@ -103,7 +109,8 @@ devstack.db-shm
 .output/
 ```
 
-> **Note:** The `drizzle/` folder contains migration SQL files. These should be committed to version control, so do **not** add `drizzle/` to `.gitignore`.
+> **Note:** The `drizzle/` folder contains migration SQL files. These should be
+> committed to version control, so do **not** add `drizzle/` to `.gitignore`.
 
 ### Step 2: Build for production
 
@@ -152,13 +159,15 @@ Pick a platform and follow their official guide:
 Key things to configure on any platform:
 
 - **Persistent volume** — SQLite needs a file that survives redeployments
-- **Environment variables** — `SESSION_SECRET` (random 32+ char string) and `NODE_ENV=production`
+- **Environment variables** — `SESSION_SECRET` (random 32+ char string) and
+  `NODE_ENV=production`
 - **Build command** — `npm run build`
 - **Start command** — `npm run start`
 
 ### Step 6: Create a `.env.example` file
 
-Create `.env.example` (this IS committed — it tells other developers what variables are needed):
+Create `.env.example` (this IS committed — it tells other developers what
+variables are needed):
 
 ```
 # Required: A random 32+ character string for session encryption
@@ -217,8 +226,10 @@ Your app is live on the internet! 🎉
 
 ---
 
-**Congratulations!** You've built and deployed a full-stack web application. Here's what you can do next:
+**Congratulations!** You've built and deployed a full-stack web application.
+Here's what you can do next:
 
-- Review the [Pro Guidelines](../../03-professional-guidelines/) for topics like Linux, Docker, and CI/CD
+- Review the [Pro Guidelines](../../03-professional-guidelines/) for topics like
+  Linux, Docker, and CI/CD
 - Add features to DevStack Bio: OAuth login, custom themes, link click tracking
 - Start your own project using the same stack

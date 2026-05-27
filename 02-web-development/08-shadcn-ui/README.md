@@ -2,13 +2,16 @@
 
 ## What you'll learn
 
-Install shadcn/ui and replace hand-built form inputs and cards with polished, accessible components.
+Install shadcn/ui and replace hand-built form inputs and cards with polished,
+accessible components.
 
 ## Key Concepts
 
 ### What is shadcn/ui?
 
-shadcn/ui is **not a component library** in the traditional sense. It's a collection of reusable React components that you **copy into your project**. You own the code — you can edit it, style it, and extend it.
+shadcn/ui is **not a component library** in the traditional sense. It's a
+collection of reusable React components that you **copy into your project**. You
+own the code — you can edit it, style it, and extend it.
 
 - Built on **Radix UI** (accessible, unstyled primitives)
 - Styled with **Tailwind CSS** (matches your existing setup)
@@ -17,44 +20,43 @@ shadcn/ui is **not a component library** in the traditional sense. It's a collec
 
 ### How It Differs from a Traditional Library
 
-| Traditional library (e.g., MUI) | shadcn/ui |
-|--------------------------------|-----------|
-| `npm install @mui/material` | `npx shadcn@latest add button` |
-| Components live in `node_modules/` | Components live in your `src/` |
-| Update by changing version | Update by re-running the add command |
-| Customize via theme API | Customize by editing the source code |
+| Traditional library (e.g., MUI)    | shadcn/ui                            |
+| ---------------------------------- | ------------------------------------ |
+| `npm install @mui/material`        | `npx shadcn@latest add button`       |
+| Components live in `node_modules/` | Components live in your `src/`       |
+| Update by changing version         | Update by re-running the add command |
+| Customize via theme API            | Customize by editing the source code |
 
 ### The Component File Pattern
 
-When you add a component, shadcn/ui creates a file like `src/components/ui/button.tsx`:
+When you add a component, shadcn/ui creates a file like
+`src/components/ui/button.tsx`:
 
 ```tsx
 // src/components/ui/button.tsx (simplified)
-import { Slot } from '@radix-ui/react-slot'
-import { cva, type VariantProps } from 'class-variance-authority'
-import * as React from 'react'
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
-const buttonVariants = cva(
-  'inline-flex items-center justify-center ...',
-  {
-    variants: {
-      variant: {
-        default: 'bg-primary text-white ...',
-        destructive: 'bg-red-500 text-white ...',
-        outline: 'border border-gray-300 ...',
-        ghost: 'hover:bg-gray-100 ...',
-      },
-      size: {
-        default: 'h-10 px-4 py-2',
-        sm: 'h-9 px-3',
-        lg: 'h-11 px-8',
-      },
+const buttonVariants = cva("inline-flex items-center justify-center ...", {
+  variants: {
+    variant: {
+      default: "bg-primary text-white ...",
+      destructive: "bg-red-500 text-white ...",
+      outline: "border border-gray-300 ...",
+      ghost: "hover:bg-gray-100 ...",
     },
-  }
-)
+    size: {
+      default: "h-10 px-4 py-2",
+      sm: "h-9 px-3",
+      lg: "h-11 px-8",
+    },
+  },
+});
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -65,15 +67,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       />
-    )
-  }
-)
-Button.displayName = 'Button'
+    );
+  },
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };
 ```
 
 You don't need to understand every line. What matters:
+
 - **Variants** — pre-defined styles (`default`, `outline`, `destructive`)
 - **Sizes** — `sm`, `default`, `lg`
 - **Full HTML button props** — `onClick`, `disabled`, `type`, etc. all work
@@ -82,10 +85,10 @@ You don't need to understand every line. What matters:
 ### Using shadcn/ui Components
 
 ```tsx
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 function MyForm() {
   return (
@@ -103,7 +106,7 @@ function MyForm() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
 ```
 
@@ -117,20 +120,25 @@ Run the init command in your project directory:
 npx shadcn@latest init -t start -b radix
 ```
 
-Follow the prompts to select a preset theme. If the prompts don't appear or the command fails, create the configuration manually:
+Follow the prompts to select a preset theme. If the prompts don't appear or the
+command fails, create the configuration manually:
+
 - **Style:** Choose `default` (or whichever you prefer)
 - **Base color:** Choose `slate` (neutral, professional)
 - **CSS variables:** Yes
 
 This creates:
+
 - `components.json` — configuration file
 - `src/lib/utils.ts` — utility function for class merging
 - `src/components/ui/` — directory for components
-- Installs required dependencies (`clsx`, `tailwind-merge`, `class-variance-authority`)
+- Installs required dependencies (`clsx`, `tailwind-merge`,
+  `class-variance-authority`)
 
 If the interactive init doesn't work, create these files manually:
 
 **`components.json`:**
+
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
@@ -156,26 +164,33 @@ If the interactive init doesn't work, create these files manually:
 ```
 
 **`src/lib/utils.ts`:**
+
 ```ts
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 ```
 
 Then install the dependencies:
+
 ```bash
 npm install clsx tailwind-merge class-variance-authority
 ```
 
 **`src/styles.css` (theme variables for shadcn/ui):**
 
-If `npx shadcn@latest init` ran successfully, it updated your CSS file automatically. If you created the config manually, you **must** add the theme variables. Without them, components like `<Button>` will have no background color and look invisible.
+If `npx shadcn@latest init` ran successfully, it updated your CSS file
+automatically. If you created the config manually, you **must** add the theme
+variables. Without them, components like `<Button>` will have no background
+color and look invisible.
 
 The CSS file needs two things:
-1. **`@theme inline`** — tells Tailwind v4 to map `bg-primary` → `var(--color-primary)` → `var(--primary)` → your oklch color
+
+1. **`@theme inline`** — tells Tailwind v4 to map `bg-primary` →
+   `var(--color-primary)` → `var(--primary)` → your oklch color
 2. **`:root` / `.dark`** — defines the actual color values
 
 ```css
@@ -264,7 +279,10 @@ The CSS file needs two things:
 }
 ```
 
-> **Why the double indirection?** Tailwind v4 expects `--color-*` variables in `@theme`. shadcn/ui uses `--primary`, `--secondary`, etc. The `@theme inline` block bridges them: `--color-primary: var(--primary)` lets `bg-primary` work while keeping shadcn/ui's naming convention.
+> **Why the double indirection?** Tailwind v4 expects `--color-*` variables in
+> `@theme`. shadcn/ui uses `--primary`, `--secondary`, etc. The `@theme inline`
+> block bridges them: `--color-primary: var(--primary)` lets `bg-primary` work
+> while keeping shadcn/ui's naming convention.
 
 ### Step 2: Add the components you need
 
@@ -288,49 +306,55 @@ Each command adds one component file to `src/components/ui/`.
 Update `src/components/register-form.tsx`:
 
 ```tsx
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type RegisterFormProps = {
-  onSubmit: (data: { email: string; username: string; password: string }) => void
-}
+  onSubmit: (data: {
+    email: string;
+    username: string;
+    password: string;
+  }) => void;
+};
 
 export function RegisterForm({ onSubmit }: RegisterFormProps) {
-  const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('')
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-    setError('')
+    event.preventDefault();
+    setError("");
 
     if (!email || !username || !password) {
-      setError('All fields are required')
-      return
+      setError("All fields are required");
+      return;
     }
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match')
-      return
+      setError("Passwords do not match");
+      return;
     }
 
     if (password.length < 8) {
-      setError('Password must be at least 8 characters')
-      return
+      setError("Password must be at least 8 characters");
+      return;
     }
 
     if (!/^[a-zA-Z0-9_-]+$/.test(username)) {
-      setError('Username can only contain letters, numbers, hyphens, and underscores')
-      return
+      setError(
+        "Username can only contain letters, numbers, hyphens, and underscores",
+      );
+      return;
     }
 
-    onSubmit({ email, username, password })
-  }
+    onSubmit({ email, username, password });
+  };
 
   return (
     <Card className="w-full max-w-md">
@@ -364,7 +388,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
               placeholder="your-profile-url"
             />
             <p className="text-sm text-muted-foreground">
-              Your profile URL: devstack.bio/{username || 'username'}
+              Your profile URL: devstack.bio/{username || "username"}
             </p>
           </div>
           <div className="space-y-2">
@@ -392,7 +416,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
         </form>
       </CardContent>
     </Card>
-  )
+  );
 }
 ```
 
@@ -401,53 +425,53 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
 Update `src/components/link-editor.tsx`:
 
 ```tsx
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
+} from "@/components/ui/dialog";
 
 type Link = {
-  id: string
-  title: string
-  url: string
-  order: number
-}
+  id: string;
+  title: string;
+  url: string;
+  order: number;
+};
 
 export function LinkEditor() {
   const [links, setLinks] = useState<Link[]>([
-    { id: '1', title: 'GitHub', url: 'https://github.com/alice', order: 0 },
-    { id: '2', title: 'Portfolio', url: 'https://alice.dev', order: 1 },
-  ])
-  const [newTitle, setNewTitle] = useState('')
-  const [newUrl, setNewUrl] = useState('')
-  const [dialogOpen, setDialogOpen] = useState(false)
+    { id: "1", title: "GitHub", url: "https://github.com/alice", order: 0 },
+    { id: "2", title: "Portfolio", url: "https://alice.dev", order: 1 },
+  ]);
+  const [newTitle, setNewTitle] = useState("");
+  const [newUrl, setNewUrl] = useState("");
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleAddLink = () => {
-    if (!newTitle.trim() || !newUrl.trim()) return
+    if (!newTitle.trim() || !newUrl.trim()) return;
 
     const newLink: Link = {
       id: crypto.randomUUID(),
       title: newTitle.trim(),
       url: newUrl.trim(),
       order: links.length,
-    }
+    };
 
-    setLinks([...links, newLink])
-    setNewTitle('')
-    setNewUrl('')
-    setDialogOpen(false)
-  }
+    setLinks([...links, newLink]);
+    setNewTitle("");
+    setNewUrl("");
+    setDialogOpen(false);
+  };
 
   const handleRemoveLink = (id: string) => {
-    setLinks(links.filter((link) => link.id !== id))
-  }
+    setLinks(links.filter((link) => link.id !== id));
+  };
 
   return (
     <div>
@@ -525,7 +549,7 @@ export function LinkEditor() {
         </ul>
       )}
     </div>
-  )
+  );
 }
 ```
 
@@ -534,22 +558,27 @@ export function LinkEditor() {
 Update `src/components/profile-header.tsx`:
 
 ```tsx
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 type ProfileHeaderProps = {
-  username: string
-  displayName: string
-  bio?: string
-  avatarUrl?: string
-}
+  username: string;
+  displayName: string;
+  bio?: string;
+  avatarUrl?: string;
+};
 
-export function ProfileHeader({ username, displayName, bio, avatarUrl }: ProfileHeaderProps) {
+export function ProfileHeader({
+  username,
+  displayName,
+  bio,
+  avatarUrl,
+}: ProfileHeaderProps) {
   const initials = displayName
-    .split(' ')
+    .split(" ")
     .map((word) => word[0])
-    .join('')
+    .join("")
     .toUpperCase()
-    .slice(0, 2)
+    .slice(0, 2);
 
   return (
     <header className="text-center">
@@ -561,16 +590,18 @@ export function ProfileHeader({ username, displayName, bio, avatarUrl }: Profile
       <p className="text-muted-foreground">@{username}</p>
       {bio && <p className="mt-2 text-gray-600">{bio}</p>}
     </header>
-  )
+  );
 }
 ```
 
 ### Step 6: Verify
 
-1. Visit `/register` — the form should use shadcn/ui Card, Input, Label, and Button
+1. Visit `/register` — the form should use shadcn/ui Card, Input, Label, and
+   Button
 2. Visit `/dashboard` — the link editor should use Card, Dialog, Button
 3. Click "Add Link" — a dialog should open
-4. Visit `/alice` — the avatar should use shadcn/ui Avatar with initials fallback
+4. Visit `/alice` — the avatar should use shadcn/ui Avatar with initials
+   fallback
 
 ### Step 7: Commit
 
@@ -581,25 +612,25 @@ git commit -m "Install shadcn/ui, replace custom inputs with accessible componen
 
 ## Commands You'll Use
 
-| Command | Purpose |
-|---------|---------|
-| `npx shadcn@latest init` | Initialize shadcn/ui configuration |
-| `npx shadcn@latest add button` | Add a single component |
-| `npx shadcn@latest add button input card` | Add multiple components at once |
+| Command                                   | Purpose                            |
+| ----------------------------------------- | ---------------------------------- |
+| `npx shadcn@latest init`                  | Initialize shadcn/ui configuration |
+| `npx shadcn@latest add button`            | Add a single component             |
+| `npx shadcn@latest add button input card` | Add multiple components at once    |
 
 ## Common Patterns
 
-| Pattern | Code |
-|---------|------|
-| Primary button | `<Button>Save</Button>` |
-| Outline button | `<Button variant="outline">Cancel</Button>` |
-| Destructive button | `<Button variant="destructive">Delete</Button>` |
-| Small button | `<Button size="sm">Edit</Button>` |
-| Full-width button | `<Button className="w-full">Submit</Button>` |
-| Card with sections | `<Card><CardHeader /><CardContent /></Card>` |
-| Input with label | `<Label htmlFor="x"/><Input id="x" />` |
-| Dialog (modal) | `<Dialog><DialogTrigger /><DialogContent /></Dialog>` |
-| Avatar with fallback | `<Avatar><AvatarImage /><AvatarFallback /></Avatar>` |
+| Pattern              | Code                                                  |
+| -------------------- | ----------------------------------------------------- |
+| Primary button       | `<Button>Save</Button>`                               |
+| Outline button       | `<Button variant="outline">Cancel</Button>`           |
+| Destructive button   | `<Button variant="destructive">Delete</Button>`       |
+| Small button         | `<Button size="sm">Edit</Button>`                     |
+| Full-width button    | `<Button className="w-full">Submit</Button>`          |
+| Card with sections   | `<Card><CardHeader /><CardContent /></Card>`          |
+| Input with label     | `<Label htmlFor="x"/><Input id="x" />`                |
+| Dialog (modal)       | `<Dialog><DialogTrigger /><DialogContent /></Dialog>` |
+| Avatar with fallback | `<Avatar><AvatarImage /><AvatarFallback /></Avatar>`  |
 
 ## Deep Dive
 
@@ -610,4 +641,5 @@ git commit -m "Install shadcn/ui, replace custom inputs with accessible componen
 
 ---
 
-**Next:** [Module 09 — Database & Drizzle](../09-database-and-drizzle/) → Store your data in SQLite with type-safe queries.
+**Next:** [Module 09 — Database & Drizzle](../09-database-and-drizzle/) → Store
+your data in SQLite with type-safe queries.

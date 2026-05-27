@@ -2,13 +2,16 @@
 
 ## What you'll learn
 
-Use Tailwind CSS utility classes to style your DevStack Bio pages — no separate CSS files needed.
+Use Tailwind CSS utility classes to style your DevStack Bio pages — no separate
+CSS files needed.
 
 ## Key Concepts
 
 ### What is Tailwind CSS?
 
-Tailwind CSS is a **utility-first** CSS framework. Instead of writing custom CSS classes, you compose styles directly in your HTML/JSX using small, single-purpose classes:
+Tailwind CSS is a **utility-first** CSS framework. Instead of writing custom CSS
+classes, you compose styles directly in your HTML/JSX using small,
+single-purpose classes:
 
 ```tsx
 // Instead of writing CSS:
@@ -22,13 +25,14 @@ Tailwind CSS is a **utility-first** CSS framework. Instead of writing custom CSS
 
 ### Why Tailwind?
 
-| Approach | Example | Trade-off |
-|----------|---------|-----------|
-| Custom CSS | Write `.card { ... }` in a `.css` file | More files, naming decisions, specificity issues |
-| Component library | Use `<Card>` from a library | Less control, version lock-in |
-| **Tailwind** | `className="p-4 rounded-lg bg-white"` | Verbose but explicit, no naming, co-located |
+| Approach          | Example                                | Trade-off                                        |
+| ----------------- | -------------------------------------- | ------------------------------------------------ |
+| Custom CSS        | Write `.card { ... }` in a `.css` file | More files, naming decisions, specificity issues |
+| Component library | Use `<Card>` from a library            | Less control, version lock-in                    |
+| **Tailwind**      | `className="p-4 rounded-lg bg-white"`  | Verbose but explicit, no naming, co-located      |
 
 Tailwind's approach means:
+
 - You never switch between files (styles are right there)
 - No unused CSS in production (Tailwind only generates classes you use)
 - Consistent design system (spacing, colors, typography follow a scale)
@@ -36,6 +40,7 @@ Tailwind's approach means:
 ### How Tailwind CSS v4 Works
 
 Tailwind CSS v4 uses a **Vite plugin** (not a PostCSS plugin like v3). Setup is:
+
 1. Install `tailwindcss` and `@tailwindcss/vite`
 2. Add the plugin to `vite.config.ts`
 3. Create a CSS file with `@import 'tailwindcss'`
@@ -47,36 +52,36 @@ No `tailwind.config.js` file is needed in v4.
 
 Tailwind classes follow a pattern: `{property}{value}`
 
-| Class | CSS equivalent | What it does |
-|-------|---------------|-------------|
-| `p-4` | `padding: 1rem` | Padding all sides |
-| `px-6` | `padding-left: 1.5rem; padding-right: 1.5rem` | Horizontal padding |
-| `mt-4` | `margin-top: 1rem` | Top margin |
-| `text-lg` | `font-size: 1.125rem` | Text size |
-| `font-bold` | `font-weight: 700` | Bold text |
-| `bg-white` | `background-color: white` | Background |
-| `rounded-lg` | `border-radius: 0.5rem` | Rounded corners |
-| `border` | `border-width: 1px` | Border |
-| `shadow-md` | `box-shadow: ...` | Drop shadow |
-| `flex` | `display: flex` | Flexbox |
-| `items-center` | `align-items: center` | Flex align |
-| `justify-between` | `justify-content: space-between` | Flex justify |
-| `gap-4` | `gap: 1rem` | Flex/grid gap |
-| `w-full` | `width: 100%` | Full width |
-| `max-w-md` | `max-width: 28rem` | Max width |
-| `mx-auto` | `margin-left: auto; margin-right: auto` | Center horizontally |
-| `min-h-screen` | `min-height: 100vh` | At least viewport height |
+| Class             | CSS equivalent                                | What it does             |
+| ----------------- | --------------------------------------------- | ------------------------ |
+| `p-4`             | `padding: 1rem`                               | Padding all sides        |
+| `px-6`            | `padding-left: 1.5rem; padding-right: 1.5rem` | Horizontal padding       |
+| `mt-4`            | `margin-top: 1rem`                            | Top margin               |
+| `text-lg`         | `font-size: 1.125rem`                         | Text size                |
+| `font-bold`       | `font-weight: 700`                            | Bold text                |
+| `bg-white`        | `background-color: white`                     | Background               |
+| `rounded-lg`      | `border-radius: 0.5rem`                       | Rounded corners          |
+| `border`          | `border-width: 1px`                           | Border                   |
+| `shadow-md`       | `box-shadow: ...`                             | Drop shadow              |
+| `flex`            | `display: flex`                               | Flexbox                  |
+| `items-center`    | `align-items: center`                         | Flex align               |
+| `justify-between` | `justify-content: space-between`              | Flex justify             |
+| `gap-4`           | `gap: 1rem`                                   | Flex/grid gap            |
+| `w-full`          | `width: 100%`                                 | Full width               |
+| `max-w-md`        | `max-width: 28rem`                            | Max width                |
+| `mx-auto`         | `margin-left: auto; margin-right: auto`       | Center horizontally      |
+| `min-h-screen`    | `min-height: 100vh`                           | At least viewport height |
 
 ### Responsive Design
 
 Prefix any class with a breakpoint to apply it at that screen size and above:
 
-| Prefix | Min width | Example |
-|--------|-----------|---------|
-| (none) | 0px | `text-sm` — always applies |
-| `sm:` | 640px | `sm:text-base` — applies on small screens and up |
-| `md:` | 768px | `md:text-lg` — applies on medium screens and up |
-| `lg:` | 1024px | `lg:text-xl` — applies on large screens and up |
+| Prefix | Min width | Example                                          |
+| ------ | --------- | ------------------------------------------------ |
+| (none) | 0px       | `text-sm` — always applies                       |
+| `sm:`  | 640px     | `sm:text-base` — applies on small screens and up |
+| `md:`  | 768px     | `md:text-lg` — applies on medium screens and up  |
+| `lg:`  | 1024px    | `lg:text-xl` — applies on large screens and up   |
 
 ```tsx
 <div className="p-4 md:p-8 lg:p-12">
@@ -88,17 +93,18 @@ Prefix any class with a breakpoint to apply it at that screen size and above:
 
 Prefix classes with state modifiers:
 
-| Variant | Example | When it applies |
-|---------|---------|----------------|
-| `hover:` | `hover:bg-blue-700` | Mouse is over the element |
-| `focus:` | `focus:ring-2` | Element has keyboard focus |
-| `active:` | `active:scale-95` | Element is being pressed |
-| `disabled:` | `disabled:opacity-50` | Element is disabled |
-| `dark:` | `dark:bg-gray-900` | User prefers dark mode |
+| Variant     | Example               | When it applies            |
+| ----------- | --------------------- | -------------------------- |
+| `hover:`    | `hover:bg-blue-700`   | Mouse is over the element  |
+| `focus:`    | `focus:ring-2`        | Element has keyboard focus |
+| `active:`   | `active:scale-95`     | Element is being pressed   |
+| `disabled:` | `disabled:opacity-50` | Element is disabled        |
+| `dark:`     | `dark:bg-gray-900`    | User prefers dark mode     |
 
 ### Color System
 
-Tailwind provides a consistent color palette. Each color has shades from 50 (lightest) to 950 (darkest):
+Tailwind provides a consistent color palette. Each color has shades from 50
+(lightest) to 950 (darkest):
 
 ```
 blue-50   blue-100   blue-200   ...   blue-900   blue-950
@@ -106,6 +112,7 @@ blue-50   blue-100   blue-200   ...   blue-900   blue-950
 ```
 
 Common colors you'll use:
+
 - `gray-{n}` — neutral, backgrounds, borders, text
 - `blue-{n}` — primary actions, links
 - `red-{n}` — errors, destructive actions
@@ -124,10 +131,10 @@ npm install tailwindcss @tailwindcss/vite
 Update `vite.config.ts`:
 
 ```ts
-import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-import tailwindcss from '@tailwindcss/vite'
-import viteReact from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import tailwindcss from "@tailwindcss/vite";
+import viteReact from "@vitejs/plugin-react";
 
 export default defineConfig({
   server: {
@@ -136,12 +143,8 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
-  plugins: [
-    tailwindcss(),
-    tanstackStart(),
-    viteReact(),
-  ],
-})
+  plugins: [tailwindcss(), tanstackStart(), viteReact()],
+});
 ```
 
 ### Step 3: Create the CSS file
@@ -149,7 +152,7 @@ export default defineConfig({
 Create `src/styles.css`:
 
 ```css
-@import 'tailwindcss';
+@import "tailwindcss";
 ```
 
 ### Step 4: Import the CSS in the root route
@@ -158,20 +161,20 @@ Update `src/routes/__root.tsx` — add the CSS import and link:
 
 ```tsx
 // Add this import at the top (with other imports):
-import appCss from '../styles.css?url'
+import appCss from "../styles.css?url";
 
 // In the Route definition, add the links array to head:
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'DevStack Bio' },
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "DevStack Bio" },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [{ rel: "stylesheet", href: appCss }],
   }),
   component: RootComponent,
-})
+});
 ```
 
 ### Step 5: Verify Tailwind is working
@@ -179,11 +182,11 @@ export const Route = createRootRoute({
 Update `src/routes/index.tsx` with Tailwind classes:
 
 ```tsx
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: HomePage,
-})
+});
 
 function HomePage() {
   return (
@@ -203,32 +206,33 @@ function HomePage() {
         </Link>
         <Link
           to="/$username"
-          params={{ username: 'alice' }}
+          params={{ username: "alice" }}
           className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 hover:bg-gray-50 transition-colors"
         >
           See Example
         </Link>
       </div>
     </div>
-  )
+  );
 }
 ```
 
-Visit `http://localhost:3000`. If you see styled text (large bold title, blue button, centered layout), Tailwind is working.
+Visit `http://localhost:3000`. If you see styled text (large bold title, blue
+button, centered layout), Tailwind is working.
 
 ### Step 6: Style the profile page
 
 Update `src/routes/$username.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/$username')({
+export const Route = createFileRoute("/$username")({
   component: PublicProfilePage,
-})
+});
 
 function PublicProfilePage() {
-  const { username } = Route.useParams()
+  const { username } = Route.useParams();
 
   return (
     <article className="max-w-md mx-auto text-center py-12">
@@ -246,7 +250,7 @@ function PublicProfilePage() {
       <section className="mt-8">
         <h2 className="sr-only">Links</h2>
         <ul className="space-y-3">
-          {['GitHub', 'Portfolio', 'Blog'].map((linkName) => (
+          {["GitHub", "Portfolio", "Blog"].map((linkName) => (
             <li key={linkName}>
               <a
                 href="#"
@@ -262,30 +266,29 @@ function PublicProfilePage() {
         Powered by DevStack Bio
       </footer>
     </article>
-  )
+  );
 }
 ```
 
-> Note: `<h2 className="sr-only">` is visually hidden but accessible to screen readers. Good for structure without visual noise.
+> Note: `<h2 className="sr-only">` is visually hidden but accessible to screen
+> readers. Good for structure without visual noise.
 
 ### Step 7: Style the dashboard
 
 Update `src/routes/_authed/dashboard.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/_authed/dashboard')({
+export const Route = createFileRoute("/_authed/dashboard")({
   component: DashboardPage,
-})
+});
 
 function DashboardPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-      <p className="mt-1 text-gray-600">
-        Manage your profile and links.
-      </p>
+      <p className="mt-1 text-gray-600">Manage your profile and links.</p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <div className="rounded-lg border border-gray-200 p-6">
           <h2 className="font-semibold text-gray-900">Profile</h2>
@@ -307,7 +310,7 @@ function DashboardPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 ```
 
@@ -320,21 +323,21 @@ git commit -m "Install and configure Tailwind CSS v4, style all pages"
 
 ## Commands You'll Use
 
-| Command | Purpose |
-|---------|---------|
+| Command                                     | Purpose                                 |
+| ------------------------------------------- | --------------------------------------- |
 | `npm install tailwindcss @tailwindcss/vite` | Install Tailwind CSS v4 and Vite plugin |
 
 ## Common Patterns
 
-| Pattern | Classes | When to use |
-|---------|---------|-------------|
-| Center content | `max-w-md mx-auto` | Cards, forms, profiles |
-| Card | `rounded-lg border p-6` | Content blocks |
-| Button (primary) | `bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700` | Main actions |
-| Button (secondary) | `border px-4 py-2 rounded-lg hover:bg-gray-50` | Alternative actions |
-| Flex row with gap | `flex items-center gap-4` | Nav bars, form rows |
-| Responsive grid | `grid gap-4 sm:grid-cols-2 lg:grid-cols-3` | Card layouts |
-| Visually hidden | `sr-only` | Accessible headers you don't want visible |
+| Pattern            | Classes                                                         | When to use                               |
+| ------------------ | --------------------------------------------------------------- | ----------------------------------------- |
+| Center content     | `max-w-md mx-auto`                                              | Cards, forms, profiles                    |
+| Card               | `rounded-lg border p-6`                                         | Content blocks                            |
+| Button (primary)   | `bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700` | Main actions                              |
+| Button (secondary) | `border px-4 py-2 rounded-lg hover:bg-gray-50`                  | Alternative actions                       |
+| Flex row with gap  | `flex items-center gap-4`                                       | Nav bars, form rows                       |
+| Responsive grid    | `grid gap-4 sm:grid-cols-2 lg:grid-cols-3`                      | Card layouts                              |
+| Visually hidden    | `sr-only`                                                       | Accessible headers you don't want visible |
 
 ## Deep Dive
 
@@ -346,4 +349,5 @@ git commit -m "Install and configure Tailwind CSS v4, style all pages"
 
 ---
 
-**Next:** [Module 06 — Components & Props](../06-components-and-props/) → Break your UI into reusable pieces.
+**Next:** [Module 06 — Components & Props](../06-components-and-props/) → Break
+your UI into reusable pieces.

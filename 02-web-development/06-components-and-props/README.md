@@ -2,7 +2,8 @@
 
 ## What you'll learn
 
-Break your UI into reusable React components and pass data between them using props.
+Break your UI into reusable React components and pass data between them using
+props.
 
 ## Key Concepts
 
@@ -16,26 +17,28 @@ function LinkCard({ title, url }: { title: string; url: string }) {
     <a href={url} className="block rounded-lg border p-4 hover:bg-blue-50">
       {title}
     </a>
-  )
+  );
 }
 ```
 
 You use it like an HTML tag:
+
 ```tsx
 <LinkCard title="GitHub" url="https://github.com/alice" />
 ```
 
 ### Props: Passing Data to Components
 
-**Props** (properties) are arguments you pass to a component. They work like function parameters:
+**Props** (properties) are arguments you pass to a component. They work like
+function parameters:
 
 ```tsx
 // Define what props the component accepts
 type ProfileHeaderProps = {
-  username: string
-  displayName: string
-  bio: string
-}
+  username: string;
+  displayName: string;
+  bio: string;
+};
 
 // Use the props inside the component
 function ProfileHeader({ username, displayName, bio }: ProfileHeaderProps) {
@@ -45,7 +48,7 @@ function ProfileHeader({ username, displayName, bio }: ProfileHeaderProps) {
       <p>@{username}</p>
       <p>{bio}</p>
     </header>
-  )
+  );
 }
 
 // Pass props when using the component
@@ -53,38 +56,38 @@ function ProfileHeader({ username, displayName, bio }: ProfileHeaderProps) {
   username="alice"
   displayName="Alice Chen"
   bio="Full-stack developer"
-/>
+/>;
 ```
 
 ### The `children` Prop
 
-Every component can accept `children` — content placed between the opening and closing tags:
+Every component can accept `children` — content placed between the opening and
+closing tags:
 
 ```tsx
 function Card({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-lg border p-4 bg-white shadow-sm">
-      {children}
-    </div>
-  )
+    <div className="rounded-lg border p-4 bg-white shadow-sm">{children}</div>
+  );
 }
 
 // Usage:
 <Card>
   <h2>Any content here</h2>
   <p>This gets passed as children</p>
-</Card>
+</Card>;
 ```
 
-This is the **composition** pattern — building complex UIs from simple, composable pieces.
+This is the **composition** pattern — building complex UIs from simple,
+composable pieces.
 
 ### Component Naming Conventions
 
-| Convention | Example | Rule |
-|------------|---------|------|
-| Component names | `LinkCard`, `ProfileHeader` | PascalCase, always |
-| Prop names | `displayName`, `onClick` | camelCase |
-| File names | `link-card.tsx`, `profile-header.tsx` | kebab-case |
+| Convention      | Example                               | Rule               |
+| --------------- | ------------------------------------- | ------------------ |
+| Component names | `LinkCard`, `ProfileHeader`           | PascalCase, always |
+| Prop names      | `displayName`, `onClick`              | camelCase          |
+| File names      | `link-card.tsx`, `profile-header.tsx` | kebab-case         |
 
 ### Where to Put Components
 
@@ -101,6 +104,7 @@ src/
 ```
 
 Rule of thumb:
+
 - If a component is used in **one route only**, define it in the same file
 - If a component is used in **multiple routes**, move it to `src/components/`
 
@@ -110,11 +114,11 @@ Build complex UIs by nesting components:
 
 ```tsx
 function PublicProfilePage() {
-  const profile = { username: "alice", displayName: "Alice Chen", bio: "Dev" }
+  const profile = { username: "alice", displayName: "Alice Chen", bio: "Dev" };
   const links = [
     { id: "1", title: "GitHub", url: "https://github.com/alice" },
     { id: "2", title: "Blog", url: "https://alice.dev" },
-  ]
+  ];
 
   return (
     <article>
@@ -125,10 +129,14 @@ function PublicProfilePage() {
       />
       <LinkList links={links} />
     </article>
-  )
+  );
 }
 
-function LinkList({ links }: { links: Array<{ id: string; title: string; url: string }> }) {
+function LinkList({
+  links,
+}: {
+  links: Array<{ id: string; title: string; url: string }>;
+}) {
   return (
     <ul className="space-y-3 mt-6">
       {links.map((link) => (
@@ -137,11 +145,12 @@ function LinkList({ links }: { links: Array<{ id: string; title: string; url: st
         </li>
       ))}
     </ul>
-  )
+  );
 }
 ```
 
-Notice the `key` prop on `<li>` — React requires a unique `key` for every element in a list. Use the item's ID, never the array index.
+Notice the `key` prop on `<li>` — React requires a unique `key` for every
+element in a list. Use the item's ID, never the array index.
 
 ### Rendering Lists
 
@@ -151,12 +160,14 @@ The `.map()` pattern is how you render lists in React:
 const links = [
   { id: "1", title: "GitHub", url: "https://github.com/alice" },
   { id: "2", title: "Blog", url: "https://alice.dev" },
-]
+];
 
 // In JSX:
-{links.map((link) => (
-  <LinkCard key={link.id} title={link.title} url={link.url} />
-))}
+{
+  links.map((link) => (
+    <LinkCard key={link.id} title={link.title} url={link.url} />
+  ));
+}
 ```
 
 ### Conditional Rendering
@@ -165,17 +176,21 @@ Show different UI based on conditions:
 
 ```tsx
 // Pattern 1: && (show/hide)
-{isLoggedIn && <DashboardLink />}
+{
+  isLoggedIn && <DashboardLink />;
+}
 
 // Pattern 2: ternary (either/or)
-{isLoading ? <Spinner /> : <Content data={data} />}
+{
+  isLoading ? <Spinner /> : <Content data={data} />;
+}
 
 // Pattern 3: early return
 function ProfilePage({ profile }: Props) {
   if (!profile) {
-    return <p>Profile not found.</p>
+    return <p>Profile not found.</p>;
   }
-  return <ProfileHeader {...profile} />
+  return <ProfileHeader {...profile} />;
 }
 ```
 
@@ -191,10 +206,10 @@ mkdir -p src/components
 
 ```tsx
 type LinkCardProps = {
-  title: string
-  url: string
-  iconName?: string
-}
+  title: string;
+  url: string;
+  iconName?: string;
+};
 
 export function LinkCard({ title, url, iconName }: LinkCardProps) {
   return (
@@ -207,7 +222,7 @@ export function LinkCard({ title, url, iconName }: LinkCardProps) {
       {iconName && <span className="text-xl">{iconName}</span>}
       <span>{title}</span>
     </a>
-  )
+  );
 }
 ```
 
@@ -215,17 +230,25 @@ export function LinkCard({ title, url, iconName }: LinkCardProps) {
 
 ```tsx
 type ProfileHeaderProps = {
-  username: string
-  displayName: string
-  bio?: string
-  avatarUrl?: string
-}
+  username: string;
+  displayName: string;
+  bio?: string;
+  avatarUrl?: string;
+};
 
-export function ProfileHeader({ username, displayName, bio, avatarUrl }: ProfileHeaderProps) {
+export function ProfileHeader({
+  username,
+  displayName,
+  bio,
+  avatarUrl,
+}: ProfileHeaderProps) {
   return (
     <header className="text-center">
       <img
-        src={avatarUrl ?? `https://api.dicebear.com/9.x/initials/svg?seed=${username}`}
+        src={
+          avatarUrl ??
+          `https://api.dicebear.com/9.x/initials/svg?seed=${username}`
+        }
         alt={`${displayName}'s avatar`}
         className="w-24 h-24 rounded-full mx-auto bg-gray-100"
       />
@@ -233,29 +256,29 @@ export function ProfileHeader({ username, displayName, bio, avatarUrl }: Profile
       <p className="text-gray-500">@{username}</p>
       {bio && <p className="mt-2 text-gray-600">{bio}</p>}
     </header>
-  )
+  );
 }
 ```
 
 ### Step 4: Create `src/components/link-list.tsx`
 
 ```tsx
-import { LinkCard } from './link-card'
+import { LinkCard } from "./link-card";
 
 type Link = {
-  id: string
-  title: string
-  url: string
-  iconName?: string
-}
+  id: string;
+  title: string;
+  url: string;
+  iconName?: string;
+};
 
 type LinkListProps = {
-  links: Link[]
-}
+  links: Link[];
+};
 
 export function LinkList({ links }: LinkListProps) {
   if (links.length === 0) {
-    return <p className="text-center text-gray-400">No links yet.</p>
+    return <p className="text-center text-gray-400">No links yet.</p>;
   }
 
   return (
@@ -270,38 +293,38 @@ export function LinkList({ links }: LinkListProps) {
         </li>
       ))}
     </ul>
-  )
+  );
 }
 ```
 
 ### Step 5: Update `src/routes/$username.tsx` to use the components
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { ProfileHeader } from '../components/profile-header'
-import { LinkList } from '../components/link-list'
+import { createFileRoute } from "@tanstack/react-router";
+import { ProfileHeader } from "../components/profile-header";
+import { LinkList } from "../components/link-list";
 
-export const Route = createFileRoute('/$username')({
+export const Route = createFileRoute("/$username")({
   component: PublicProfilePage,
-})
+});
 
 // Placeholder data — will come from the database in Module 09
 const PLACEHOLDER_PROFILE = {
-  username: '',
-  displayName: 'Alice Chen',
-  bio: 'Full-stack developer. Building cool things with TypeScript.',
-  avatarUrl: '',
-}
+  username: "",
+  displayName: "Alice Chen",
+  bio: "Full-stack developer. Building cool things with TypeScript.",
+  avatarUrl: "",
+};
 
 const PLACEHOLDER_LINKS = [
-  { id: '1', title: 'GitHub', url: 'https://github.com/alice' },
-  { id: '2', title: 'Portfolio', url: 'https://alice.dev' },
-  { id: '3', title: 'Blog', url: 'https://blog.alice.dev' },
-]
+  { id: "1", title: "GitHub", url: "https://github.com/alice" },
+  { id: "2", title: "Portfolio", url: "https://alice.dev" },
+  { id: "3", title: "Blog", url: "https://blog.alice.dev" },
+];
 
 function PublicProfilePage() {
-  const { username } = Route.useParams()
-  const profile = { ...PLACEHOLDER_PROFILE, username }
+  const { username } = Route.useParams();
+  const profile = { ...PLACEHOLDER_PROFILE, username };
 
   return (
     <article className="max-w-md mx-auto py-12">
@@ -319,13 +342,15 @@ function PublicProfilePage() {
         Powered by DevStack Bio
       </footer>
     </article>
-  )
+  );
 }
 ```
 
 ### Step 6: Verify
 
-Visit `/alice` — you should see the same profile page but now built from three reusable components. The visual result is the same; the code structure is cleaner and more maintainable.
+Visit `/alice` — you should see the same profile page but now built from three
+reusable components. The visual result is the same; the code structure is
+cleaner and more maintainable.
 
 ### Step 7: Commit
 
@@ -340,16 +365,16 @@ No new commands. You're creating files and the dev server picks up changes.
 
 ## Common Patterns
 
-| Pattern | Code | When to use |
-|---------|------|-------------|
-| Component with props | `function Card({ title }: { title: string })` | Every component that needs data |
-| Children prop | `{ children }: { children: React.ReactNode }` | Wrapper/layout components |
-| Optional prop | `bio?: string` | Props that may not always be provided |
-| Default value | `{ count = 0 }: { count?: number }` | Provide a fallback |
-| Spread props | `<ProfileHeader {...profile} />` | Pass all object properties as props |
-| List rendering | `items.map(item => <Card key={item.id} />)` | Display arrays of data |
-| Conditional render | `{condition && <Component />}` | Show/hide based on state |
-| Component file | `src/components/my-component.tsx` | Shared across routes |
+| Pattern              | Code                                          | When to use                           |
+| -------------------- | --------------------------------------------- | ------------------------------------- |
+| Component with props | `function Card({ title }: { title: string })` | Every component that needs data       |
+| Children prop        | `{ children }: { children: React.ReactNode }` | Wrapper/layout components             |
+| Optional prop        | `bio?: string`                                | Props that may not always be provided |
+| Default value        | `{ count = 0 }: { count?: number }`           | Provide a fallback                    |
+| Spread props         | `<ProfileHeader {...profile} />`              | Pass all object properties as props   |
+| List rendering       | `items.map(item => <Card key={item.id} />)`   | Display arrays of data                |
+| Conditional render   | `{condition && <Component />}`                | Show/hide based on state              |
+| Component file       | `src/components/my-component.tsx`             | Shared across routes                  |
 
 ## Deep Dive
 
@@ -360,4 +385,5 @@ No new commands. You're creating files and the dev server picks up changes.
 
 ---
 
-**Next:** [Module 07 — State & Interactivity](../07-state-and-interactivity/) → Add interactivity with user input, forms, and state.
+**Next:** [Module 07 — State & Interactivity](../07-state-and-interactivity/) →
+Add interactivity with user input, forms, and state.

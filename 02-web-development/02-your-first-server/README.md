@@ -2,7 +2,8 @@
 
 ## What you'll learn
 
-Create a new TanStack Start project, start the dev server, and see a page render in your browser.
+Create a new TanStack Start project, start the dev server, and see a page render
+in your browser.
 
 ## Prerequisites
 
@@ -15,9 +16,13 @@ Create a new TanStack Start project, start the dev server, and see a page render
 
 ### What is a Meta-Framework?
 
-You wrote TypeScript in the TS Track using `tsx` — that's a runtime tool. A **meta-framework** layers on top of a runtime to give you everything a real web app needs: routing, server-side rendering, API endpoints, and build optimization.
+You wrote TypeScript in the TS Track using `tsx` — that's a runtime tool. A
+**meta-framework** layers on top of a runtime to give you everything a real web
+app needs: routing, server-side rendering, API endpoints, and build
+optimization.
 
 TanStack Start is a meta-framework built on:
+
 - **React** — the UI library (components, state, events)
 - **Vite** — the build tool (fast dev server, bundling)
 - **TanStack Router** — file-based routing with full type safety
@@ -25,10 +30,12 @@ TanStack Start is a meta-framework built on:
 ### The Dev Server
 
 When you run `npm run dev`, Vite starts a **dev server** on your machine. It:
+
 1. Watches your files for changes
 2. Rebuilds instantly when you save
 3. Serves your app at `http://localhost:3000`
-4. Provides hot module replacement (HMR) — changes appear without a full page reload
+4. Provides hot module replacement (HMR) — changes appear without a full page
+   reload
 
 ### Project Structure
 
@@ -50,18 +57,19 @@ my-app/
 │   └── server.ts         ← Server entry point (optional)
 ```
 
-You'll add files to `src/routes/` throughout the Web Dev Track. The `routeTree.gen.ts` file is auto-generated — never edit it by hand.
+You'll add files to `src/routes/` throughout the Web Dev Track. The
+`routeTree.gen.ts` file is auto-generated — never edit it by hand.
 
 ### Route Files
 
 Every file in `src/routes/` becomes a URL path:
 
-| File path | URL | Purpose |
-|-----------|-----|---------|
-| `__root.tsx` | — | Layout wrapper (always rendered) |
-| `index.tsx` | `/` | Home page |
-| `about.tsx` | `/about` | About page |
-| `users/$username.tsx` | `/users/alice` | Dynamic route |
+| File path             | URL            | Purpose                          |
+| --------------------- | -------------- | -------------------------------- |
+| `__root.tsx`          | —              | Layout wrapper (always rendered) |
+| `index.tsx`           | `/`            | Home page                        |
+| `about.tsx`           | `/about`       | About page                       |
+| `users/$username.tsx` | `/users/alice` | Dynamic route                    |
 
 ## Now Build It: Create DevStack Bio
 
@@ -74,6 +82,7 @@ npx @tanstack/cli@latest create
 ```
 
 Follow the interactive prompts:
+
 - **Framework:** `React`
 - **Project name:** `devstack-bio`
 - **Toolchain:** `None`
@@ -82,7 +91,8 @@ Follow the interactive prompts:
 - **Add-ons:** Do **not** select any add-ons
 - **Git:** `Yes`
 
-> ⚠️ Do **not** add the `shadcn` add-on when prompted. We'll set up shadcn/ui manually in Module 08 so you understand each step.
+> ⚠️ Do **not** add the `shadcn` add-on when prompted. We'll set up shadcn/ui
+> manually in Module 08 so you understand each step.
 
 ### Step 2: Install dependencies
 
@@ -91,7 +101,8 @@ cd devstack-bio
 npm install
 ```
 
-> If you used a different project name in Step 1, `cd` into that directory instead.
+> If you used a different project name in Step 1, `cd` into that directory
+> instead.
 
 ### Step 3: Open the project in your editor
 
@@ -106,7 +117,8 @@ Read through these files to understand the scaffold:
 1. **`package.json`** — notice the `dev`, `build`, and `start` scripts
 2. **`vite.config.ts`** — plugins for TanStack Start and React
 3. **`src/router.tsx`** — the `getRouter()` function that creates the router
-4. **`src/routes/__root.tsx`** — the root layout with `<HeadContent>`, `<Outlet>`, and `<Scripts>`
+4. **`src/routes/__root.tsx`** — the root layout with `<HeadContent>`,
+   `<Outlet>`, and `<Scripts>`
 5. **`src/routes/index.tsx`** — the home page component
 
 ### Step 5: Start the dev server
@@ -115,18 +127,19 @@ Read through these files to understand the scaffold:
 npm run dev
 ```
 
-Open `http://localhost:3000` in your browser. You should see the default TanStack Start page.
+Open `http://localhost:3000` in your browser. You should see the default
+TanStack Start page.
 
 ### Step 6: Make your first change
 
 Open `src/routes/index.tsx` and change the content. For example:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: HomePage,
-})
+});
 
 function HomePage() {
   return (
@@ -136,11 +149,12 @@ function HomePage() {
         Your developer profile hub — coming soon.
       </p>
     </div>
-  )
+  );
 }
 ```
 
-Save the file. The browser should update automatically (HMR). If you see your changes reflected without refreshing, everything is working.
+Save the file. The browser should update automatically (HMR). If you see your
+changes reflected without refreshing, everything is working.
 
 ### Step 7: Commit your initial project
 
@@ -154,28 +168,28 @@ git commit -m "Initial TanStack Start project scaffold"
 
 ## Commands You'll Use
 
-| Command | Purpose |
-|---------|---------|
-| `npm run dev` | Start the development server |
-| `npm run build` | Build for production |
-| `npm run start` | Serve the production build |
+| Command         | Purpose                      |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Start the development server |
+| `npm run build` | Build for production         |
+| `npm run start` | Serve the production build   |
 
 ## Common Patterns
 
-| Pattern | Description |
-|---------|-------------|
-| `createFileRoute('/path')` | Define a route component for a URL path |
+| Pattern                                              | Description                                         |
+| ---------------------------------------------------- | --------------------------------------------------- |
+| `createFileRoute('/path')`                           | Define a route component for a URL path             |
 | `export const Route = createFileRoute(...)({ ... })` | Standard route export — every route file needs this |
-| `component: MyComponent` | The React component to render for this route |
+| `component: MyComponent`                             | The React component to render for this route        |
 
 ## Troubleshooting
 
-| Problem | Fix |
-|---------|-----|
-| `node -v` shows wrong version | Use `nvm use 24` or install Node.js 24 |
-| Port 3000 already in use | TanStack Start will try the next available port — check your terminal output |
-| Changes not showing | Hard refresh (Ctrl+Shift+R / Cmd+Shift+R), or restart the dev server |
-| TypeScript errors in editor | Run `npm install` again, then restart VS Code |
+| Problem                       | Fix                                                                          |
+| ----------------------------- | ---------------------------------------------------------------------------- |
+| `node -v` shows wrong version | Use `nvm use 24` or install Node.js 24                                       |
+| Port 3000 already in use      | TanStack Start will try the next available port — check your terminal output |
+| Changes not showing           | Hard refresh (Ctrl+Shift+R / Cmd+Shift+R), or restart the dev server         |
+| TypeScript errors in editor   | Run `npm install` again, then restart VS Code                                |
 
 ## Deep Dive
 
@@ -185,4 +199,5 @@ git commit -m "Initial TanStack Start project scaffold"
 
 ---
 
-**Next:** [Module 03 — Routing](../03-routing/) → Add multiple pages and navigate between them.
+**Next:** [Module 03 — Routing](../03-routing/) → Add multiple pages and
+navigate between them.

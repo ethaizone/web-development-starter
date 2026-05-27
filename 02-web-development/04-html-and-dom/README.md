@@ -2,7 +2,8 @@
 
 ## What you'll learn
 
-Understand HTML elements, semantic markup, and how the browser turns your code into an interactive page via the DOM.
+Understand HTML elements, semantic markup, and how the browser turns your code
+into an interactive page via the DOM.
 
 ## Key Concepts
 
@@ -15,6 +16,7 @@ Every web page is built from HTML elements. An element has:
 ```
 
 For example:
+
 ```html
 <h1 class="title">Welcome to DevStack Bio</h1>
 <a href="/dashboard">Go to Dashboard</a>
@@ -27,39 +29,42 @@ Some elements are self-closing (no content): `<img />`, `<br />`, `<input />`.
 
 Use elements that describe their **meaning**, not their appearance:
 
-| Element | Purpose | Not this |
-|---------|---------|----------|
-| `<nav>` | Navigation links | `<div class="nav">` |
-| `<main>` | Primary content | `<div id="content">` |
-| `<article>` | Self-contained content | `<div class="post">` |
-| `<section>` | Thematic grouping | `<div class="section">` |
-| `<header>` | Introductory content | `<div class="header">` |
-| `<footer>` | Footer content | `<div class="footer">` |
-| `<button>` | Clickable action | `<div onclick="...">` |
-| `<form>` | Data submission | `<div class="form">` |
+| Element     | Purpose                | Not this                |
+| ----------- | ---------------------- | ----------------------- |
+| `<nav>`     | Navigation links       | `<div class="nav">`     |
+| `<main>`    | Primary content        | `<div id="content">`    |
+| `<article>` | Self-contained content | `<div class="post">`    |
+| `<section>` | Thematic grouping      | `<div class="section">` |
+| `<header>`  | Introductory content   | `<div class="header">`  |
+| `<footer>`  | Footer content         | `<div class="footer">`  |
+| `<button>`  | Clickable action       | `<div onclick="...">`   |
+| `<form>`    | Data submission        | `<div class="form">`    |
 
 Why it matters:
+
 - **Accessibility** — screen readers understand semantic elements
 - **SEO** — search engines use semantic structure
 - **Maintainability** — `<nav>` is clearer than `<div class="nav">`
 
 ### JSX: HTML in JavaScript
 
-In React (and TanStack Start), you write **JSX** — a syntax that looks like HTML but is actually JavaScript:
+In React (and TanStack Start), you write **JSX** — a syntax that looks like HTML
+but is actually JavaScript:
 
 ```tsx
 function ProfileCard() {
-  const username = "alice"
+  const username = "alice";
   return (
     <article>
       <h2>{username}'s Profile</h2>
       <p>Full-stack developer</p>
     </article>
-  )
+  );
 }
 ```
 
 Key differences from HTML:
+
 - Use `className` instead of `class` (because `class` is a JavaScript keyword)
 - Use `htmlFor` instead of `for` (same reason)
 - Self-closing tags are required: `<img />` not `<img>`
@@ -84,52 +89,58 @@ html
     └── script
 ```
 
-Each node in this tree is a **DOM element**. JavaScript (and React) interact with this tree to:
+Each node in this tree is a **DOM element**. JavaScript (and React) interact
+with this tree to:
+
 - Read content (`document.querySelector('h1').textContent`)
 - Change content (React does this efficiently via the **virtual DOM**)
 - Listen for events (clicks, form submissions, key presses)
 
 ### React and the Virtual DOM
 
-React maintains a **virtual DOM** — a JavaScript representation of the actual DOM. When your component state changes:
+React maintains a **virtual DOM** — a JavaScript representation of the actual
+DOM. When your component state changes:
+
 1. React creates a new virtual DOM tree
 2. Compares it with the previous virtual DOM (diffing)
 3. Updates only the changed parts of the real DOM (reconciliation)
 
-This is why you rarely touch the DOM directly in React. You describe **what** the UI should look like, and React handles **how** to update it.
+This is why you rarely touch the DOM directly in React. You describe **what**
+the UI should look like, and React handles **how** to update it.
 
 ```tsx
 // ❌ Don't do this in React — direct DOM manipulation
-document.getElementById('counter').textContent = count + 1
+document.getElementById("counter").textContent = count + 1;
 
 // ✅ Do this in React — declarative
 function Counter() {
-  const [count, setCount] = useState(0)
-  return <button onClick={() => setCount(count + 1)}>Count: {count}</button>
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>Count: {count}</button>;
 }
 ```
 
 ### Common HTML Elements You'll Use
 
-| Element | Purpose | DevStack Bio usage |
-|---------|---------|--------------------|
-| `<div>` | Generic container | Layout wrapper |
-| `<h1>`–`<h6>` | Headings | Page titles, section headers |
-| `<p>` | Paragraph text | Bio text, descriptions |
-| `<a>` | Links (use `<Link>` for internal) | External profile links |
-| `<img>` | Images | Profile avatars |
-| `<form>` | Form container | Login, registration, profile edit |
-| `<input>` | Text input | Email, password, username fields |
-| `<textarea>` | Multi-line input | Bio field |
-| `<button>` | Clickable button | Save, Delete, Add Link |
-| `<ul>` / `<li>` | Lists | Link list on profile page |
-| `<table>` | Tabular data | Analytics view counts |
+| Element         | Purpose                           | DevStack Bio usage                |
+| --------------- | --------------------------------- | --------------------------------- |
+| `<div>`         | Generic container                 | Layout wrapper                    |
+| `<h1>`–`<h6>`   | Headings                          | Page titles, section headers      |
+| `<p>`           | Paragraph text                    | Bio text, descriptions            |
+| `<a>`           | Links (use `<Link>` for internal) | External profile links            |
+| `<img>`         | Images                            | Profile avatars                   |
+| `<form>`        | Form container                    | Login, registration, profile edit |
+| `<input>`       | Text input                        | Email, password, username fields  |
+| `<textarea>`    | Multi-line input                  | Bio field                         |
+| `<button>`      | Clickable button                  | Save, Delete, Add Link            |
+| `<ul>` / `<li>` | Lists                             | Link list on profile page         |
+| `<table>`       | Tabular data                      | Analytics view counts             |
 
 ## Now Build It: Add Semantic Structure to DevStack Bio
 
 ### Step 1: Update the root layout with semantic HTML
 
-In `src/routes/__root.tsx`, make sure the `RootComponent` uses semantic elements:
+In `src/routes/__root.tsx`, make sure the `RootComponent` uses semantic
+elements:
 
 ```tsx
 function RootComponent() {
@@ -143,7 +154,7 @@ function RootComponent() {
                 DevStack Bio
               </Link>
               <div className="flex gap-4">
-                <Link to="/" activeProps={{ className: 'font-bold' }}>
+                <Link to="/" activeProps={{ className: "font-bold" }}>
                   Home
                 </Link>
               </div>
@@ -158,7 +169,7 @@ function RootComponent() {
         </footer>
       </div>
     </RootDocument>
-  )
+  );
 }
 ```
 
@@ -167,14 +178,14 @@ function RootComponent() {
 In `src/routes/$username.tsx`:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/$username')({
+export const Route = createFileRoute("/$username")({
   component: PublicProfilePage,
-})
+});
 
 function PublicProfilePage() {
-  const { username } = Route.useParams()
+  const { username } = Route.useParams();
 
   return (
     <article className="max-w-md mx-auto text-center">
@@ -209,14 +220,16 @@ function PublicProfilePage() {
         </ul>
       </section>
     </article>
-  )
+  );
 }
 ```
 
 ### Step 3: Verify
 
-1. Visit `/alice` — you should see a profile page with avatar, name, and placeholder links
-2. Open browser DevTools → Elements tab — notice the `<article>`, `<header>`, `<section>`, `<nav>` elements
+1. Visit `/alice` — you should see a profile page with avatar, name, and
+   placeholder links
+2. Open browser DevTools → Elements tab — notice the `<article>`, `<header>`,
+   `<section>`, `<nav>` elements
 3. Check the structure matches the semantic HTML patterns above
 
 ### Step 4: Commit
@@ -228,18 +241,19 @@ git commit -m "Add semantic HTML structure to profile page and root layout"
 
 ## Commands You'll Use
 
-No new commands in this module. You're editing files and the dev server picks up changes automatically.
+No new commands in this module. You're editing files and the dev server picks up
+changes automatically.
 
 ## Common Patterns
 
-| Pattern | JSX |
-|---------|-----|
-| Embed a variable | `<h1>{username}</h1>` |
-| Conditional render | `{isLoggedIn && <Dashboard />}` |
-| List rendering | `{links.map(link => <li key={link.id}>{link.title}</li>)}` |
-| Attribute with variable | `<img src={avatarUrl} alt={displayName} />` |
-| Self-closing tag | `<input type="text" />` |
-| Fragment (no wrapper) | `<>...</>` or `<Fragment>...</Fragment>` |
+| Pattern                 | JSX                                                        |
+| ----------------------- | ---------------------------------------------------------- |
+| Embed a variable        | `<h1>{username}</h1>`                                      |
+| Conditional render      | `{isLoggedIn && <Dashboard />}`                            |
+| List rendering          | `{links.map(link => <li key={link.id}>{link.title}</li>)}` |
+| Attribute with variable | `<img src={avatarUrl} alt={displayName} />`                |
+| Self-closing tag        | `<input type="text" />`                                    |
+| Fragment (no wrapper)   | `<>...</>` or `<Fragment>...</Fragment>`                   |
 
 ## Deep Dive
 
@@ -251,4 +265,5 @@ No new commands in this module. You're editing files and the dev server picks up
 
 ---
 
-**Next:** [Module 05 — Styling with Tailwind](../05-styling-with-tailwind/) → Make your pages look good with utility classes.
+**Next:** [Module 05 — Styling with Tailwind](../05-styling-with-tailwind/) →
+Make your pages look good with utility classes.
