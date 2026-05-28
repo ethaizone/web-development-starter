@@ -1,4 +1,4 @@
-# Module 12 — The Dashboard (CSR)
+# Module 13 — The Dashboard (CSR)
 
 ## What you'll learn
 
@@ -68,12 +68,21 @@ const router = useRouter()
 
 const handleAdd = async () => {
   await addLink({ data: { ... } })
-  router.invalidate() // Re-fetches the loader data
+  router.invalidate() // Re-runs all active loaders
 }
 ```
 
-Alternatively, use `useRouter().invalidate()` to selectively re-fetch only the
-current route's loader.
+## Common Patterns
+
+| Pattern                | Code                                                |
+| ---------------------- | --------------------------------------------------- |
+| Loading state          | `const [isLoading, setIsLoading] = useState(false)` |
+| Disable during loading | `disabled={isLoading}`                              |
+| Success/error message  | `const [message, setMessage] = useState('')`        |
+| Optimistic update      | `setItems(newList)` before `await mutation()`       |
+| Rollback on error      | `catch { setItems(previousList) }`                  |
+| Revalidate data        | `router.invalidate()`                               |
+| Zod validation         | `schema.safeParse(data)` → check `result.success`   |
 
 ## What We Built: The Full Dashboard
 
@@ -383,18 +392,6 @@ appeared during saves.
 git add .
 git commit -m "Build interactive dashboard with profile editing and link management"
 ```
-
-## Common Patterns
-
-| Pattern                | Code                                                |
-| ---------------------- | --------------------------------------------------- |
-| Loading state          | `const [isLoading, setIsLoading] = useState(false)` |
-| Disable during loading | `disabled={isLoading}`                              |
-| Success/error message  | `const [message, setMessage] = useState('')`        |
-| Optimistic update      | `setItems(newList)` before `await mutation()`       |
-| Rollback on error      | `catch { setItems(previousList) }`                  |
-| Revalidate data        | `router.invalidate()`                               |
-| Zod validation         | `schema.safeParse(data)` → check `result.success`   |
 
 ## Deep Dive
 

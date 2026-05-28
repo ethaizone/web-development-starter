@@ -58,7 +58,7 @@ logMessage("App started");
 ```
 
 Named imports use `{ braces }`, default imports don't. We prefer named exports
-in this course — they're more explicit and support IDE autocomplete better.
+in this track — they're more explicit and support IDE autocomplete better.
 
 ### Re-exporting
 
@@ -140,19 +140,20 @@ You'll need to create multiple files for this exercise. Organize them in the
 
 1. Create `exercises/link-helpers.ts` with exported functions:
    - `formatLinkDisplay(title: string, url: string): string` — returns
-     `"title (url)"`
+     `"title → url"` (with arrow)
    - `isValidUrl(url: string): boolean` — returns true if url starts with
      `http://` or `https://`
 
 2. Create `exercises/link-types.ts` with exported types:
-   - `ProfileLink` — `{ title: string; url: string; isVisible: boolean }`
+   - `ProfileLink` — `{ title: string; url: string; category: "social" | "code" | "writing" | "other"; isVisible: boolean }`
 
 3. Create `exercises/modules.ts` as the main file that:
    - Imports the functions from `link-helpers.ts`
    - Imports the type from `link-types.ts`
-   - Creates an array of `ProfileLink` objects
+   - Creates an array of `ProfileLink` objects (at least 4, mix of categories)
    - Filters to only visible, valid links
-   - Prints each one using `formatLinkDisplay`
+   - Groups them by category using `Record<string, ProfileLink[]>`
+   - Prints each category and its links using `formatLinkDisplay`
 
 Run with: `npx tsx exercises/modules.ts`
 

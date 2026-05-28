@@ -1,4 +1,4 @@
-# Module 07 — State & Interactivity
+# Module 08 — State & Interactivity
 
 ## What you'll learn
 
@@ -194,6 +194,24 @@ const [firstName, setFirstName] = useState("Alice");
 const [lastName, setLastName] = useState("Chen");
 const fullName = `${firstName} ${lastName}`;
 ```
+
+## Commands You'll Use
+
+No new commands. You're using React hooks, not CLI tools.
+
+## Common Patterns
+
+| Pattern               | Code                                                          | When to use               |
+| --------------------- | ------------------------------------------------------------- | ------------------------- |
+| Text state            | `const [name, setName] = useState('')`                        | Input fields              |
+| Boolean state         | `const [isOpen, setIsOpen] = useState(false)`                 | Modals, toggles           |
+| Array state           | `setItems([...items, newItem])`                               | Lists (add item)          |
+| Remove from array     | `setItems(items.filter(i => i.id !== id))`                    | Lists (remove item)       |
+| Error state           | `const [error, setError] = useState('')`                      | Form validation           |
+| Form submit           | `onSubmit={(e) => { e.preventDefault(); ... }}`               | Every form                |
+| Controlled input      | `value={name} onChange={(e) => setName(e.target.value)}`      | Every input               |
+| Disable button        | `disabled={!title.trim()}`                                    | Prevent empty submissions |
+| Clear error on change | `onChange={(e) => { setName(e.target.value); setError('') }}` | Better UX                 |
 
 ## What We Built: Interactive Forms
 
@@ -511,24 +529,6 @@ database would fix this in Module 10).
 git add .
 git commit -m "Add interactive forms: registration form, link editor with state"
 ```
-
-## Commands You'll Use
-
-No new commands. You're using React hooks, not CLI tools.
-
-## Common Patterns
-
-| Pattern               | Code                                                          | When to use               |
-| --------------------- | ------------------------------------------------------------- | ------------------------- |
-| Text state            | `const [name, setName] = useState('')`                        | Input fields              |
-| Boolean state         | `const [isOpen, setIsOpen] = useState(false)`                 | Modals, toggles           |
-| Array state           | `setItems([...items, newItem])`                               | Lists (add item)          |
-| Remove from array     | `setItems(items.filter(i => i.id !== id))`                    | Lists (remove item)       |
-| Error state           | `const [error, setError] = useState('')`                      | Form validation           |
-| Form submit           | `onSubmit={(e) => { e.preventDefault(); ... }}`               | Every form                |
-| Controlled input      | `value={name} onChange={(e) => setName(e.target.value)}`      | Every input               |
-| Disable button        | `disabled={!title.trim()}`                                    | Prevent empty submissions |
-| Clear error on change | `onChange={(e) => { setName(e.target.value); setError('') }}` | Better UX                 |
 
 ## Deep Dive
 

@@ -61,10 +61,10 @@ console.log(`\nPlucked titles: ${titles.join(", ")}`)
 
 // Generic findByProperty test
 type Item = { id: string; name: string }
-const items: Item[] = [
+const sampleItems: Item[] = [
   { id: "a1", name: "First" },
   { id: "a2", name: "Second" },
 ]
 
-const foundItem = findByProperty(items, (item) => item.id === "a2")
+const foundItem = findByProperty(sampleItems, (item) => item.id === "a2")
 console.log(`Found: ${foundItem?.name}`)

@@ -2,7 +2,7 @@
 
 ## What you'll learn
 
-Build the project for production and deploy it to the internet.
+Build DevStack Bio for production and deploy it to the internet.
 
 ## Key Concepts
 
@@ -166,7 +166,7 @@ We visited the deployed URL and tested the full flow:
 3. View your public profile
 4. Log out and back in
 
-Your app is live on the internet! 🎉
+DevStack Bio is live on the internet! 🎉
 
 ## Commands You'll Use
 

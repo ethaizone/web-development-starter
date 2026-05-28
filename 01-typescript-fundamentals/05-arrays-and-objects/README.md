@@ -155,7 +155,7 @@ This is advanced — just know it exists. We'll revisit in Module 06.
 
 ## Now build it
 
-Create `arrays-objects.ts` and write:
+Create `practice-links.ts` and write:
 
 1. An array of 5 tech links, each with `title`, `url`, and `category` properties
 2. A function `filterByCategory(links, category)` that returns only links

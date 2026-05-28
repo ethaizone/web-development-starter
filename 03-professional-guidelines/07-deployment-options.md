@@ -112,4 +112,4 @@ First deployment? ──── Yes ──── Use Railway or Fly.io
 
 ---
 
-**Next:** [Further Learning](./08-further-learning.md) → Where to go from here.
+**Next:** [Pull Requests](./08-pull-requests.md) → Review code before merging.

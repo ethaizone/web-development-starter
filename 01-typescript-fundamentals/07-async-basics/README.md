@@ -89,8 +89,8 @@ Each `await` waits for the previous one to finish. They run one after another.
 
 ```ts
 async function fetchMultipleUsers(): Promise<void> {
-  const firstUser = await fetchGitHubUser("octocat");
-  const secondUser = await fetchGitHubUser("torvalds");
+  await fetchGitHubUser("octocat");
+  await fetchGitHubUser("torvalds");
   // second fetch only starts after first completes
 }
 ```

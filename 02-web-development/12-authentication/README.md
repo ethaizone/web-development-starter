@@ -1,4 +1,4 @@
-# Module 11 — Authentication
+# Module 12 — Authentication
 
 ## What you'll learn
 
@@ -101,6 +101,23 @@ function DashboardPage() {
 > aren't logged in. For **security**, always enforce auth in the server function
 > itself (auth middleware or in-handler checks). A server function is an RPC
 > endpoint that can be called directly.
+
+## Commands You'll Use
+
+No new commands — authentication is implemented in code.
+
+## Common Patterns
+
+| Pattern            | Code                                                  |
+| ------------------ | ----------------------------------------------------- |
+| Hash password      | `await bcrypt.hash(password, 12)`                     |
+| Verify password    | `await bcrypt.compare(password, hash)`                |
+| Create session     | `await session.update({ userId })`                    |
+| Read session       | `const userId = session.data.userId`                  |
+| Clear session      | `await session.clear()`                               |
+| Protect a route    | `beforeLoad: async () => { ... throw redirect(...) }` |
+| Read route context | `const { user } = Route.useRouteContext()`            |
+| Invalidate data    | `router.invalidate()`                                 |
 
 ## What We Built: Authentication
 
@@ -693,23 +710,6 @@ the correct data.
 git add .
 git commit -m "Add authentication: register, login, sessions, route protection"
 ```
-
-## Commands You'll Use
-
-No new commands — authentication is implemented in code.
-
-## Common Patterns
-
-| Pattern            | Code                                                  |
-| ------------------ | ----------------------------------------------------- |
-| Hash password      | `await bcrypt.hash(password, 12)`                     |
-| Verify password    | `await bcrypt.compare(password, hash)`                |
-| Create session     | `await session.update({ userId })`                    |
-| Read session       | `const userId = session.data.userId`                  |
-| Clear session      | `await session.clear()`                               |
-| Protect a route    | `beforeLoad: async () => { ... throw redirect(...) }` |
-| Read route context | `const { user } = Route.useRouteContext()`            |
-| Invalidate data    | `router.invalidate()`                                 |
 
 ## Deep Dive
 

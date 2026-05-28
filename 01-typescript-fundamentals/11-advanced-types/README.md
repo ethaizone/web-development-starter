@@ -192,7 +192,13 @@ TypeScript narrows the type based on `state.status`. In the `"success"` case,
 `state.data` is available. In the `"error"` case, `state.message` is available.
 No type assertions needed.
 
-### When to use each
+## Commands you'll use
+
+| Command           | Purpose               |
+| ----------------- | --------------------- |
+| `npx tsx file.ts` | Run a TypeScript file |
+
+## Common patterns
 
 | Feature              | When to use                                              |
 | -------------------- | -------------------------------------------------------- |
@@ -204,12 +210,6 @@ No type assertions needed.
 | `ReturnType<T>`      | Deriving types from function signatures                  |
 | Type guards          | Narrowing union types with `typeof`, `instanceof`        |
 | Discriminated unions | Modeling states (loading/success/error), events, actions |
-
-## Commands you'll use
-
-| Command           | Purpose               |
-| ----------------- | --------------------- |
-| `npx tsx file.ts` | Run a TypeScript file |
 
 ## Now build it
 

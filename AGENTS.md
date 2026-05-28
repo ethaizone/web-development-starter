@@ -55,7 +55,7 @@ on behalf of the owner. Present options when unsure and wait for direction.
 
 ```
 XX-name/
-├── README.md          ← Cheatsheet-style lesson (always present)
+├── README.md          ← Cheatsheet-style module (always present)
 ├── examples/          ← Runnable .ts files (1 file per concept)
 └── exercises/         ← Practice tasks + solutions/ folder
 ```

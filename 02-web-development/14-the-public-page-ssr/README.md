@@ -1,4 +1,4 @@
-# Module 13 — The Public Page (SSR)
+# Module 14 — The Public Page (SSR)
 
 ## What you'll learn
 
@@ -86,6 +86,16 @@ function ProfileNotFound() {
   );
 }
 ```
+
+## Common Patterns
+
+| Pattern               | Code                                                                           |
+| --------------------- | ------------------------------------------------------------------------------ |
+| SSR meta tags         | `head: () => ({ meta: [...] })` (static when loader throws `notFound()`)       |
+| Open Graph tags       | `{ property: 'og:title', content: '...' }`                                     |
+| Server-side analytics | In the loader: `await recordView({ data: { ... } })`                           |
+| Custom 404            | `notFoundComponent: MyComponent` + `throw notFound()` in loader                |
+| Theme                 | Toggle `.dark` class on `<html>` — semantic color tokens respond automatically |
 
 ## What We Built: Optimized the Public Profile
 
@@ -263,16 +273,6 @@ Alice's name and links — no JavaScript required to display the content. Visiti
 git add .
 git commit -m "Add SSR with SEO meta tags, analytics tracking, custom 404, and themes"
 ```
-
-## Common Patterns
-
-| Pattern               | Code                                                                           |
-| --------------------- | ------------------------------------------------------------------------------ |
-| SSR meta tags         | `head: () => ({ meta: [...] })` (static when loader throws `notFound()`)       |
-| Open Graph tags       | `{ property: 'og:title', content: '...' }`                                     |
-| Server-side analytics | In the loader: `await recordView({ data: { ... } })`                           |
-| Custom 404            | `notFoundComponent: MyComponent` + `throw notFound()` in loader                |
-| Theme                 | Toggle `.dark` class on `<html>` — semantic color tokens respond automatically |
 
 ## Deep Dive
 

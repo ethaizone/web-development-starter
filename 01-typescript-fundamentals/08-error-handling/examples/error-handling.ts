@@ -60,7 +60,6 @@ function safeParseLink(input: string): string {
   }
 }
 
-// Tests
 // Async error handling
 async function fetchUserData(username: string): Promise<void> {
   try {

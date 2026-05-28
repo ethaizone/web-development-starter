@@ -1,4 +1,4 @@
-# Module 09 — Database & Drizzle
+# Module 10 — Database & Drizzle
 
 ## What you'll learn
 
@@ -132,6 +132,29 @@ const profileWithLinks = await db.query.profiles.findFirst({
   },
 });
 ```
+
+## Commands You'll Use
+
+| Command                    | Purpose                                       |
+| -------------------------- | --------------------------------------------- |
+| `npx drizzle-kit generate` | Generate migration SQL from schema changes    |
+| `npx drizzle-kit migrate`  | Apply pending migrations to the database      |
+| `npx drizzle-kit studio`   | Open Drizzle Studio (visual database browser) |
+| `npx tsx src/db/seed.ts`   | Run the seed script                           |
+
+## Common Patterns
+
+| Pattern               | Code                                                               |
+| --------------------- | ------------------------------------------------------------------ |
+| Insert one row        | `await db.insert(table).values({ ... })`                           |
+| Insert multiple rows  | `await db.insert(table).values([{ ... }, { ... }])`                |
+| Select all            | `await db.select().from(table)`                                    |
+| Select with filter    | `await db.query.table.findFirst({ where: eq(table.col, val) })`    |
+| Select with relations | `await db.query.table.findFirst({ with: { relation: true } })`     |
+| Update rows           | `await db.update(table).set({ col: val }).where(eq(table.id, id))` |
+| Delete rows           | `await db.delete(table).where(eq(table.id, id))`                   |
+| Loader (route)        | `loader: async ({ params }) => { ... }`                            |
+| Use loader data       | `const data = Route.useLoaderData()`                               |
 
 ## What We Built: Set Up the Database
 
@@ -449,29 +472,6 @@ the page.
 git add .
 git commit -m "Set up SQLite + Drizzle ORM, define schema, add seed data, load profile from DB"
 ```
-
-## Commands You'll Use
-
-| Command                    | Purpose                                       |
-| -------------------------- | --------------------------------------------- |
-| `npx drizzle-kit generate` | Generate migration SQL from schema changes    |
-| `npx drizzle-kit migrate`  | Apply pending migrations to the database      |
-| `npx drizzle-kit studio`   | Open Drizzle Studio (visual database browser) |
-| `npx tsx src/db/seed.ts`   | Run the seed script                           |
-
-## Common Patterns
-
-| Pattern               | Code                                                               |
-| --------------------- | ------------------------------------------------------------------ |
-| Insert one row        | `await db.insert(table).values({ ... })`                           |
-| Insert multiple rows  | `await db.insert(table).values([{ ... }, { ... }])`                |
-| Select all            | `await db.select().from(table)`                                    |
-| Select with filter    | `await db.query.table.findFirst({ where: eq(table.col, val) })`    |
-| Select with relations | `await db.query.table.findFirst({ with: { relation: true } })`     |
-| Update rows           | `await db.update(table).set({ col: val }).where(eq(table.id, id))` |
-| Delete rows           | `await db.delete(table).where(eq(table.id, id))`                   |
-| Loader (route)        | `loader: async ({ params }) => { ... }`                            |
-| Use loader data       | `const data = Route.useLoaderData()`                               |
 
 ## Deep Dive
 

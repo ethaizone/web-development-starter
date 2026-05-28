@@ -1,4 +1,4 @@
-# Module 06 — Components & Props
+# Module 07 — Components & Props
 
 ## What you'll learn
 
@@ -194,12 +194,29 @@ function ProfilePage({ profile }: Props) {
 }
 ```
 
+## Commands You'll Use
+
+No new commands. You're creating files and the dev server picks up changes.
+
+## Common Patterns
+
+| Pattern              | Code                                          | When to use                           |
+| -------------------- | --------------------------------------------- | ------------------------------------- |
+| Component with props | `function Card({ title }: { title: string })` | Every component that needs data       |
+| Children prop        | `{ children }: { children: React.ReactNode }` | Wrapper/layout components             |
+| Optional prop        | `bio?: string`                                | Props that may not always be provided |
+| Default value        | `{ count = 0 }: { count?: number }`           | Provide a fallback                    |
+| Spread props         | `<ProfileHeader {...profile} />`              | Pass all object properties as props   |
+| List rendering       | `items.map(item => <Card key={item.id} />)`   | Display arrays of data                |
+| Conditional render   | `{condition && <Component />}`                | Show/hide based on state              |
+| Component file       | `src/components/my-component.tsx`             | Shared across routes                  |
+
 ## What We Built: Reusable Components
 
 ### Step 1: Created the components directory
 
 ```bash
-mkdir -p src/components
+mkdir src/components
 ```
 
 ### Step 2: Created `src/components/link-card.tsx`
@@ -358,23 +375,6 @@ cleaner and more maintainable.
 git add .
 git commit -m "Extract reusable components: ProfileHeader, LinkCard, LinkList"
 ```
-
-## Commands You'll Use
-
-No new commands. You're creating files and the dev server picks up changes.
-
-## Common Patterns
-
-| Pattern              | Code                                          | When to use                           |
-| -------------------- | --------------------------------------------- | ------------------------------------- |
-| Component with props | `function Card({ title }: { title: string })` | Every component that needs data       |
-| Children prop        | `{ children }: { children: React.ReactNode }` | Wrapper/layout components             |
-| Optional prop        | `bio?: string`                                | Props that may not always be provided |
-| Default value        | `{ count = 0 }: { count?: number }`           | Provide a fallback                    |
-| Spread props         | `<ProfileHeader {...profile} />`              | Pass all object properties as props   |
-| List rendering       | `items.map(item => <Card key={item.id} />)`   | Display arrays of data                |
-| Conditional render   | `{condition && <Component />}`                | Show/hide based on state              |
-| Component file       | `src/components/my-component.tsx`             | Shared across routes                  |
 
 ## Deep Dive
 

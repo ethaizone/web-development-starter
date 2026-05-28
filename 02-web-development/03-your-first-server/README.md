@@ -1,4 +1,4 @@
-# Module 02 — Your First Server
+# Module 03 — Your First Server
 
 ## What you'll learn
 
@@ -70,6 +70,22 @@ Every file in `src/routes/` becomes a URL path:
 | `index.tsx`           | `/`            | Home page                        |
 | `about.tsx`           | `/about`       | About page                       |
 | `users/$username.tsx` | `/users/alice` | Dynamic route                    |
+
+## Commands You'll Use
+
+| Command         | Purpose                      |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Start the development server |
+| `npm run build` | Build for production         |
+| `npm run start` | Serve the production build   |
+
+## Common Patterns
+
+| Pattern                                              | Description                                         |
+| ---------------------------------------------------- | --------------------------------------------------- |
+| `createFileRoute('/path')`                           | Define a route component for a URL path             |
+| `export const Route = createFileRoute(...)({ ... })` | Standard route export — every route file needs this |
+| `component: MyComponent`                             | The React component to render for this route        |
 
 ## What We Built: DevStack Bio Project Setup
 
@@ -170,22 +186,6 @@ git commit -m "Initial TanStack Start project scaffold"
 
 You just created your first **save point**. Every future module will end with a
 commit, building a timeline of your entire project.
-
-## Commands You'll Use
-
-| Command         | Purpose                      |
-| --------------- | ---------------------------- |
-| `npm run dev`   | Start the development server |
-| `npm run build` | Build for production         |
-| `npm run start` | Serve the production build   |
-
-## Common Patterns
-
-| Pattern                                              | Description                                         |
-| ---------------------------------------------------- | --------------------------------------------------- |
-| `createFileRoute('/path')`                           | Define a route component for a URL path             |
-| `export const Route = createFileRoute(...)({ ... })` | Standard route export — every route file needs this |
-| `component: MyComponent`                             | The React component to render for this route        |
 
 ## Troubleshooting
 

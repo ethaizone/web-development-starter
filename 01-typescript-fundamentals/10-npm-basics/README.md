@@ -149,8 +149,12 @@ npx tsx script.ts
 
 ## Now build it
 
-This module already has a `package.json` with `nanoid` installed. You'll create
-your own project inside the `exercises/` folder to practice the full workflow.
+This module already has a `package.json` with `nanoid` listed as a dependency.
+Run `npm install` in the `10-npm-basics` folder to download it, then try the
+example: `npx tsx examples/npm-basics.ts`.
+
+Next, create your own project inside the `exercises/` folder to practice the
+full workflow.
 
 1. Navigate to the `exercises/` folder in your terminal
 2. Run `npm init -y` to create your own `package.json`

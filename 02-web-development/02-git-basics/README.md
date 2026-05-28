@@ -99,8 +99,8 @@ git checkout -b add-login       # Create and switch to a new branch
 git checkout main               # Switch back to main
 ```
 
-When the feature is done, you **merge** the branch back into `main`. For this
-project we'll work directly on `main` — branches become essential when you work
+When the feature is done, you **merge** the branch back into `main`. For DevStack Bio,
+we'll work directly on `main` — branches become essential when you work
 on a team.
 
 ### Remotes and GitHub

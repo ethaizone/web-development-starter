@@ -33,7 +33,7 @@ interface User {
 ```
 
 `type` and `interface` are nearly interchangeable for object shapes. In this
-course we prefer `type` because it's more flexible (unions, primitives, tuples).
+track we prefer `type` because it's more flexible (unions, primitives, tuples).
 Both work — pick one style and be consistent.
 
 ### Optional properties

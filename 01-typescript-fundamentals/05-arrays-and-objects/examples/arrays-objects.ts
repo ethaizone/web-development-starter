@@ -11,7 +11,7 @@ const upperCaseSkills = skills.map((skill) => skill.toUpperCase())
 console.log("Uppercase:", upperCaseSkills)
 
 // filter — keep items that match
-const shortSkills = skills.filter((skill) => skill.length <= 4)
+const shortSkills = skills.filter((skill) => skill.length <= 6)
 console.log("Short names:", shortSkills)
 
 // find — first match

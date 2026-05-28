@@ -149,19 +149,24 @@ isAdmin || isActive; // true
 | `for`             | Known number of iterations                 |
 | `while`           | Unknown number of iterations               |
 
-## Now build it
+## What We Built
 
-Create `control-flow.ts` and write:
+`examples/control-flow.ts` demonstrates all the control flow patterns above:
 
-1. A function `classifyScore(score: number): string` that returns:
-   - "Excellent" for 90+
-   - "Good" for 70-89
-   - "Fair" for 50-69
-   - "Fail" for below 50
-2. A function `findFirstAdmin(roles: string[]): number` that loops through an
-   array of role strings and returns the **index** of the first `"admin"`.
-   Return `-1` if not found. Don't use array methods — use a `for` loop.
-3. Test both functions with different inputs.
+| Code                              | Concept shown                       |
+| --------------------------------- | ----------------------------------- |
+| `classifyScore()`                 | `if/else if/else` chain             |
+| `getRoleLabel()`                  | `switch` with `case`/`default`      |
+| `for` loop over `techStack`       | Indexed array iteration             |
+| `while` loop with `remainingAttempts` | Looping with unknown iterations  |
+| `break` in `for` loop             | Early exit when `"admin"` is found  |
+| `isAdmin && isActive` / `!isAdmin`  | Logical operators                 |
+
+```bash
+npx tsx examples/control-flow.ts
+```
+
+Practice exercise: `exercises/link-validator.ts`
 
 ---
 

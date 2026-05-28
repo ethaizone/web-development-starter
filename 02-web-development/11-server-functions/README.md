@@ -1,4 +1,4 @@
-# Module 10 — Server Functions
+# Module 11 — Server Functions
 
 ## What you'll learn
 
@@ -160,6 +160,23 @@ export const requireAuth = createServerFn({ method: "GET" }).handler(
   },
 );
 ```
+
+## Commands You'll Use
+
+No new CLI commands — server functions are code, not commands.
+
+## Common Patterns
+
+| Pattern              | Code                                                                          |
+| -------------------- | ----------------------------------------------------------------------------- |
+| GET server function  | `createServerFn({ method: 'GET' }).handler(async () => { ... })`              |
+| POST server function | `createServerFn({ method: 'POST' }).handler(async ({ data }) => { ... })`     |
+| With validation      | `.inputValidator(z.object({ ... })).handler(async ({ data }) => { ... })`     |
+| Throw 404            | `throw notFound()`                                                            |
+| Throw redirect       | `throw redirect({ to: '/login' })`                                            |
+| Call from loader     | `loader: ({ params }) => getProfile({ data: { username: params.username } })` |
+| Call from handler    | `await addLink({ data: { title: 'GitHub', url: '...' } })`                    |
+| Loading state        | `const [isLoading, setIsLoading] = useState(false)`                           |
 
 ## What We Built: Server Functions for DevStack Bio
 
@@ -556,23 +573,6 @@ On the dashboard, adding and removing links persisted after page refresh.
 git add .
 git commit -m "Add server functions with validation, replace direct DB calls"
 ```
-
-## Commands You'll Use
-
-No new CLI commands — server functions are code, not commands.
-
-## Common Patterns
-
-| Pattern              | Code                                                                          |
-| -------------------- | ----------------------------------------------------------------------------- |
-| GET server function  | `createServerFn({ method: 'GET' }).handler(async () => { ... })`              |
-| POST server function | `createServerFn({ method: 'POST' }).handler(async ({ data }) => { ... })`     |
-| With validation      | `.inputValidator(z.object({ ... })).handler(async ({ data }) => { ... })`     |
-| Throw 404            | `throw notFound()`                                                            |
-| Throw redirect       | `throw redirect({ to: '/login' })`                                            |
-| Call from loader     | `loader: ({ params }) => getProfile({ data: { username: params.username } })` |
-| Call from handler    | `await addLink({ data: { title: 'GitHub', url: '...' } })`                    |
-| Loading state        | `const [isLoading, setIsLoading] = useState(false)`                           |
 
 ## Deep Dive
 

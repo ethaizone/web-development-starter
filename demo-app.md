@@ -1,4 +1,4 @@
-## Here is a comprehensive project requirement handoff document tailored for your curriculum. It integrates TanStack Start, Drizzle ORM, SQLite, Tailwind CSS, and shadcn/ui, structured clearly for you to hand off to your students or use as a syllabus lesson plan.
+## Here is a comprehensive project requirement handoff document tailored for your curriculum. It integrates TanStack Start, Drizzle ORM, SQLite, Tailwind CSS, and shadcn/ui, structured clearly for you to hand off to your learners or use as a syllabus plan.
 
 ## 📝 Project Specification: DevStack Bio## 1. Project Overview
 
@@ -24,11 +24,11 @@ SEO-friendly public profile pages.
 
 ## 3. Database Schema (Drizzle ORM Layout)
 
-Your database architecture will consist of four relational tables. Students will
+Your database architecture will consist of four relational tables. Learners will
 define these schemas using TypeScript and execute migrations via drizzle-kit.
 
 ```ts
-// Conceptual schema overview for students
+// Conceptual schema overview for learners
 export const users = sqliteTable("users", {
   id: text("id").primaryKey(), // NanoID or UUID string
   email: text("email").notNull().unique(),
@@ -104,7 +104,7 @@ export const analytics = sqliteTable("analytics", {
 
 ---
 
-## 5. Key Learning Objectives for Students
+## 5. Key Learning Objectives for Learners
 
 1.  Type Safety Execution: Understand how changing a column definition inside
     schema.ts instantly generates compilation feedback inside frontend React

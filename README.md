@@ -65,7 +65,7 @@ Each module is a self-contained folder:
 ├── 01-setup/
 │   └── README.md              ← Read this first
 ├── 02-variables-types/
-│   ├── README.md              ← The lesson
+│   ├── README.md              ← The module
 │   ├── examples/              ← Runnable code examples
 │   └── exercises/             ← Optional practice
 │       └── solutions/         ← Reference solutions
@@ -112,7 +112,7 @@ Not a course. A curated list of topics and links:
 
 Read whatever interests you. Skip the rest.
 
-## Demo App: DevStack Bio
+## DevStack Bio
 
 The web development track documents how a self-hosted developer profile hub was
 built — a customizable Linktree alternative. See [demo-app.md](./demo-app.md)

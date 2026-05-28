@@ -9,61 +9,11 @@ steps manually.
 
 ## What CI/CD means
 
-### Continuous Integration (CI)
+**Continuous Integration (CI)** — Every time you push code (or open a pull request), a server checks out your code, installs dependencies, runs your tests, and reports pass/fail. If tests fail, the team knows immediately — before broken code reaches production.
 
-Every time you push code (or open a pull request):
+**Continuous Delivery (CD)** — After CI passes, the production bundle is built, additional checks run (linting, security scanning), the app is packaged, and it's either made ready to deploy (delivery) or deployed automatically (deployment).
 
-1. A server **checks out your code**
-2. **Installs dependencies**
-3. **Runs your tests**
-4. **Reports pass/fail**
-
-If tests fail, the team knows immediately — before the broken code reaches
-production.
-
-### Continuous Delivery (CD)
-
-After CI passes:
-
-1. **Build** the production bundle
-2. Run any additional checks (linting, security scanning)
-3. Package the app (e.g., Docker image)
-4. Make it **ready to deploy** (delivery) or **deploy automatically**
-   (deployment)
-
-## How it works in practice
-
-You define a **workflow file** in your repository. When a specific **event**
-occurs (push, pull request, tag), the workflow runs.
-
-Example: a GitHub Actions workflow for a Node.js project
-
-```yaml
-# .github/workflows/ci.yml
-name: CI
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - run: npm ci
-      - run: npm test
-```
-
-Every push to `main` or any PR targeting `main` now runs tests automatically on
-a clean Ubuntu machine.
-
-## Key terms
+## Key concepts
 
 | Term         | What it means                                                  |
 | ------------ | -------------------------------------------------------------- |

@@ -64,6 +64,10 @@ We'll wrap this in a helper to use it with `async/await`.
 
 ## Now Build It
 
+All files in this module already exist in the repo — you can follow along by
+reading each step, then comparing with the corresponding file. If you prefer to
+build from scratch, create a new folder outside this repo and follow the steps.
+
 ### Step 1: Set up the project
 
 ```bash

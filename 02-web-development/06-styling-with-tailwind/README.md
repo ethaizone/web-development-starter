@@ -1,4 +1,4 @@
-# Module 05 — Styling with Tailwind
+# Module 06 — Styling with Tailwind
 
 ## What you'll learn
 
@@ -117,6 +117,24 @@ Common colors you'll use:
 - `blue-{n}` — primary actions, links
 - `red-{n}` — errors, destructive actions
 - `green-{n}` — success states
+
+## Commands You'll Use
+
+| Command                                     | Purpose                                 |
+| ------------------------------------------- | --------------------------------------- |
+| `npm install tailwindcss @tailwindcss/vite` | Install Tailwind CSS v4 and Vite plugin |
+
+## Common Patterns
+
+| Pattern            | Classes                                                         | When to use                               |
+| ------------------ | --------------------------------------------------------------- | ----------------------------------------- |
+| Center content     | `max-w-md mx-auto`                                              | Cards, forms, profiles                    |
+| Card               | `rounded-lg border p-6`                                         | Content blocks                            |
+| Button (primary)   | `bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700` | Main actions                              |
+| Button (secondary) | `border px-4 py-2 rounded-lg hover:bg-gray-50`                  | Alternative actions                       |
+| Flex row with gap  | `flex items-center gap-4`                                       | Nav bars, form rows                       |
+| Responsive grid    | `grid gap-4 sm:grid-cols-2 lg:grid-cols-3`                      | Card layouts                              |
+| Visually hidden    | `sr-only`                                                       | Accessible headers you don't want visible |
 
 ## What We Built: Styled DevStack Bio
 
@@ -320,24 +338,6 @@ function DashboardPage() {
 git add .
 git commit -m "Install and configure Tailwind CSS v4, style all pages"
 ```
-
-## Commands You'll Use
-
-| Command                                     | Purpose                                 |
-| ------------------------------------------- | --------------------------------------- |
-| `npm install tailwindcss @tailwindcss/vite` | Install Tailwind CSS v4 and Vite plugin |
-
-## Common Patterns
-
-| Pattern            | Classes                                                         | When to use                               |
-| ------------------ | --------------------------------------------------------------- | ----------------------------------------- |
-| Center content     | `max-w-md mx-auto`                                              | Cards, forms, profiles                    |
-| Card               | `rounded-lg border p-6`                                         | Content blocks                            |
-| Button (primary)   | `bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700` | Main actions                              |
-| Button (secondary) | `border px-4 py-2 rounded-lg hover:bg-gray-50`                  | Alternative actions                       |
-| Flex row with gap  | `flex items-center gap-4`                                       | Nav bars, form rows                       |
-| Responsive grid    | `grid gap-4 sm:grid-cols-2 lg:grid-cols-3`                      | Card layouts                              |
-| Visually hidden    | `sr-only`                                                       | Accessible headers you don't want visible |
 
 ## Deep Dive
 

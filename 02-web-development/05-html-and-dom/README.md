@@ -1,4 +1,4 @@
-# Module 04 — HTML & the DOM
+# Module 05 — HTML & the DOM
 
 ## What you'll learn
 
@@ -135,6 +135,22 @@ function Counter() {
 | `<ul>` / `<li>` | Lists                             | Link list on profile page         |
 | `<table>`       | Tabular data                      | Analytics view counts             |
 
+## Commands You'll Use
+
+No new commands in this module. You're editing files and the dev server picks up
+changes automatically.
+
+## Common Patterns
+
+| Pattern                 | JSX                                                        |
+| ----------------------- | ---------------------------------------------------------- |
+| Embed a variable        | `<h1>{username}</h1>`                                      |
+| Conditional render      | `{isLoggedIn && <Dashboard />}`                            |
+| List rendering          | `{links.map(link => <li key={link.id}>{link.title}</li>)}` |
+| Attribute with variable | `<img src={avatarUrl} alt={displayName} />`                |
+| Self-closing tag        | `<input type="text" />`                                    |
+| Fragment (no wrapper)   | `<>...</>` or `<Fragment>...</Fragment>`                   |
+
 ## What We Built: Added Semantic Structure to DevStack Bio
 
 ### Step 1: Updated the root layout with semantic HTML
@@ -236,22 +252,6 @@ links. We checked the browser DevTools → Elements tab to confirm `<article>`,
 git add .
 git commit -m "Add semantic HTML structure to profile page and root layout"
 ```
-
-## Commands You'll Use
-
-No new commands in this module. You're editing files and the dev server picks up
-changes automatically.
-
-## Common Patterns
-
-| Pattern                 | JSX                                                        |
-| ----------------------- | ---------------------------------------------------------- |
-| Embed a variable        | `<h1>{username}</h1>`                                      |
-| Conditional render      | `{isLoggedIn && <Dashboard />}`                            |
-| List rendering          | `{links.map(link => <li key={link.id}>{link.title}</li>)}` |
-| Attribute with variable | `<img src={avatarUrl} alt={displayName} />`                |
-| Self-closing tag        | `<input type="text" />`                                    |
-| Fragment (no wrapper)   | `<>...</>` or `<Fragment>...</Fragment>`                   |
 
 ## Deep Dive
 

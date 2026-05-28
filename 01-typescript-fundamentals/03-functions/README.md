@@ -28,8 +28,11 @@ codebases.
 const greet = (name: string): string => {
   return `Hello, ${name}!`;
 };
+```
 
-// Short form — when the body is a single expression
+When the body is a single expression, you can drop the braces and `return`:
+
+```ts
 const greet = (name: string): string => `Hello, ${name}!`;
 ```
 
@@ -125,7 +128,7 @@ When a function has many parameters, put each on its own line for readability.
 
 ## Now build it
 
-Create `functions.ts` and write these functions:
+Create a new file called `functions.ts` in this module's folder and write these functions:
 
 1. `add(a, b)` — takes two numbers, returns their sum
 2. `formatUserName(name, lowercase)` — takes a string and an optional boolean.

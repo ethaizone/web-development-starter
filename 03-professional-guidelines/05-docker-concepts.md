@@ -18,74 +18,21 @@ Without Docker:
 
 With Docker:
 
-- You define your environment in a `Dockerfile` — a text file that describes how
-  to build your app's image
+- You define your environment in a `Dockerfile` — a text file that describes
+  how to build your app's image
 - The same container runs identically everywhere
 - New developers run one command to get the full environment
 - Deployment is pushing a container image
 
 ## Key concepts
 
-### Images vs Containers
-
-| Concept       | Analogy       | What it is                                                                    |
-| ------------- | ------------- | ----------------------------------------------------------------------------- |
-| **Image**     | A recipe      | A read-only template with your app + dependencies. Built from a `Dockerfile`. |
-| **Container** | A cooked meal | A running instance of an image. Lightweight, isolated, ephemeral.             |
-
-### Dockerfile
-
-A text file that describes how to build an image:
-
-```dockerfile
-FROM node:24-slim
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm ci --production
-
-COPY . .
-
-CMD ["node", "server.js"]
-```
-
-Each instruction creates a **layer**. Only changed layers are rebuilt — that's
-why Docker images are fast to update.
-
-### Docker Compose
-
-A YAML file that defines multi-container applications:
-
-```yaml
-services:
-  app:
-    build: .
-    ports:
-      - "3000:3000"
-  db:
-    image: postgres:16
-    environment:
-      POSTGRES_PASSWORD: secret
-```
-
-One command (`docker compose up`) starts both the app and the database.
-
-### Registries
-
-- **Docker Hub** — the default public registry (like npm for Docker images)
-- **GitHub Container Registry (ghcr.io)** — free for public images, integrated
-  with GitHub
-- **Cloud provider registries** — AWS ECR, Google Artifact Registry, etc.
-
-## When you'll use Docker
-
-| Scenario               | How Docker helps                                                |
-| ---------------------- | --------------------------------------------------------------- |
-| Deploy DevStack Bio    | Build an image, push to a registry, deploy anywhere             |
-| Run a database locally | `docker run postgres:16` — no install, no config                |
-| CI/CD                  | Run tests in a clean container every time                       |
-| Microservices          | Each service in its own container, communicating over a network |
+| Concept           | What it is                                                                    |
+| ----------------- | ------------------------------------------------------------------------------ |
+| **Image**         | A read-only template with your app + dependencies. Built from a `Dockerfile`. |
+| **Container**     | A running instance of an image. Lightweight, isolated, ephemeral.             |
+| **Dockerfile**    | Text file that describes how to build an image (recipe).                      |
+| **Docker Compose**| Tool for defining multi-container applications (app + database, etc.).        |
+| **Registry**      | Where images are stored and shared (Docker Hub, GitHub Container Registry).   |
 
 ## Do you need Docker right now?
 
@@ -96,17 +43,6 @@ simpler. Docker becomes valuable when you:
 - Work with databases or services you don't want to install locally
 - Join a team with a Docker-based setup
 - Set up CI/CD pipelines
-
-## Common commands
-
-| Command                         | Purpose                                      |
-| ------------------------------- | -------------------------------------------- |
-| `docker build -t myapp .`       | Build an image from a Dockerfile             |
-| `docker run -p 3000:3000 myapp` | Run a container, map port 3000               |
-| `docker ps`                     | List running containers                      |
-| `docker stop <container_id>`    | Stop a running container                     |
-| `docker compose up`             | Start all services defined in `compose.yaml` |
-| `docker compose down`           | Stop and remove all containers               |
 
 ## Deep dive
 

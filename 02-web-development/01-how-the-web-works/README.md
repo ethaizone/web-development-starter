@@ -81,7 +81,7 @@ You type a URL
     → Renders the page
 ```
 
-You won't configure DNS in this course — hosting platforms handle it for you.
+You won't configure DNS in this track — hosting platforms handle it for you.
 But understanding it removes the mystery of how a name becomes a connection.
 
 ### What Gets Sent Back: Content Types
@@ -152,8 +152,13 @@ and it runs on the server — but with type safety and no manual endpoint setup.
 8. Browser receives HTML, parses it
 9. Browser requests CSS and JS files referenced in the HTML
 10. Browser renders the page
-11. User sees Alice's profile
+11. You see Alice's profile
 ```
+
+## Commands You'll Use
+
+There are no commands in this module — it's all concepts. Starting from Module
+03, you'll be running commands to set up your project.
 
 ## Common Patterns
 
@@ -164,11 +169,6 @@ and it runs on the server — but with type safety and no manual endpoint setup.
 | Fetch data (GET)       | Client asks for data, server returns JSON                              | Module 11            |
 | Redirect (3xx)         | Server tells browser to go somewhere else                              | Module 12 (auth)     |
 | Cookie                 | Small piece of data the server asks the browser to store and send back | Module 12 (sessions) |
-
-## Commands You'll Use
-
-There are no commands in this module — it's all concepts. Starting from Module
-03, you'll be running commands to set up your project.
 
 ## Deep Dive
 

@@ -20,6 +20,11 @@ Never use `var`. It has confusing scoping rules that TypeScript avoids entirely.
 
 ### Type annotations
 
+Why does this matter? TypeScript checks your code **before** it runs. If you
+accidentally multiply a string by a number, TypeScript catches the error
+immediately — instead of producing a confusing bug at runtime. Types are your
+safety net.
+
 TypeScript can infer types automatically. You add annotations when inference
 isn't clear enough.
 
@@ -29,8 +34,8 @@ const message = "hello"; // TypeScript knows this is string
 const count = 42; // TypeScript knows this is number
 
 // Annotation — you tell TypeScript explicitly
-const message: string = "hello";
-const count: number = 42;
+const greeting: string = "hello";
+const total: number = 42;
 const isActive: boolean = true;
 ```
 
@@ -104,7 +109,8 @@ id = 42; // OK
 | Command                      | Purpose                                      |
 | ---------------------------- | -------------------------------------------- |
 | `npx tsx file.ts`            | Run a TypeScript file                        |
-| `npx tsx file.ts` with watch | No built-in watch — re-run after each change |
+
+Note: `tsx` has no built-in watch mode — re-run the command after each change.
 
 ## Common patterns
 
@@ -115,23 +121,23 @@ id = 42; // OK
 | Type annotation on parameter | Functions (covered in Module 03)               |
 | Union type `A \| B`          | When a value can be more than one type         |
 
-## Now build it
+## What We Built
 
-Create a file called `variables.ts` and declare variables about yourself:
+### `examples/variables.ts`
 
-1. Your name (`const`, `string`)
-2. Your age (`const`, `number`)
-3. Whether you're learning TypeScript (`const`, `boolean`)
-4. A favorite hobby that might change later (`let`, `string`)
-5. Print them all using template literals:
-   `"My name is Alice, I am 25 years old."`
-6. Change your hobby and print again
+Variables with `const` and `let`, type annotations, string/number operations,
+and union types.
 
-Run with: `npx tsx variables.ts`
+Run with: `npx tsx examples/variables.ts`
 
----
+### Exercise: `exercises/profile-card.ts`
 
-📖 **Deep dive:**
+Declare variables for a profile card and print it with template literals.
+Solution: `exercises/solutions/profile-card.ts`.
+
+Run with: `npx tsx exercises/profile-card.ts`
+
+## Deep dive
 
 - [TypeScript Handbook — Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 - [MDN — JavaScript data types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures)

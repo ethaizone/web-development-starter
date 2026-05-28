@@ -66,7 +66,7 @@ All choices for the Web Dev Track. The TS Track uses only Node.js + `tsx`.
 - A **Learner** follows one or more **Tracks** sequentially (01 → 02 → 03).
 - The **TS Track** has 12 **Modules**. Each module is self-contained with its
   own `examples/` and optional `exercises/` with reference `solutions/`.
-- The **Web Dev Track** has 14 **Modules**. All modules document how one
+- The **Web Dev Track** has 15 **Modules**. All modules document how one
   **DevStack Bio** project was built from start to finish. No separate exercises
   — the build record is the learning material.
 - Each Web Dev Track **Module** may contain **Tiny Examples** for new concepts,
@@ -86,7 +86,7 @@ All choices for the Web Dev Track. The TS Track uses only Node.js + `tsx`.
 │   ├── 01-setup/                      ← No examples/exercises (tool installation)
 │   │   └── README.md
 │   ├── 02-variables-types/            ← Each module (02-11) has:
-│   │   ├── README.md                  ←   Cheatsheet-style lesson
+│   │   ├── README.md                  ←   Cheatsheet-style module
 │   │   ├── examples/                  ←   Runnable code (1 .ts file)
 │   │   └── exercises/                 ←   Exercise + solutions/
 │   ├── ... (modules 03-11)
@@ -111,8 +111,8 @@ All choices for the Web Dev Track. The TS Track uses only Node.js + `tsx`.
     ├── 05-docker-concepts.md
     ├── 06-cicd-awareness.md
     ├── 07-deployment-options.md
-    ├── 09-pull-requests.md
-    └── 08-further-learning.md
+    ├── 08-pull-requests.md
+    └── 09-further-learning.md
 ```
 
 Note: The exact module folder structure is a guide. Modules only get an

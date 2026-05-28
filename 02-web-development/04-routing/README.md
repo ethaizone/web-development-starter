@@ -1,4 +1,4 @@
-# Module 03 — Routing
+# Module 04 — Routing
 
 ## What you'll learn
 
@@ -368,10 +368,10 @@ git commit -m "Add route structure: home, register, login, dashboard, profile"
 
 ## Commands You'll Use
 
-| Command                     | Purpose                                   |
-| --------------------------- | ----------------------------------------- |
-| `npm run dev`               | Start dev server (regenerates route tree) |
-| `rm -rf node_modules/.vite` | Clear Vite cache if routes seem stale     |
+| Command                                                                                       | Purpose                                   |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `npm run dev`                                                                                 | Start dev server (regenerates route tree) |
+| `rm -rf node_modules/.vite` <br/> _Windows:_ `Remove-Item -Recurse -Force node_modules/.vite` | Clear Vite cache if routes seem stale     |
 
 ## Common Patterns
 

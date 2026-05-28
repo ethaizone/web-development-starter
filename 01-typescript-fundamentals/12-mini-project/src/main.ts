@@ -1,6 +1,6 @@
 import * as readline from "readline"
 import type { DeveloperProfile, LinkCategory } from "./types"
-import { createProfile, addLink, removeLink, formatProfile, isValidUrl, isValidUsername } from "./profile"
+import { createProfile, addLink, removeLink, formatProfile, isValidUrl, isValidUsername } from "./profile" // removeLink: used in Extra Challenges
 import { fetchGitHubUser } from "./github"
 import { saveProfiles, loadProfiles } from "./storage"
 

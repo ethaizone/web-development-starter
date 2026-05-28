@@ -1,4 +1,4 @@
-# Module 08 — shadcn/ui
+# Module 09 — shadcn/ui
 
 ## What you'll learn
 
@@ -110,6 +110,28 @@ function MyForm() {
 }
 ```
 
+## Commands You'll Use
+
+| Command                                   | Purpose                            |
+| ----------------------------------------- | ---------------------------------- |
+| `npx shadcn@latest init`                  | Initialize shadcn/ui configuration |
+| `npx shadcn@latest add button`            | Add a single component             |
+| `npx shadcn@latest add button input card` | Add multiple components at once    |
+
+## Common Patterns
+
+| Pattern              | Code                                                  |
+| -------------------- | ----------------------------------------------------- |
+| Primary button       | `<Button>Save</Button>`                               |
+| Outline button       | `<Button variant="outline">Cancel</Button>`           |
+| Destructive button   | `<Button variant="destructive">Delete</Button>`       |
+| Small button         | `<Button size="sm">Edit</Button>`                     |
+| Full-width button    | `<Button className="w-full">Submit</Button>`          |
+| Card with sections   | `<Card><CardHeader /><CardContent /></Card>`          |
+| Input with label     | `<Label htmlFor="x"/><Input id="x" />`                |
+| Dialog (modal)       | `<Dialog><DialogTrigger /><DialogContent /></Dialog>` |
+| Avatar with fallback | `<Avatar><AvatarImage /><AvatarFallback /></Avatar>`  |
+
 ## What We Built: Added shadcn/ui to DevStack Bio
 
 ### Step 1: Initialized shadcn/ui
@@ -123,7 +145,7 @@ npx shadcn@latest init -t start -b radix
 Follow the prompts to select a preset theme. If the prompts don't appear or the
 command fails, create the configuration manually:
 
-- **Style:** Choose `default` (or whichever you prefer)
+- **Style:** Choose `new-york` (or whichever you prefer)
 - **Base color:** Choose `slate` (neutral, professional)
 - **CSS variables:** Yes
 
@@ -606,28 +628,6 @@ Avatar with initials fallback.
 git add .
 git commit -m "Install shadcn/ui, replace custom inputs with accessible components"
 ```
-
-## Commands You'll Use
-
-| Command                                   | Purpose                            |
-| ----------------------------------------- | ---------------------------------- |
-| `npx shadcn@latest init`                  | Initialize shadcn/ui configuration |
-| `npx shadcn@latest add button`            | Add a single component             |
-| `npx shadcn@latest add button input card` | Add multiple components at once    |
-
-## Common Patterns
-
-| Pattern              | Code                                                  |
-| -------------------- | ----------------------------------------------------- |
-| Primary button       | `<Button>Save</Button>`                               |
-| Outline button       | `<Button variant="outline">Cancel</Button>`           |
-| Destructive button   | `<Button variant="destructive">Delete</Button>`       |
-| Small button         | `<Button size="sm">Edit</Button>`                     |
-| Full-width button    | `<Button className="w-full">Submit</Button>`          |
-| Card with sections   | `<Card><CardHeader /><CardContent /></Card>`          |
-| Input with label     | `<Label htmlFor="x"/><Input id="x" />`                |
-| Dialog (modal)       | `<Dialog><DialogTrigger /><DialogContent /></Dialog>` |
-| Avatar with fallback | `<Avatar><AvatarImage /><AvatarFallback /></Avatar>`  |
 
 ## Deep Dive
 
