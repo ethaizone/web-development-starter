@@ -21,9 +21,10 @@ Pro Guidelines). _Avoid_: Course, path, level
 Node.js CLI — no browser, no frameworks. 12 modules total. _Avoid_:
 Fundamentals, basics course, intro
 
-**Web Dev Track**: Folder `02-web-development/`. Builds the DevStack Bio app
-incrementally across 14 modules. Each module adds features to a single project.
-_Avoid_: Main course, app track, project track
+**Web Dev Track**: Folder `02-web-development/`. Documents how the DevStack Bio
+app was built incrementally across 14 modules. Each module records what was
+added to arrive at the reference app. Learners read through the build journey
+— they don't construct from scratch. _Avoid_: Main course, app track, project track
 
 **Pro Guidelines**: Folder `03-professional-guidelines/`. Lightweight pointers
 to advanced topics (Linux, Docker, CI/CD, deployment). Not a course — a curated
@@ -64,13 +65,13 @@ All choices for the Web Dev Track. The TS Track uses only Node.js + `tsx`.
 - A **Learner** follows one or more **Tracks** sequentially (01 → 02 → 03).
 - The **TS Track** has 12 **Modules**. Each module is self-contained with its
   own `examples/` and optional `exercises/` with reference `solutions/`.
-- The **Web Dev Track** has 14 **Modules**. All modules contribute to one
-  **DevStack Bio** project. No separate exercises — the step-by-step build
-  instructions are the practice.
+- The **Web Dev Track** has 14 **Modules**. All modules document how one
+  **DevStack Bio** project was built from start to finish. No separate
+  exercises — the build record is the learning material.
 - Each Web Dev Track **Module** may contain **Tiny Examples** for new concepts,
-  plus step-by-step instructions to add features to DevStack Bio.
-- No git tags or checkpoints — step-by-step instructions are the guide. If a
-  learner gets stuck, that's where AI assistance comes in.
+  plus a "What We Built" section recording the code we wrote.
+- No git tags or checkpoints — the build record in each module README is the
+guide. If a learner gets stuck, that's where AI assistance comes in.
 - The **Pro Guidelines** is independent — a Learner can read it at any time.
 
 ## Repository Structure
@@ -162,18 +163,19 @@ Each module README follows a consistent format:
 - **Key concepts** — explained with code examples
 - **Commands you'll use** — table of command → purpose
 - **Common patterns** — table of pattern → when to use
-- **Now build it** — specific task to apply the concept
+- **What We Built** — code written and commands run to build the feature
 - **Deep dive** — link(s) to official documentation
 
-No fluff, no history lessons, no filler. Enough to understand + enough to do +
-links for the rest.
+No fluff, no history lessons, no filler. Enough to understand + enough to see
+how it was applied + links for the rest.
 
-### 6. One project, built incrementally
+### 6. One project, documented incrementally
 
-The Web Dev Track builds a single DevStack Bio project from start to finish. No
-multiple demo projects. No git tags or checkpoints — step-by-step instructions
-are the guide. Tiny Examples are used sparingly for isolated concept
-demonstrations only.
+The Web Dev Track documents how a single DevStack Bio project was built from
+start to finish. The reference app (`devstack-bio-reference/`) is the end goal.
+No multiple demo projects. No git tags or checkpoints — the build record in
+each module README is the guide. Tiny Examples are used sparingly for isolated
+concept demonstrations only.
 
 ### 7. Git taught inline
 
@@ -196,7 +198,7 @@ Guidelines introduce WSL2 as an optional professional tool, not a prerequisite.
 | Repo structure                                         | Progressive tracks in one repo       | One checkout, simpler for beginners                                                     |
 | TS fundamentals teaching method                        | CLI under Node.js                    | No browser complexity; focus on the language                                            |
 | Advanced types module (generics, discriminated unions) | Included as optional Module 11       | Better to have the tool and skip it than need it later                                  |
-| DevStack Bio setup approach                            | Scaffold from scratch                | Setup is a learning opportunity, not busywork                                           |
+| DevStack Bio learning approach                         | Read the build record                | Learners read how the app was built, not construct from scratch                          |
 | Example code in Web Dev Track                          | Tiny Examples + incremental app      | Tiny for isolated concepts, app for real application                                    |
 | Git tags / checkpoints                                 | Dropped entirely                     | Avoids blocking beginners with concepts they don't know yet; reduces maintenance burden |
 | Git teaching                                           | Prerequisites doc + inline           | Tied to real actions, not abstract                                                      |
@@ -325,9 +327,9 @@ None. All three tracks complete, all code validated end-to-end.
 
 ## Validation Results
 
-The DevStack Bio reference app (`devstack-bio-reference/`) was built by
-following all Web Dev Track modules step-by-step. Issues found and fixed in
-READMEs:
+The DevStack Bio reference app (`devstack-bio-reference/`) is the end goal of
+the Web Dev Track. All module READMEs document the steps taken to build it.
+Issues found and fixed in READMEs:
 
 1. **Module 05**: `to="/alice"` →
    `to="/$username" params={{ username: 'alice' }}` (TanStack Router type-safe

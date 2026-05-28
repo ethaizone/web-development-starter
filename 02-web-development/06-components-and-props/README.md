@@ -194,15 +194,15 @@ function ProfilePage({ profile }: Props) {
 }
 ```
 
-## Now Build It: Create Reusable Components
+## What We Built: Reusable Components
 
-### Step 1: Create the components directory
+### Step 1: Created the components directory
 
 ```bash
 mkdir -p src/components
 ```
 
-### Step 2: Create `src/components/link-card.tsx`
+### Step 2: Created `src/components/link-card.tsx`
 
 ```tsx
 type LinkCardProps = {
@@ -226,7 +226,7 @@ export function LinkCard({ title, url, iconName }: LinkCardProps) {
 }
 ```
 
-### Step 3: Create `src/components/profile-header.tsx`
+### Step 3: Created `src/components/profile-header.tsx`
 
 ```tsx
 type ProfileHeaderProps = {
@@ -260,7 +260,7 @@ export function ProfileHeader({
 }
 ```
 
-### Step 4: Create `src/components/link-list.tsx`
+### Step 4: Created `src/components/link-list.tsx`
 
 ```tsx
 import { LinkCard } from "./link-card";
@@ -297,7 +297,7 @@ export function LinkList({ links }: LinkListProps) {
 }
 ```
 
-### Step 5: Update `src/routes/$username.tsx` to use the components
+### Step 5: Updated `src/routes/$username.tsx` to use the components
 
 ```tsx
 import { createFileRoute } from "@tanstack/react-router";
@@ -346,13 +346,13 @@ function PublicProfilePage() {
 }
 ```
 
-### Step 6: Verify
+### Step 6: Verified
 
-Visit `/alice` — you should see the same profile page but now built from three
-reusable components. The visual result is the same; the code structure is
+We visited `/alice` and saw the same profile page but now built from three
+reusable components. The visual result was the same; the code structure was
 cleaner and more maintainable.
 
-### Step 7: Commit
+### Step 7: Committed
 
 ```bash
 git add .

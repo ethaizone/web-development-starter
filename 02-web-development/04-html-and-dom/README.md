@@ -135,11 +135,11 @@ function Counter() {
 | `<ul>` / `<li>` | Lists                             | Link list on profile page         |
 | `<table>`       | Tabular data                      | Analytics view counts             |
 
-## Now Build It: Add Semantic Structure to DevStack Bio
+## What We Built: Added Semantic Structure to DevStack Bio
 
-### Step 1: Update the root layout with semantic HTML
+### Step 1: Updated the root layout with semantic HTML
 
-In `src/routes/__root.tsx`, make sure the `RootComponent` uses semantic
+In `src/routes/__root.tsx`, we updated the `RootComponent` to use semantic
 elements:
 
 ```tsx
@@ -173,7 +173,7 @@ function RootComponent() {
 }
 ```
 
-### Step 2: Update the public profile page with semantic markup
+### Step 2: Updated the public profile page with semantic markup
 
 In `src/routes/$username.tsx`:
 
@@ -224,15 +224,13 @@ function PublicProfilePage() {
 }
 ```
 
-### Step 3: Verify
+### Step 3: Verified
 
-1. Visit `/alice` — you should see a profile page with avatar, name, and
-   placeholder links
-2. Open browser DevTools → Elements tab — notice the `<article>`, `<header>`,
-   `<section>`, `<nav>` elements
-3. Check the structure matches the semantic HTML patterns above
+We visited `/alice` and saw a profile page with avatar, name, and placeholder
+links. We checked the browser DevTools → Elements tab to confirm `<article>`,
+`<header>`, `<section>`, `<nav>` elements were present.
 
-### Step 4: Commit
+### Step 4: Committed
 
 ```bash
 git add .

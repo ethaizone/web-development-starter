@@ -87,11 +87,11 @@ function ProfileNotFound() {
 }
 ```
 
-## Now Build It: Optimize the Public Profile
+## What We Built: Optimized the Public Profile
 
-### Step 1: Create an analytics server function
+### Step 1: Created analytics server functions
 
-Add to `src/server/profile.functions.ts`:
+We added to `src/server/profile.functions.ts`:
 
 ```ts
 import { analytics } from "../db/schema";
@@ -117,9 +117,9 @@ export const getViewCount = createServerFn({ method: "GET" })
   });
 ```
 
-### Step 2: Update the public profile route with SSR, analytics, SEO, and 404
+### Step 2: Updated the public profile route with SSR, analytics, SEO, and 404
 
-Update `src/routes/$username.tsx`:
+We updated `src/routes/$username.tsx`:
 
 ```tsx
 import { createFileRoute, notFound } from "@tanstack/react-router";
@@ -129,7 +129,6 @@ import {
 } from "../server/profile.functions";
 import { ProfileHeader } from "../components/profile-header";
 import { LinkList } from "../components/link-list";
-import { Badge } from "@/components/ui/badge";
 import { useEffect } from "react";
 
 export const Route = createFileRoute("/$username")({
@@ -216,11 +215,11 @@ function PublicProfilePage() {
 }
 ```
 
-### Step 3: Update link cards to use semantic color tokens
+### Step 3: Updated link cards to use semantic color tokens
 
-Now that the `.dark` theme is defined in CSS, the link cards can use shadcn/ui
+With the `.dark` theme defined in CSS, we updated the link cards to use shadcn/ui
 semantic color tokens (`border-border`, `text-foreground`, etc.) which
-automatically respond when the `.dark` class is toggled on `<html>`. Update
+automatically respond when the `.dark` class is toggled on `<html>`. We updated
 `src/components/link-card.tsx`:
 
 ```tsx
@@ -251,18 +250,14 @@ export function LinkCard({ title, url, iconName }: LinkCardProps) {
 > `useEffect`, the link cards respond automatically — no manual prop threading
 > needed.
 
-### Step 4: Verify SSR
+### Step 4: Verified SSR
 
-1. Visit `/alice` — check the page source (right-click → View Page Source). You
-   should see the full HTML with Alice's name and links — no JavaScript required
-   to display the content.
-2. Use the browser's Network tab to verify that the initial HTML response
-   contains the profile data.
-3. Visit `/nonexistent` — should see the custom 404 page.
-4. Check Drizzle Studio (`npx drizzle-kit studio`) — the `analytics` table
-   should have entries for each profile view.
+We checked the page source at `/alice` and confirmed the full HTML contained
+Alice's name and links — no JavaScript required to display the content. Visiting
+`/nonexistent` showed the custom 404 page. Drizzle Studio confirmed the
+`analytics` table had entries for each profile view.
 
-### Step 5: Commit
+### Step 5: Committed
 
 ```bash
 git add .

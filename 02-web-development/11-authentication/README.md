@@ -102,18 +102,18 @@ function DashboardPage() {
 > itself (auth middleware or in-handler checks). A server function is an RPC
 > endpoint that can be called directly.
 
-## Now Build It: Add Authentication
+## What We Built: Authentication
 
-### Step 1: Install bcryptjs
+### Step 1: Installed bcryptjs
 
 ```bash
 npm install bcryptjs
 npm install -D @types/bcryptjs
 ```
 
-### Step 2: Create a session secret
+### Step 2: Created a session secret
 
-Create `.env` at the project root (this file should NOT be committed):
+We created `.env` at the project root (not committed):
 
 ```
 SESSION_SECRET=change-this-to-a-random-32-character-string-in-production
@@ -125,9 +125,9 @@ Add `.env` to `.gitignore`:
 .env
 ```
 
-### Step 3: Create the session utility
+### Step 3: Created the session utility
 
-Create `src/server/session.ts`:
+We created `src/server/session.ts`:
 
 ```ts
 import { useSession } from "@tanstack/react-start/server";
@@ -152,9 +152,9 @@ export function useAppSession() {
 }
 ```
 
-### Step 4: Create auth server functions
+### Step 4: Created auth server functions
 
-Create `src/server/auth.functions.ts`:
+We created `src/server/auth.functions.ts`:
 
 ```ts
 import { createServerFn } from "@tanstack/react-start";
@@ -252,9 +252,9 @@ export const getCurrentUserFn = createServerFn({ method: "GET" }).handler(
 );
 ```
 
-### Step 5: Update the registration form to use the real server function
+### Step 5: Updated the registration form to use the real server function
 
-Update `src/routes/register.tsx`:
+We updated `src/routes/register.tsx`:
 
 ```tsx
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
@@ -311,9 +311,9 @@ function RegisterPage() {
 }
 ```
 
-### Step 6: Create the login page
+### Step 6: Created the login page
 
-Update `src/routes/login.tsx`:
+We updated `src/routes/login.tsx`:
 
 ```tsx
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
@@ -398,13 +398,12 @@ function LoginPage() {
 }
 ```
 
-### Step 7: Protect the authed layout route
+### Step 7: Protected the authed layout route
 
-Update `src/routes/_authed.tsx`:
+We updated `src/routes/_authed.tsx`:
 
-The `_authed` layout's only job is **route protection** — checking if the user
-is logged in. If not, redirect to login. The nav bar is handled by the root
-layout.
+The `_authed` layout's only job was **route protection** — checking if the user
+was logged in. If not, redirect to login.
 
 ```tsx
 import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
@@ -429,10 +428,10 @@ function AuthedLayout() {
 }
 ```
 
-### Step 8: Make the root nav auth-aware
+### Step 8: Made the root nav auth-aware
 
-Update `src/routes/__root.tsx` to show different nav links depending on login
-state:
+We updated `src/routes/__root.tsx` to show different nav links depending on
+login state:
 
 ```tsx
 import {
@@ -556,14 +555,13 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 > check the session. After login, the session cookie is set — the next
 > navigation triggers a refresh and the nav updates to show Dashboard/Log Out.
 
-### Step 9: Update server functions to use session-based auth
+### Step 9: Updated server functions to use session-based auth
 
 In Module 10, `getMyProfile` and `addLink` accepted a `userId` from the client
-(or hardcoded the test user). Now that we have sessions, update them to read the
-user ID from the session instead. This is more secure — the client can't pass an
-arbitrary user ID.
+(or hardcoded the test user). With sessions in place, we updated them to read
+the user ID from the session instead.
 
-Update `src/server/profile.functions.ts`:
+We updated `src/server/profile.functions.ts`:
 
 ```ts
 import { createServerFn } from "@tanstack/react-start";
@@ -635,9 +633,9 @@ export const removeLink = createServerFn({ method: "POST" })
 > user — it reads the session and looks up the profile. Both are now properly
 > secured.
 
-### Step 10: Update the dashboard to use real data
+### Step 10: Updated the dashboard to use real data
 
-Update `src/routes/_authed/dashboard.tsx`:
+We updated `src/routes/_authed/dashboard.tsx`:
 
 ```tsx
 import { createFileRoute, useRouter } from "@tanstack/react-router";
@@ -682,17 +680,14 @@ function DashboardPage() {
 }
 ```
 
-### Step 11: Verify the full auth flow
+### Step 11: Verified the full auth flow
 
-1. Visit `/dashboard` without being logged in → should redirect to `/login`
-2. Click "Create one" → go to `/register`
-3. Register with a new email and username → should redirect to `/dashboard`
-4. See the dashboard with your profile data
-5. Click "Log Out" → should redirect to home page
-6. Log back in with the same credentials → should work
-7. Visit `/your-username` → should see your public profile
+We tested the complete flow: visiting `/dashboard` without being logged in
+redirected to `/login`, registering a new account redirected to `/dashboard`,
+logging out and logging back in worked, and visiting the public profile showed
+the correct data.
 
-### Step 12: Commit
+### Step 12: Committed
 
 ```bash
 git add .

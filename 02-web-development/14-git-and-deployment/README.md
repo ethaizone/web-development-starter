@@ -94,11 +94,11 @@ Before deploying:
 - [ ] No `console.log` statements in production code (optional but good
       practice)
 
-## Now Build It: Deploy DevStack Bio
+## What We Built: Deployment
 
-### Step 1: Final .gitignore check
+### Step 1: Final `.gitignore` check
 
-Make sure your `.gitignore` includes:
+We made sure `.gitignore` included:
 
 ```
 node_modules
@@ -112,32 +112,32 @@ devstack.db-shm
 > **Note:** The `drizzle/` folder contains migration SQL files. These should be
 > committed to version control, so do **not** add `drizzle/` to `.gitignore`.
 
-### Step 2: Build for production
+### Step 2: Built for production
 
 ```bash
 npm run build
 ```
 
-If the build fails, fix the errors before deploying. Common issues:
+If the build had failed, common fixes would be:
 
 - TypeScript errors → check types and imports
 - Missing dependencies → run `npm install`
 - Route tree out of date → restart the dev server and try again
 
-### Step 3: Test the production build
+### Step 3: Tested the production build
 
 ```bash
 npm run start
 ```
 
-Visit `http://localhost:3000` and test:
+We visited `http://localhost:3000` and tested:
 
 - Registration and login
 - Dashboard profile editing and link management
 - Public profile page
 - 404 for nonexistent profiles
 
-### Step 4: Create a GitHub repository
+### Step 4: Created a GitHub repository
 
 ```bash
 # Initialize remote (if you haven't already)
@@ -146,9 +146,9 @@ git branch -M main
 git push -u origin main
 ```
 
-### Step 5: Deploy
+### Step 5: Deployed
 
-Pick a platform and follow their official guide:
+We picked a platform and followed their official guide:
 
 | Platform    | Guide                                                                                            | Notes                                                |
 | ----------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
@@ -164,9 +164,9 @@ Key things to configure on any platform:
 - **Build command** — `npm run build`
 - **Start command** — `npm run start`
 
-### Step 6: Create a `.env.example` file
+### Step 6: Created a `.env.example` file
 
-Create `.env.example` (this IS committed — it tells other developers what
+We created `.env.example` (this IS committed — it tells other developers what
 variables are needed):
 
 ```
@@ -178,7 +178,7 @@ SESSION_SECRET=change-me-to-a-random-string
 NODE_ENV=development
 ```
 
-### Step 7: Final commit
+### Step 7: Committed
 
 ```bash
 git add .
@@ -186,9 +186,9 @@ git commit -m "Prepare for deployment: update .gitignore, add .env.example"
 git push origin main
 ```
 
-### Step 8: Verify deployment
+### Step 8: Verified deployment
 
-Visit your deployed URL and test the full flow:
+We visited the deployed URL and tested the full flow:
 
 1. Register a new account
 2. Edit your profile and add links
@@ -226,8 +226,8 @@ Your app is live on the internet! 🎉
 
 ---
 
-**Congratulations!** You've built and deployed a full-stack web application.
-Here's what you can do next:
+**Congratulations!** You've read through how a full-stack web application was
+built and deployed. Here's what you can do next:
 
 - Review the [Pro Guidelines](../../03-professional-guidelines/) for topics like
   Linux, Docker, and CI/CD

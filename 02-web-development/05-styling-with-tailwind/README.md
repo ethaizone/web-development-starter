@@ -118,17 +118,17 @@ Common colors you'll use:
 - `red-{n}` — errors, destructive actions
 - `green-{n}` — success states
 
-## Now Build It: Style DevStack Bio
+## What We Built: Styled DevStack Bio
 
-### Step 1: Install Tailwind CSS v4
+### Step 1: Installed Tailwind CSS v4
 
 ```bash
 npm install tailwindcss @tailwindcss/vite
 ```
 
-### Step 2: Configure the Vite plugin
+### Step 2: Configured the Vite plugin
 
-Update `vite.config.ts`:
+We updated `vite.config.ts`:
 
 ```ts
 import { defineConfig } from "vite";
@@ -147,17 +147,17 @@ export default defineConfig({
 });
 ```
 
-### Step 3: Create the CSS file
+### Step 3: Created the CSS file
 
-Create `src/styles.css`:
+We created `src/styles.css`:
 
 ```css
 @import "tailwindcss";
 ```
 
-### Step 4: Import the CSS in the root route
+### Step 4: Imported the CSS in the root route
 
-Update `src/routes/__root.tsx` — add the CSS import and link:
+We updated `src/routes/__root.tsx` — added the CSS import and link:
 
 ```tsx
 // Add this import at the top (with other imports):
@@ -177,9 +177,9 @@ export const Route = createRootRoute({
 });
 ```
 
-### Step 5: Verify Tailwind is working
+### Step 5: Verified Tailwind was working
 
-Update `src/routes/index.tsx` with Tailwind classes:
+We updated `src/routes/index.tsx` with Tailwind classes:
 
 ```tsx
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -217,12 +217,11 @@ function HomePage() {
 }
 ```
 
-Visit `http://localhost:3000`. If you see styled text (large bold title, blue
-button, centered layout), Tailwind is working.
+We visited `http://localhost:3000` and confirmed styled text was visible (large bold title, blue button, centered layout) — Tailwind was working.
 
-### Step 6: Style the profile page
+### Step 6: Styled the profile page
 
-Update `src/routes/$username.tsx`:
+We updated `src/routes/$username.tsx`:
 
 ```tsx
 import { createFileRoute } from "@tanstack/react-router";
@@ -273,9 +272,9 @@ function PublicProfilePage() {
 > Note: `<h2 className="sr-only">` is visually hidden but accessible to screen
 > readers. Good for structure without visual noise.
 
-### Step 7: Style the dashboard
+### Step 7: Styled the dashboard
 
-Update `src/routes/_authed/dashboard.tsx`:
+We updated `src/routes/_authed/dashboard.tsx`:
 
 ```tsx
 import { createFileRoute } from "@tanstack/react-router";
@@ -314,7 +313,7 @@ function DashboardPage() {
 }
 ```
 
-### Step 8: Commit
+### Step 8: Committed
 
 ```bash
 git add .

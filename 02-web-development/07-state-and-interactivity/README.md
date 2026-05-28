@@ -195,11 +195,11 @@ const [lastName, setLastName] = useState("Chen");
 const fullName = `${firstName} ${lastName}`;
 ```
 
-## Now Build It: Add Interactivity to DevStack Bio
+## What We Built: Interactive Forms
 
-### Step 1: Create a registration form component
+### Step 1: Created a registration form component
 
-Create `src/components/register-form.tsx`:
+We created `src/components/register-form.tsx`:
 
 ```tsx
 import { useState } from "react";
@@ -334,9 +334,9 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
 }
 ```
 
-### Step 2: Use the form in the register page
+### Step 2: Used the form in the register page
 
-Update `src/routes/register.tsx`:
+We updated `src/routes/register.tsx`:
 
 ```tsx
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
@@ -374,9 +374,9 @@ function RegisterPage() {
 }
 ```
 
-### Step 3: Create a link editor for the dashboard
+### Step 3: Created a link editor for the dashboard
 
-Create `src/components/link-editor.tsx`:
+We created `src/components/link-editor.tsx`:
 
 ```tsx
 import { useState } from "react";
@@ -472,9 +472,9 @@ export function LinkEditor() {
 }
 ```
 
-### Step 4: Use the link editor in the dashboard
+### Step 4: Used the link editor in the dashboard
 
-Update `src/routes/_authed/dashboard.tsx`:
+We updated `src/routes/_authed/dashboard.tsx`:
 
 ```tsx
 import { createFileRoute } from "@tanstack/react-router";
@@ -497,16 +497,15 @@ function DashboardPage() {
 }
 ```
 
-### Step 5: Verify
+### Step 5: Verified
 
-1. Visit `/register` — fill in the form, try submitting with invalid data (empty
-   fields, mismatched passwords). Verify error messages appear.
-2. Submit valid data — you should be redirected to `/dashboard`.
-3. On the dashboard, add and remove links. Changes should appear immediately.
-4. Check that all state is local — refreshing the page resets the links (we'll
-   fix this with a database in Module 09).
+We tested the registration form at `/register` with invalid data (empty
+fields, mismatched passwords) — error messages appeared correctly. Submitting
+valid data redirected to `/dashboard`. On the dashboard, adding and removing
+links worked immediately. All state was local — refreshing the page reset the
+links (the database would fix this in Module 09).
 
-### Step 6: Commit
+### Step 6: Committed
 
 ```bash
 git add .

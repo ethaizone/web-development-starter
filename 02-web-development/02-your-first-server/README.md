@@ -71,17 +71,17 @@ Every file in `src/routes/` becomes a URL path:
 | `about.tsx`           | `/about`       | About page                       |
 | `users/$username.tsx` | `/users/alice` | Dynamic route                    |
 
-## Now Build It: Create DevStack Bio
+## What We Built: DevStack Bio Project Setup
 
-### Step 1: Create the project
+### Step 1: Created the project
 
-Open a terminal and navigate to where you want the project. Then run:
+We started by creating a new TanStack Start project:
 
 ```bash
 npx @tanstack/cli@latest create
 ```
 
-Follow the interactive prompts:
+The prompts were answered as follows:
 
 - **Framework:** `React`
 - **Project name:** `devstack-bio`
@@ -94,7 +94,7 @@ Follow the interactive prompts:
 > ⚠️ Do **not** add the `shadcn` add-on when prompted. We'll set up shadcn/ui
 > manually in Module 08 so you understand each step.
 
-### Step 2: Install dependencies
+### Step 2: Installed dependencies
 
 ```bash
 cd devstack-bio
@@ -104,15 +104,15 @@ npm install
 > If you used a different project name in Step 1, `cd` into that directory
 > instead.
 
-### Step 3: Open the project in your editor
+### Step 3: Opened the project in an editor
 
 ```bash
 code .
 ```
 
-### Step 4: Explore the generated files
+### Step 4: Explored the generated files
 
-Read through these files to understand the scaffold:
+We read through these files to understand the scaffold:
 
 1. **`package.json`** — notice the `dev`, `build`, and `start` scripts
 2. **`vite.config.ts`** — plugins for TanStack Start and React
@@ -121,18 +121,17 @@ Read through these files to understand the scaffold:
    `<Outlet>`, and `<Scripts>`
 5. **`src/routes/index.tsx`** — the home page component
 
-### Step 5: Start the dev server
+### Step 5: Started the dev server
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:3000` in your browser. You should see the default
-TanStack Start page.
+Open `http://localhost:3000` in the browser — the default TanStack Start page was visible.
 
-### Step 6: Make your first change
+### Step 6: Made the first change
 
-Open `src/routes/index.tsx` and change the content. For example:
+We edited `src/routes/index.tsx` to customize the home page:
 
 ```tsx
 import { createFileRoute } from "@tanstack/react-router";
@@ -153,10 +152,9 @@ function HomePage() {
 }
 ```
 
-Save the file. The browser should update automatically (HMR). If you see your
-changes reflected without refreshing, everything is working.
+After saving, the browser updated automatically via HMR. The changes were reflected without a manual refresh, confirming everything worked.
 
-### Step 7: Commit your initial project
+### Step 7: Committed the initial project
 
 This is your first checkpoint. Initialize git and commit:
 

@@ -110,11 +110,11 @@ function MyForm() {
 }
 ```
 
-## Now Build It: Add shadcn/ui to DevStack Bio
+## What We Built: Added shadcn/ui to DevStack Bio
 
-### Step 1: Initialize shadcn/ui
+### Step 1: Initialized shadcn/ui
 
-Run the init command in your project directory:
+We ran the init command in the project directory:
 
 ```bash
 npx shadcn@latest init -t start -b radix
@@ -284,7 +284,7 @@ The CSS file needs two things:
 > block bridges them: `--color-primary: var(--primary)` lets `bg-primary` work
 > while keeping shadcn/ui's naming convention.
 
-### Step 2: Add the components you need
+### Step 2: Added the components we needed
 
 ```bash
 npx shadcn@latest add button
@@ -301,9 +301,9 @@ npx shadcn@latest add separator
 
 Each command adds one component file to `src/components/ui/`.
 
-### Step 3: Update the registration form with shadcn/ui components
+### Step 3: Updated the registration form with shadcn/ui components
 
-Update `src/components/register-form.tsx`:
+We updated `src/components/register-form.tsx`:
 
 ```tsx
 import { useState } from "react";
@@ -420,9 +420,9 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
 }
 ```
 
-### Step 4: Update the link editor with shadcn/ui components
+### Step 4: Updated the link editor with shadcn/ui components
 
-Update `src/components/link-editor.tsx`:
+We updated `src/components/link-editor.tsx`:
 
 ```tsx
 import { useState } from "react";
@@ -553,9 +553,9 @@ export function LinkEditor() {
 }
 ```
 
-### Step 5: Update the profile header with Avatar
+### Step 5: Updated the profile header with Avatar
 
-Update `src/components/profile-header.tsx`:
+We updated `src/components/profile-header.tsx`:
 
 ```tsx
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -594,16 +594,13 @@ export function ProfileHeader({
 }
 ```
 
-### Step 6: Verify
+### Step 6: Verified
 
-1. Visit `/register` — the form should use shadcn/ui Card, Input, Label, and
-   Button
-2. Visit `/dashboard` — the link editor should use Card, Dialog, Button
-3. Click "Add Link" — a dialog should open
-4. Visit `/alice` — the avatar should use shadcn/ui Avatar with initials
-   fallback
+We confirmed: the registration form used shadcn/ui Card, Input, Label, and
+Button; the link editor used Card, Dialog, Button; the avatar used shadcn/ui
+Avatar with initials fallback.
 
-### Step 7: Commit
+### Step 7: Committed
 
 ```bash
 git add .

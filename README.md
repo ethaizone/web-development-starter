@@ -24,7 +24,7 @@ level, follow the step-by-step guides, and build real projects along the way.
 | Track                   | Folder                                                       | Description                                                                                          |
 | ----------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
 | TypeScript Fundamentals | [01-typescript-fundamentals/](./01-typescript-fundamentals/) | Learn TypeScript from scratch via the command line. 12 modules with runnable examples and exercises. |
-| Web Development         | [02-web-development/](./02-web-development/)                 | Build **DevStack Bio** — a developer profile hub — step by step. 14 modules covering the full stack. |
+| Web Development         | [02-web-development/](./02-web-development/)                 | Learn how **DevStack Bio** was built — a developer profile hub, documented step by step. 14 modules covering the full stack. |
 | Professional Guidelines | [03-professional-guidelines/](./03-professional-guidelines/) | Pointers to advanced topics: Linux, Docker, CI/CD, deployment. Read anytime.                         |
 
 ## Tech Stack
@@ -79,23 +79,22 @@ Each module is a self-contained folder:
 
 ### Web Development (02)
 
-One project, built incrementally across 14 modules:
+One project, documented step by step across 14 modules:
 
 ```
 02-web-development/
+├── README.md                  ← How this track works (read this first)
 ├── 01-how-the-web-works/
-│   └── README.md              ← Read, then build
+│   └── README.md              ← Concepts only
 ├── 02-your-first-server/
-│   └── README.md              ← Step-by-step instructions
+│   └── README.md              ← Concepts + what we built
 ...
-
-Some modules may include an `examples/` folder for isolated concept
-demonstrations ("Tiny Examples"). These appear only when needed.
 ```
 
-- Each module adds features to your **DevStack Bio** project
-- Follow the instructions step by step
-- The final module covers deployment — you'll ship a real app
+- Each module documents a stage of building **DevStack Bio**
+- Read the concepts, study the code, explore the
+  [reference app](./devstack-bio-reference/)
+- The final module covers deployment
 
 ### Professional Guidelines (03)
 
@@ -113,11 +112,12 @@ Read whatever interests you. Skip the rest.
 
 ## Demo App: DevStack Bio
 
-The web development track builds a self-hosted developer profile hub — a
-customizable Linktree alternative. See [demo-app.md](./demo-app.md) for the full
-specification.
+The web development track documents how a self-hosted developer profile hub was
+built — a customizable Linktree alternative. See [demo-app.md](./demo-app.md) for
+the full specification and [devstack-bio-reference/](./devstack-bio-reference/)
+for the finished code.
 
-Features you'll build:
+Features covered:
 
 - User registration and login
 - Profile editing with theme selection

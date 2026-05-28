@@ -75,12 +75,11 @@ const handleAdd = async () => {
 Alternatively, use `useRouter().invalidate()` to selectively re-fetch only the
 current route's loader.
 
-## Now Build It: Complete the Dashboard
+## What We Built: The Full Dashboard
 
-### Step 1: Add the profile update server function
+### Step 1: Added the profile update server function
 
-Add the following import and function to `src/server/profile.functions.ts` (the
-file from Module 10):
+We added the following import and function to `src/server/profile.functions.ts`:
 
 ```ts
 // Add these imports if not already present
@@ -115,9 +114,9 @@ export const updateProfileFn = createServerFn({ method: "POST" })
   });
 ```
 
-### Step 2: Create a profile edit form
+### Step 2: Created a profile edit form
 
-Create `src/components/profile-edit-form.tsx`:
+We created `src/components/profile-edit-form.tsx`:
 
 ```tsx
 import { useState } from "react";
@@ -264,9 +263,9 @@ export function ProfileEditForm({ profile, onSaved }: ProfileEditFormProps) {
 > **Note:** Server functions must be top-level exports — never defined inside a
 > component. That's why `updateProfileFn` lives in `profile.functions.ts`.
 
-### Step 3: Create the link editor with optimistic updates
+### Step 3: Added optimistic updates to the link editor
 
-Update `src/components/link-editor.tsx` to support optimistic removal:
+We updated `src/components/link-editor.tsx` to support optimistic removal:
 
 The `LinkEditor` from Module 10 already supports removing links. Add optimistic
 behavior:
@@ -286,9 +285,9 @@ const handleRemoveLink = async (id: string) => {
 };
 ```
 
-### Step 4: Wire up the full dashboard
+### Step 4: Wired up the full dashboard
 
-Update `src/routes/_authed/dashboard.tsx`:
+We updated `src/routes/_authed/dashboard.tsx`:
 
 ```tsx
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
@@ -372,16 +371,13 @@ function DashboardPage() {
 }
 ```
 
-### Step 5: Verify
+### Step 5: Verified
 
-1. Register a new account (if you haven't already)
-2. On the dashboard, edit your display name and bio → click Save → see the
-   success message
-3. Add and remove links → changes should persist after refresh
-4. Click "View Profile" → see your updated public profile
-5. Check that loading states appear during saves
+We tested: editing display name and bio, adding and removing links, clicking
+"View Profile" to see the updated public page, and checking that loading states
+appeared during saves.
 
-### Step 6: Commit
+### Step 6: Committed
 
 ```bash
 git add .

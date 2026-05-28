@@ -133,11 +133,11 @@ const profileWithLinks = await db.query.profiles.findFirst({
 });
 ```
 
-## Now Build It: Set Up the Database
+## What We Built: Set Up the Database
 
-### Step 1: Install dependencies
+### Step 1: Installed dependencies
 
-We'll use `better-sqlite3` as the SQLite driver — it's synchronous, fast, and
+We used `better-sqlite3` as the SQLite driver — it's synchronous, fast, and
 simple:
 
 ```bash
@@ -145,9 +145,9 @@ npm install drizzle-orm better-sqlite3
 npm install -D drizzle-kit @types/better-sqlite3
 ```
 
-### Step 2: Create the Drizzle config
+### Step 2: Created the Drizzle config
 
-Create `drizzle.config.ts` at the project root:
+We created `drizzle.config.ts` at the project root:
 
 ```ts
 import { defineConfig } from "drizzle-kit";
@@ -162,9 +162,9 @@ export default defineConfig({
 });
 ```
 
-### Step 3: Create the database schema
+### Step 3: Created the database schema
 
-Create `src/db/schema.ts`:
+We created `src/db/schema.ts`:
 
 ```ts
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
@@ -245,9 +245,9 @@ export const analyticsRelations = relations(analytics, ({ one }) => ({
 }));
 ```
 
-### Step 4: Create the database connection
+### Step 4: Created the database connection
 
-Create `src/db/index.ts`:
+We created `src/db/index.ts`:
 
 ```ts
 import { drizzle } from "drizzle-orm/better-sqlite3";
@@ -265,7 +265,7 @@ sqlite.pragma("foreign_keys = ON");
 export const db = drizzle(sqlite, { schema });
 ```
 
-### Step 5: Generate and run the migration
+### Step 5: Generated and ran the migration
 
 ```bash
 npx drizzle-kit generate
@@ -282,13 +282,13 @@ Verify the migration worked:
 npx drizzle-kit studio
 ```
 
-This opens Drizzle Studio in your browser — a visual tool to inspect your
-database. You should see four empty tables: `users`, `profiles`, `links`,
+This opened Drizzle Studio in the browser — a visual tool to inspect the
+database. Four empty tables were visible: `users`, `profiles`, `links`,
 `analytics`.
 
-### Step 6: Add seed data for testing
+### Step 6: Added seed data for testing
 
-Create `src/db/seed.ts`:
+We created `src/db/seed.ts`:
 
 ```ts
 import { db } from "./index";
@@ -361,12 +361,12 @@ npx tsx src/db/seed.ts
 > **Note:** If `tsx` isn't installed globally, you can add it to your project:
 > `npm install -D tsx`
 
-Verify with Drizzle Studio: `npx drizzle-kit studio` — you should see the test
-data.
+We verified with Drizzle Studio (`npx drizzle-kit studio`) — the test data was
+present.
 
-### Step 7: Update the profile page to use real data
+### Step 7: Updated the profile page to use real data
 
-Update `src/routes/$username.tsx`:
+We updated `src/routes/$username.tsx`:
 
 ```tsx
 import { createFileRoute, notFound } from "@tanstack/react-router";
@@ -424,7 +424,7 @@ function PublicProfilePage() {
 }
 ```
 
-### Step 8: Add a `.gitignore` entry for the database
+### Step 8: Added `.gitignore` entries for the database
 
 Add to `.gitignore`:
 
@@ -434,17 +434,16 @@ devstack.db-wal
 devstack.db-shm
 ```
 
-The database file should not be committed — it's generated data. The schema and
-migrations (in `drizzle/`) are committed.
+The database file was not committed — it's generated data. The schema and
+migrations (in `drizzle/`) were committed.
 
-### Step 9: Verify
+### Step 9: Verified
 
-1. Visit `/alice` — you should see real data from the database
-2. Visit `/nonexistent` — you should get a 404 page
-3. Check Drizzle Studio (`npx drizzle-kit studio`) — data matches what's on the
-   page
+We visited `/alice` and saw real data from the database. Visiting `/nonexistent`
+returned a 404 page. Drizzle Studio confirmed the data matched what was shown
+on the page.
 
-### Step 10: Commit
+### Step 10: Committed
 
 ```bash
 git add .

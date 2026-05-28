@@ -152,12 +152,11 @@ move route files. It:
 
 If routes seem stale, restart the dev server.
 
-## Now Build It: Add Routing to DevStack Bio
+## What We Built: Added Routing to DevStack Bio
 
-### Step 1: Update the root layout
+### Step 1: Updated the root layout
 
-Add navigation to `src/routes/__root.tsx`. Find the `RootComponent` function and
-wrap the `<Outlet />` with a shared layout:
+We added navigation to `src/routes/__root.tsx`. The `RootComponent` function was updated with a shared layout:
 
 ```tsx
 function RootComponent() {
@@ -185,7 +184,7 @@ function RootComponent() {
 }
 ```
 
-Make sure to add the `Link` import:
+We added the `Link` import:
 
 ```tsx
 import {
@@ -197,9 +196,9 @@ import {
 } from "@tanstack/react-router";
 ```
 
-### Step 2: Update the home page
+### Step 2: Updated the home page
 
-Update `src/routes/index.tsx` to be a landing page:
+We updated `src/routes/index.tsx` as a landing page:
 
 ```tsx
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -226,9 +225,9 @@ function HomePage() {
 }
 ```
 
-### Step 3: Create placeholder pages
+### Step 3: Created placeholder pages
 
-Create these files in `src/routes/`:
+We created these files in `src/routes/`:
 
 **`src/routes/register.tsx`** — registration page (placeholder for now):
 
@@ -270,9 +269,9 @@ function LoginPage() {
 }
 ```
 
-### Step 4: Create the authed layout route
+### Step 4: Created the authed layout route
 
-Create `src/routes/_authed.tsx` — this will be the protected layout:
+We created `src/routes/_authed.tsx` as the protected layout:
 
 ```tsx
 import { Outlet, createFileRoute, Link } from "@tanstack/react-router";
@@ -295,7 +294,7 @@ function AuthedLayout() {
 }
 ```
 
-Create the `src/routes/_authed/` directory, then:
+We also created the `src/routes/_authed/` directory, then:
 
 **`src/routes/_authed/dashboard.tsx`**:
 
@@ -316,7 +315,7 @@ function DashboardPage() {
 }
 ```
 
-### Step 5: Create the public profile route
+### Step 5: Created the public profile route
 
 **`src/routes/$username.tsx`**:
 
@@ -340,9 +339,9 @@ function PublicProfilePage() {
 }
 ```
 
-### Step 6: Verify everything works
+### Step 6: Verified everything worked
 
-Start the dev server (`npm run dev`) and test these URLs:
+We started the dev server and tested these URLs:
 
 | URL          | What you should see                    |
 | ------------ | -------------------------------------- |
@@ -352,14 +351,14 @@ Start the dev server (`npm run dev`) and test these URLs:
 | `/dashboard` | Dashboard placeholder with sub-nav     |
 | `/alice`     | "alice's Profile"                      |
 
-Navigate between pages using the links. Verify that:
+We navigated between pages using the links and confirmed:
 
 - Clicking "Get Started" takes you to `/register`
 - The nav bar appears on every page
 - The dashboard sub-nav only appears on `/dashboard`
 - No full page reloads occur when navigating (check the network tab in DevTools)
 
-### Step 7: Commit
+### Step 7: Committed
 
 ```bash
 git add .

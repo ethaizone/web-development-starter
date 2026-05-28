@@ -161,17 +161,17 @@ export const requireAuth = createServerFn({ method: "GET" }).handler(
 );
 ```
 
-## Now Build It: Create Server Functions for DevStack Bio
+## What We Built: Server Functions for DevStack Bio
 
-### Step 1: Install Zod for validation
+### Step 1: Installed Zod for validation
 
 ```bash
 npm install zod
 ```
 
-### Step 2: Create shared validation schemas
+### Step 2: Created shared validation schemas
 
-Create `src/server/schemas.ts`:
+We created `src/server/schemas.ts`:
 
 ```ts
 import { z } from "zod";
@@ -213,9 +213,9 @@ export const removeLinkSchema = z.object({
 });
 ```
 
-### Step 3: Create server-only helpers
+### Step 3: Created server-only helpers
 
-Create `src/server/db.server.ts`:
+We created `src/server/db.server.ts`:
 
 ```ts
 import { db } from "../db";
@@ -290,9 +290,9 @@ export async function removeLinkById(linkId: string) {
 }
 ```
 
-### Step 4: Create server functions
+### Step 4: Created server functions
 
-Create `src/server/profile.functions.ts`:
+We created `src/server/profile.functions.ts`:
 
 ```ts
 import { createServerFn } from "@tanstack/react-start";
@@ -344,9 +344,9 @@ export const removeLink = createServerFn({ method: "POST" })
   });
 ```
 
-### Step 5: Use the server function in the profile route
+### Step 5: Used the server function in the profile route
 
-Update `src/routes/$username.tsx`:
+We updated `src/routes/$username.tsx`:
 
 ```tsx
 import { createFileRoute } from "@tanstack/react-router";
@@ -393,16 +393,16 @@ function PublicProfilePage() {
 Notice: no more direct database import in the route file. The route calls a
 server function, and the server function handles the database query.
 
-### Step 6: Update the link editor to use server functions
+### Step 6: Updated the link editor to use server functions
 
-Update `src/components/link-editor.tsx` — replace the local state with server
-function calls:
+We updated `src/components/link-editor.tsx` — replaced the local state with
+server function calls:
 
 ```tsx
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -545,13 +545,12 @@ export function LinkEditor({ initialLinks, onRefresh }: LinkEditorProps) {
 }
 ```
 
-### Step 7: Verify
+### Step 7: Verified
 
-1. Visit `/alice` — profile data should load from the server function
-2. Visit `/dashboard` — add/remove links via the dialog
-3. Refresh the page — changes should persist (they're in the database now)
+We visited `/alice` and confirmed profile data loaded from the server function.
+On the dashboard, adding and removing links persisted after page refresh.
 
-### Step 8: Commit
+### Step 8: Committed
 
 ```bash
 git add .
