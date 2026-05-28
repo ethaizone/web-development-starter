@@ -10,11 +10,11 @@ links to official resources.
 **Learner**: Anyone using this repository to study. May be a complete beginner
 or a developer new to web development. _Avoid_: Student, user, reader
 
-**Module**: One self-contained lesson folder containing a README, optional
+**Module**: One self-contained folder containing a README, optional
 runnable examples, and optional exercises with reference solutions. Numbered
 sequentially within each track. _Avoid_: Chapter, lesson, section
 
-**Track**: One of the three top-level learning paths (TS Track, Web Dev Track,
+**Track**: One of the three top-level tracks (TS Track, Web Dev Track,
 Pro Guidelines). _Avoid_: Course, path, level
 
 **TS Track**: Folder `01-typescript-fundamentals/`. Teaches TypeScript via
@@ -202,7 +202,7 @@ Guidelines introduce WSL2 as an optional professional tool, not a prerequisite.
 | Repo structure                                         | Progressive tracks in one repo          | One checkout, simpler for beginners                                                     |
 | TS fundamentals teaching method                        | CLI under Node.js                       | No browser complexity; focus on the language                                            |
 | Advanced types module (generics, discriminated unions) | Included as optional Module 11          | Better to have the tool and skip it than need it later                                  |
-| DevStack Bio learning approach                         | Read the build record                   | Learners read how the app was built, not construct from scratch                         |
+| DevStack Bio learning approach                         | Read the build record                   | Learners read how DevStack Bio was built, not construct from scratch                         |
 | Example code in Web Dev Track                          | Tiny Examples + incremental app         | Tiny for isolated concepts, app for real application                                    |
 | Git tags / checkpoints                                 | Dropped entirely                        | Avoids blocking beginners with concepts they don't know yet; reduces maintenance burden |
 | Git teaching                                           | Dedicated module (02) + inline practice | Tied to real actions, not abstract                                                      |

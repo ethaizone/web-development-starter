@@ -213,23 +213,29 @@ No type assertions needed.
 
 ## Now build it
 
-Create `advanced-types.ts` and write:
+Open `exercises/link-operations.ts` and implement the following (check your work against `exercises/solutions/link-operations.ts`):
 
-1. A generic function `filterByProperty<T, K>(items: T[], key: K, value: T[K])`
-   that filters an array by a property value. (This is challenging — use the
-   simpler version below if stuck.)
-
-   Simpler alternative: A generic function
+1. A generic function
    `findByProperty<T>(items: T[], predicate: (item: T) => boolean): T | undefined`
-   that wraps `find` with proper typing.
+   that takes an array and a predicate function, returns the first match or
+   `undefined`.
 
 2. A discriminated union `LinkOperation` with three states:
    - `{ type: "create", title: string, url: string }`
-   - `{ type: "update", id: string, changes: Partial<{ title: string; url: string; isVisible: boolean }> }`
+   - `{ type: "update", id: string, changes: Partial<LinkUpdateFields> }`
    - `{ type: "delete", id: string }`
+
+   Where `LinkUpdateFields = { title: string; url: string; isVisible: boolean }`
 
 3. A function `describeOperation(operation: LinkOperation): string` that returns
    a human-readable description using a switch on `type`.
+
+4. Create an array of `LinkOperation` objects (at least one of each type) and
+   loop through, printing the description for each.
+
+**Bonus:** Write a generic function `pluck<T, K extends keyof T>(items: T[], key: K): T[K][]`
+that extracts one property from each item. Example:
+`pluck([{name: "A"}, {name: "B"}], "name")` → `["A", "B"]`
 
 ---
 

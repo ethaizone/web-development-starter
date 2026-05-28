@@ -186,7 +186,7 @@ Show different UI based on conditions:
 }
 
 // Pattern 3: early return
-function ProfilePage({ profile }: Props) {
+function ProfilePage({ profile }: { profile?: { username: string; displayName: string } }) {
   if (!profile) {
     return <p>Profile not found.</p>;
   }

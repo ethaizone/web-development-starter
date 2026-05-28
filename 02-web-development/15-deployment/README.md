@@ -65,6 +65,25 @@ Before deploying:
 - [ ] No `console.log` statements in production code (optional but good
       practice)
 
+## Commands You'll Use
+
+| Command                     | Purpose                            |
+| --------------------------- | ---------------------------------- |
+| `npm run build`             | Build optimized production bundle  |
+| `npm run start`             | Serve the production build locally |
+| `git remote add origin URL` | Connect local repo to GitHub       |
+| `git push origin main`      | Push commits to GitHub             |
+
+## Common Patterns
+
+| Pattern                                     | When                           |
+| ------------------------------------------- | ------------------------------ |
+| `.env.example` committed, `.env` gitignored | Every project with secrets     |
+| `SESSION_SECRET` from env, not hardcoded    | Security                       |
+| Persistent volume for SQLite                | Prevents data loss on redeploy |
+| Test `npm run build` before deploying       | Catches build errors early     |
+| Descriptive commit messages                 | Git history is documentation   |
+
 ## What We Built: Deployment
 
 ### Step 1: Final `.gitignore` check
@@ -167,25 +186,6 @@ We visited the deployed URL and tested the full flow:
 4. Log out and back in
 
 DevStack Bio is live on the internet! 🎉
-
-## Commands You'll Use
-
-| Command                     | Purpose                            |
-| --------------------------- | ---------------------------------- |
-| `npm run build`             | Build optimized production bundle  |
-| `npm run start`             | Serve the production build locally |
-| `git remote add origin URL` | Connect local repo to GitHub       |
-| `git push origin main`      | Push commits to GitHub             |
-
-## Common Patterns
-
-| Pattern                                     | When                           |
-| ------------------------------------------- | ------------------------------ |
-| `.env.example` committed, `.env` gitignored | Every project with secrets     |
-| `SESSION_SECRET` from env, not hardcoded    | Security                       |
-| Persistent volume for SQLite                | Prevents data loss on redeploy |
-| Test `npm run build` before deploying       | Catches build errors early     |
-| Descriptive commit messages                 | Git history is documentation   |
 
 ## Deep Dive
 

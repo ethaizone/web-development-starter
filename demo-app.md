@@ -1,6 +1,8 @@
-## Here is a comprehensive project requirement handoff document tailored for your curriculum. It integrates TanStack Start, Drizzle ORM, SQLite, Tailwind CSS, and shadcn/ui, structured clearly for you to hand off to your learners or use as a syllabus plan.
+Here is a comprehensive project requirement handoff document for the curriculum. It integrates TanStack Start, Drizzle ORM, SQLite, Tailwind CSS, and shadcn/ui, structured clearly for handing off to learners.
 
-## 📝 Project Specification: DevStack Bio## 1. Project Overview
+## 📝 Project Specification: DevStack Bio
+
+## 1. Project Overview
 
 DevStack Bio is a self-hosted, developer-focused profile hub (a customizable
 "Linktree" alternative). Users can register an account, set up a public profile
@@ -68,7 +70,9 @@ export const analytics = sqliteTable("analytics", {
 
 ---
 
-## 4. Feature Requirements## Module 1: Authentication & Layout (SSR Core)
+## 4. Feature Requirements
+
+## Module 1: Authentication & Layout (SSR Core)
 
 - Registration: Users can sign up with an email and a unique username.
 - Validation: The username must be safe for URL parameters (no spaces or special

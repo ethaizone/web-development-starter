@@ -191,7 +191,7 @@ function RootComponent() {
 
 ### Step 2: Updated the public profile page with semantic markup
 
-In `src/routes/$username.tsx`:
+In `src/routes/$username.tsx`, we updated `PublicProfilePage`:
 
 ```tsx
 import { createFileRoute } from "@tanstack/react-router";

@@ -115,16 +115,6 @@ export const recordProfileView = createServerFn({ method: "POST" })
     });
     return { success: true };
   });
-
-export const getViewCount = createServerFn({ method: "GET" })
-  .inputValidator((data: { profileId: string }) => data)
-  .handler(async ({ data }) => {
-    const views = await db
-      .select()
-      .from(analytics)
-      .where(eq(analytics.profileId, data.profileId));
-    return { count: views.length };
-  });
 ```
 
 ### Step 2: Updated the public profile route with SSR, analytics, SEO, and 404

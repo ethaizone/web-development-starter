@@ -8,6 +8,8 @@ Use npm to install and manage third-party packages in your projects.
 
 ### What is npm?
 
+So far you've written every function yourself. But some problems are common enough that others have already solved them and published their solutions as **packages**. npm is how you find, install, and use those packages in your own projects.
+
 npm (Node Package Manager) does two things:
 
 1. **A registry** — a huge collection of open-source packages anyone can publish
@@ -78,7 +80,7 @@ npm start
 npm test
 ```
 
-### `tsx` vs `ts-node`
+### `tsx` as a dev dependency
 
 You've been using `npx tsx` to run TypeScript files directly. Now that you have
 a `package.json`, you can install `tsx` as a dev dependency:
@@ -147,7 +149,7 @@ npx tsx script.ts
 | `npm run dev`                         | Running your dev server/watcher          |
 | `.gitignore` includes `node_modules/` | Always — never commit installed packages |
 
-## Now build it
+## What We Built
 
 This module already has a `package.json` with `nanoid` listed as a dependency.
 Run `npm install` in the `10-npm-basics` folder to download it, then try the

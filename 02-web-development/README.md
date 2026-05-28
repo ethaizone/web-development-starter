@@ -2,7 +2,7 @@
 
 ## How This Track Works
 
-The TypeScript Fundamentals track (01) is **learning by doing** — read the
+The TS Track (01) is **learning by doing** — read the
 concept, run the example, try the exercise.
 
 This track is different. It's **learning from how we created** — you read
@@ -27,7 +27,7 @@ its source code anytime to see how everything fits together.
 
 ## Prerequisites
 
-- Completed the TypeScript Fundamentals track (Modules 01–10 minimum)
+- Completed the TS Track (Modules 01–10 minimum)
 - Node.js 24 LTS installed
 - A code editor (VS Code recommended)
 
@@ -45,8 +45,8 @@ its source code anytime to see how everything fits together.
 | 08  | State & Interactivity | `useState`, event handlers, forms, controlled inputs |
 | 09  | shadcn/ui             | Install, use components, customize theme             |
 | 10  | Database & Drizzle    | SQLite, schema definition, migrations, queries       |
-| 11  | Server Functions      | `createServerFn`, client vs server boundary          |
-| 12  | Authentication        | Registration, login, sessions, route guards          |
+| 11  | Server Functions      | `createServerFn`, client vs server boundary, loading states  |
+| 12  | Authentication        | Registration, login, sessions, cookies, route guards |
 | 13  | The Dashboard (CSR)   | Profile editing, link CRUD, optimistic UI            |
 | 14  | The Public Page (SSR) | Route loaders, SEO, analytics, 404 handling          |
 | 15  | Deployment            | Build for production, deploy to the internet         |

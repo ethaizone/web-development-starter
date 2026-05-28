@@ -19,7 +19,9 @@
 //
 // 3. `findFirstInvalidLink(urls: string[]): number`
 //    - Loop through the array using a for loop
-//    - Return the index of the first URL that is NOT valid
+//    - Use your validateUrl function to check each URL
+//    - Return the index of the first URL where validateUrl returns
+//      anything other than "valid" (this includes "invalid" AND "empty")
 //    - Return -1 if all links are valid
 //
 // Test with this data:

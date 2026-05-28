@@ -28,5 +28,5 @@ already know.
 ---
 
 **Prerequisites:** You've completed the
-[TypeScript Fundamentals](../01-typescript-fundamentals/) track, or you know
+[TS Track](../01-typescript-fundamentals/), or you know
 basic programming and the terminal.

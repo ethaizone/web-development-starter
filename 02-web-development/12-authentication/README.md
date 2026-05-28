@@ -45,10 +45,12 @@ import { useSession } from "@tanstack/react-start/server";
 export function useAppSession() {
   return useSession({
     name: "devstack-session",
-    password: process.env.SESSION_SECRET!, // Must be 32+ characters
+    password:
+      process.env.SESSION_SECRET ??
+      "fallback-dev-secret-change-in-production-32ch", // Must be 32+ characters
     cookie: {
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      sameSite: "lax" as const,
       httpOnly: true, // JavaScript cannot read this cookie (XSS protection)
       maxAge: 60 * 60 * 24 * 7, // 7 days
     },

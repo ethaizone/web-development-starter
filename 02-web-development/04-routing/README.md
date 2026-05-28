@@ -152,6 +152,24 @@ move route files. It:
 
 If routes seem stale, restart the dev server.
 
+## Commands You'll Use
+
+| Command                                                                                       | Purpose                                   |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `npm run dev`                                                                                 | Start dev server (regenerates route tree) |
+| `rm -rf node_modules/.vite` <br/> _Windows:_ `Remove-Item -Recurse -Force node_modules/.vite` | Clear Vite cache if routes seem stale     |
+
+## Common Patterns
+
+| Pattern           | File                                    | URL                               |
+| ----------------- | --------------------------------------- | --------------------------------- |
+| Home page         | `index.tsx`                             | `/`                               |
+| Static page       | `about.tsx`                             | `/about`                          |
+| Dynamic parameter | `$username.tsx`                         | `/:username`                      |
+| Protected layout  | `_authed.tsx` + `_authed/dashboard.tsx` | `/dashboard`                      |
+| Navigation        | `<Link to="/about">`                    | Client-side, no reload            |
+| Read URL params   | `Route.useParams()`                     | Get `:username` from `/$username` |
+
 ## What We Built: Added Routing to DevStack Bio
 
 ### Step 1: Updated the root layout
@@ -365,24 +383,6 @@ We navigated between pages using the links and confirmed:
 git add .
 git commit -m "Add route structure: home, register, login, dashboard, profile"
 ```
-
-## Commands You'll Use
-
-| Command                                                                                       | Purpose                                   |
-| --------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| `npm run dev`                                                                                 | Start dev server (regenerates route tree) |
-| `rm -rf node_modules/.vite` <br/> _Windows:_ `Remove-Item -Recurse -Force node_modules/.vite` | Clear Vite cache if routes seem stale     |
-
-## Common Patterns
-
-| Pattern           | File                                    | URL                               |
-| ----------------- | --------------------------------------- | --------------------------------- |
-| Home page         | `index.tsx`                             | `/`                               |
-| Static page       | `about.tsx`                             | `/about`                          |
-| Dynamic parameter | `$username.tsx`                         | `/:username`                      |
-| Protected layout  | `_authed.tsx` + `_authed/dashboard.tsx` | `/dashboard`                      |
-| Navigation        | `<Link to="/about">`                    | Client-side, no reload            |
-| Read URL params   | `Route.useParams()`                     | Get `:username` from `/$username` |
 
 ## Deep Dive
 

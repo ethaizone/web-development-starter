@@ -139,7 +139,7 @@ function MyForm() {
 We ran the init command in the project directory:
 
 ```bash
-npx shadcn@latest init -t start -b radix
+npx shadcn@latest init
 ```
 
 Follow the prompts to select a preset theme. If the prompts don't appear or the

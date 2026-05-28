@@ -10,8 +10,8 @@ type, and understand — treat every edit as a teaching decision.
 | Term           | Meaning                                                     |
 | -------------- | ----------------------------------------------------------- |
 | Learner        | Anyone using this repository to study                       |
-| Module         | One self-contained lesson folder with README (+ examples)   |
-| Track          | One of three top-level learning paths (01, 02, 03)          |
+| Module         | One self-contained folder with README (+ examples)          |
+| Track          | One of three top-level tracks (01, 02, 03)                  |
 | TS Track       | `01-typescript-fundamentals/` — 12 modules, CLI-only        |
 | Web Dev Track  | `02-web-development/` — 15 modules, documents DevStack Bio  |
 | Pro Guidelines | `03-professional-guidelines/` — curated links, not a course |

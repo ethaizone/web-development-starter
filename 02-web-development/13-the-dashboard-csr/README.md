@@ -276,8 +276,8 @@ export function ProfileEditForm({ profile, onSaved }: ProfileEditFormProps) {
 
 We updated `src/components/link-editor.tsx` to support optimistic removal:
 
-The `LinkEditor` from Module 11 already supports removing links. Add optimistic
-behavior:
+The `LinkEditor` from Module 11 already supports removing links. We added
+optimistic behavior to the existing removal handler:
 
 ```tsx
 const handleRemoveLink = async (id: string) => {
@@ -287,6 +287,7 @@ const handleRemoveLink = async (id: string) => {
 
   try {
     await removeLink({ data: { linkId: id } });
+    onRefresh();
   } catch {
     // Rollback
     setLinks(previous);
@@ -366,6 +367,7 @@ function DashboardPage() {
           onSaved={handleRefresh}
         />
         <LinkEditor
+          key={profile.links.map((l) => l.id).join(",")}
           initialLinks={profile.links.map((link) => ({
             id: link.id,
             title: link.title,

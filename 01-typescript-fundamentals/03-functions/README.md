@@ -137,6 +137,7 @@ Create a new file called `functions.ts` in this module's folder and write these 
 3. `createEmail(user, domain)` — takes two strings with a default domain of
    `"example.com"`. Returns `user@domain`.
 4. Call each function and print the results.
+5. Run it with `npx tsx functions.ts` and check the output.
 
 ---
 

@@ -62,7 +62,7 @@ rl.question("What is your name? ", (answer: string) => {
 
 We'll wrap this in a helper to use it with `async/await`.
 
-## Now Build It
+## What We Built
 
 All files in this module already exist in the repo — you can follow along by
 reading each step, then comparing with the corresponding file. If you prefer to
@@ -293,7 +293,7 @@ import type { DeveloperProfile, LinkCategory } from "./types";
 import {
   createProfile,
   addLink,
-  removeLink,
+  removeLink, // used in Extra Challenges
   formatProfile,
   isValidUrl,
   isValidUsername,
