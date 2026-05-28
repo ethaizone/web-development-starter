@@ -140,8 +140,8 @@ Example Dialogue for the rationale.
 
 ## 9. Reference App (`devstack-bio-reference/`)
 
-- The reference app is the **end goal** — the full picture learners are
-  building toward
+- The reference app is the **end goal** — the complete application that the
+  Web Dev Track's journey arrives at
 - The Web Dev Track (`02-web-development/`) is a **record of what we did**,
   step by step, to arrive at the reference app. It is NOT instructions telling
   learners to construct from scratch — it documents the journey
@@ -157,6 +157,10 @@ Example Dialogue for the rationale.
 
 - Always work on a **feature branch** (e.g. `fix/wd-05-tailwind-commands`),
   never directly on `main`
+- **Get user review before committing.** Present the changes to the repo
+  owner and wait for approval before running `git commit`
+- **Do not run `git add` on your own.** The owner will review changes before
+  staging — wait for them to decide what to stage
 - Commit messages should be descriptive: what module and what was changed
 - Before merging, ensure:
   - `main` is clean with no uncommitted changes
