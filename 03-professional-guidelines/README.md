@@ -15,7 +15,8 @@ already know.
 | 05  | [Docker Concepts](./05-docker-concepts.md)         | Package your app so it runs the same everywhere                      |
 | 06  | [CI/CD Awareness](./06-cicd-awareness.md)          | Automate testing and deployment when you push code                   |
 | 07  | [Deployment Options](./07-deployment-options.md)   | Where and how to put your app on the internet                        |
-| 08  | [Further Learning](./08-further-learning.md)       | Curated resources to go deeper on any topic                          |
+| 08  | [Pull Requests](./09-pull-requests.md)             | Review code, discuss changes, and collaborate before merging         |
+| 09  | [Further Learning](./08-further-learning.md)       | Curated resources to go deeper on any topic                          |
 
 ## How to use this
 

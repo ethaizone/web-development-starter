@@ -22,9 +22,10 @@ Node.js CLI — no browser, no frameworks. 12 modules total. _Avoid_:
 Fundamentals, basics course, intro
 
 **Web Dev Track**: Folder `02-web-development/`. Documents how the DevStack Bio
-app was built incrementally across 14 modules. Each module records what was
-added to arrive at the reference app. Learners read through the build journey
-— they don't construct from scratch. _Avoid_: Main course, app track, project track
+app was built incrementally across 15 modules. Each module records what was
+added to arrive at the reference app. Learners read through the build journey —
+they don't construct from scratch. _Avoid_: Main course, app track, project
+track
 
 **Pro Guidelines**: Folder `03-professional-guidelines/`. Lightweight pointers
 to advanced topics (Linux, Docker, CI/CD, deployment). Not a course — a curated
@@ -66,12 +67,12 @@ All choices for the Web Dev Track. The TS Track uses only Node.js + `tsx`.
 - The **TS Track** has 12 **Modules**. Each module is self-contained with its
   own `examples/` and optional `exercises/` with reference `solutions/`.
 - The **Web Dev Track** has 14 **Modules**. All modules document how one
-  **DevStack Bio** project was built from start to finish. No separate
-  exercises — the build record is the learning material.
+  **DevStack Bio** project was built from start to finish. No separate exercises
+  — the build record is the learning material.
 - Each Web Dev Track **Module** may contain **Tiny Examples** for new concepts,
   plus a "What We Built" section recording the code we wrote.
 - No git tags or checkpoints — the build record in each module README is the
-guide. If a learner gets stuck, that's where AI assistance comes in.
+  guide. If a learner gets stuck, that's where AI assistance comes in.
 - The **Pro Guidelines** is independent — a Learner can read it at any time.
 
 ## Repository Structure
@@ -97,8 +98,8 @@ guide. If a learner gets stuck, that's where AI assistance comes in.
 ├── 02-web-development/                ← Web Dev Track (README-only guides)
 │   ├── 01-how-the-web-works/
 │   │   └── README.md
-│   ├── ... (modules 02-13)
-│   └── 14-git-and-deployment/
+│   ├── ... (modules 02-14)
+│   └── 15-deployment/
 │       └── README.md
 │
 └── 03-professional-guidelines/        ← Pro Guidelines
@@ -110,6 +111,7 @@ guide. If a learner gets stuck, that's where AI assistance comes in.
     ├── 05-docker-concepts.md
     ├── 06-cicd-awareness.md
     ├── 07-deployment-options.md
+    ├── 09-pull-requests.md
     └── 08-further-learning.md
 ```
 
@@ -173,16 +175,18 @@ how it was applied + links for the rest.
 
 The Web Dev Track documents how a single DevStack Bio project was built from
 start to finish. The reference app (`devstack-bio-reference/`) is the end goal.
-No multiple demo projects. No git tags or checkpoints — the build record in
-each module README is the guide. Tiny Examples are used sparingly for isolated
+No multiple demo projects. No git tags or checkpoints — the build record in each
+module README is the guide. Tiny Examples are used sparingly for isolated
 concept demonstrations only.
 
-### 7. Git taught inline
+### 7. Git taught as a dedicated module
 
-Git concepts are introduced at the moment of first use. The first time a learner
-needs `git init`, that's when we teach `git init`. A short prerequisites section
-covers install + absolute minimum (`init`, `add`, `commit`, `push`). Real
-learning happens through practice in context.
+Git is taught in a dedicated module (Module 02) before the learner scaffolds
+their first project. Core commands (`init`, `add`, `commit`, `push`, `pull`,
+`clone`, `branch`, `tag`) are covered with context. Subsequent modules apply
+these commands at the end of each build step, reinforcing the workflow through
+repetition. Advanced Git topics (branches in practice, pull requests) are
+deferred to the Pro Guidelines.
 
 ### 8. Cross-platform without WSL2
 
@@ -192,21 +196,21 @@ Guidelines introduce WSL2 as an optional professional tool, not a prerequisite.
 
 ## Key Decisions Log
 
-| Decision                                               | Choice                               | Rationale                                                                               |
-| ------------------------------------------------------ | ------------------------------------ | --------------------------------------------------------------------------------------- |
-| Target audience                                        | Complete beginners + devs new to web | Two entry points via progressive tracks                                                 |
-| Repo structure                                         | Progressive tracks in one repo       | One checkout, simpler for beginners                                                     |
-| TS fundamentals teaching method                        | CLI under Node.js                    | No browser complexity; focus on the language                                            |
-| Advanced types module (generics, discriminated unions) | Included as optional Module 11       | Better to have the tool and skip it than need it later                                  |
-| DevStack Bio learning approach                         | Read the build record                | Learners read how the app was built, not construct from scratch                          |
-| Example code in Web Dev Track                          | Tiny Examples + incremental app      | Tiny for isolated concepts, app for real application                                    |
-| Git tags / checkpoints                                 | Dropped entirely                     | Avoids blocking beginners with concepts they don't know yet; reduces maintenance burden |
-| Git teaching                                           | Prerequisites doc + inline           | Tied to real actions, not abstract                                                      |
-| Node.js version                                        | 24 LTS                               | Confirmed by repo owner                                                                 |
-| Windows support                                        | Native, no WSL2                      | Don't block beginners before they start                                                 |
-| Documentation language                                 | English                              | Matches code, error messages, and linked official docs                                  |
-| Package manager                                        | npm                                  | Ships with Node.js, cross-platform                                                      |
-| Code naming                                            | Meaningful, no shadowing             | Teaching tool + unambiguous references                                                  |
+| Decision                                               | Choice                                  | Rationale                                                                               |
+| ------------------------------------------------------ | --------------------------------------- | --------------------------------------------------------------------------------------- |
+| Target audience                                        | Complete beginners + devs new to web    | Two entry points via progressive tracks                                                 |
+| Repo structure                                         | Progressive tracks in one repo          | One checkout, simpler for beginners                                                     |
+| TS fundamentals teaching method                        | CLI under Node.js                       | No browser complexity; focus on the language                                            |
+| Advanced types module (generics, discriminated unions) | Included as optional Module 11          | Better to have the tool and skip it than need it later                                  |
+| DevStack Bio learning approach                         | Read the build record                   | Learners read how the app was built, not construct from scratch                         |
+| Example code in Web Dev Track                          | Tiny Examples + incremental app         | Tiny for isolated concepts, app for real application                                    |
+| Git tags / checkpoints                                 | Dropped entirely                        | Avoids blocking beginners with concepts they don't know yet; reduces maintenance burden |
+| Git teaching                                           | Dedicated module (02) + inline practice | Tied to real actions, not abstract                                                      |
+| Node.js version                                        | 24 LTS                                  | Confirmed by repo owner                                                                 |
+| Windows support                                        | Native, no WSL2                         | Don't block beginners before they start                                                 |
+| Documentation language                                 | English                                 | Matches code, error messages, and linked official docs                                  |
+| Package manager                                        | npm                                     | Ships with Node.js, cross-platform                                                      |
+| Code naming                                            | Meaningful, no shadowing                | Teaching tool + unambiguous references                                                  |
 
 ## Verification Checklist
 
@@ -266,19 +270,20 @@ comparing with the solution.
 | #   | Module                | What they learn                                             | Key concept        |
 | --- | --------------------- | ----------------------------------------------------------- | ------------------ |
 | 01  | How the Web Works     | HTTP, request/response, client vs server, browsers, DNS     | Mental model       |
-| 02  | Your First Server     | TanStack Start setup, run dev server, see a page render     | "It works!" moment |
-| 03  | Routing               | File-based routing, dynamic routes (`/$username`), layouts  | Navigation         |
-| 04  | HTML & the DOM        | Elements, semantic HTML, how browsers parse HTML            | Foundation         |
-| 05  | Styling with Tailwind | Utility classes, responsive design, dark mode               | Visual polish      |
-| 06  | Components & Props    | React components, JSX, props, composition                   | React basics       |
-| 07  | State & Interactivity | `useState`, event handlers, forms, controlled inputs        | Interactivity      |
-| 08  | shadcn/ui             | Install, use components, customize theme                    | UI library         |
-| 09  | Database & Drizzle    | SQLite, schema definition, migrations, queries              | Persistence        |
-| 10  | Server Functions      | `createServerFn`, client vs server boundary, loading states | Full-stack glue    |
-| 11  | Authentication        | Registration, login, sessions, cookies, route guards        | Security           |
-| 12  | The Dashboard (CSR)   | Profile editing, link CRUD, optimistic UI                   | Complex client     |
-| 13  | The Public Page (SSR) | Route loaders, SEO, analytics tracking, 404 handling        | Production SSR     |
-| 14  | Git & Deployment      | Git workflow review, build for production, deploy           | Ship it            |
+| 02  | Git Basics            | Version control, commits, branches, push/pull, tags         | Save points        |
+| 03  | Your First Server     | TanStack Start setup, run dev server, see a page render     | "It works!" moment |
+| 04  | Routing               | File-based routing, dynamic routes (`/$username`), layouts  | Navigation         |
+| 05  | HTML & the DOM        | Elements, semantic HTML, how browsers parse HTML            | Foundation         |
+| 06  | Styling with Tailwind | Utility classes, responsive design, dark mode               | Visual polish      |
+| 07  | Components & Props    | React components, JSX, props, composition                   | React basics       |
+| 08  | State & Interactivity | `useState`, event handlers, forms, controlled inputs        | Interactivity      |
+| 09  | shadcn/ui             | Install, use components, customize theme                    | UI library         |
+| 10  | Database & Drizzle    | SQLite, schema definition, migrations, queries              | Persistence        |
+| 11  | Server Functions      | `createServerFn`, client vs server boundary, loading states | Full-stack glue    |
+| 12  | Authentication        | Registration, login, sessions, cookies, route guards        | Security           |
+| 13  | The Dashboard (CSR)   | Profile editing, link CRUD, optimistic UI                   | Complex client     |
+| 14  | The Public Page (SSR) | Route loaders, SEO, analytics tracking, 404 handling        | Production SSR     |
+| 15  | Deployment            | Build for production, deploy to the internet                | Ship it            |
 
 ## Pro Guidelines Topics
 
@@ -291,10 +296,11 @@ comparing with the solution.
 | 05  | Docker Concepts        | What containers are, why they matter, "learn this next"          |
 | 06  | CI/CD Awareness        | What it means, common tools (GitHub Actions), "learn this next"  |
 | 07  | Deployment Options     | VPS, managed platforms (Vercel, Railway), trade-offs             |
-| 08  | Further Learning       | Curated links for each topic                                     |
+| 08  | Pull Requests          | What PRs are, why they matter, review workflow, merging          |
+| 09  | Further Learning       | Curated links for each topic                                     |
 
 Note: Pro Guidelines topics are pointers with links to official docs. No deep
-teaching. All 8 topics written and link-verified.
+teaching. All 9 topics written and link-verified.
 
 ## Example Dialogue
 
@@ -331,17 +337,17 @@ The DevStack Bio reference app (`devstack-bio-reference/`) is the end goal of
 the Web Dev Track. All module READMEs document the steps taken to build it.
 Issues found and fixed in READMEs:
 
-1. **Module 05**: `to="/alice"` →
+1. **Module 06**: `to="/alice"` →
    `to="/$username" params={{ username: 'alice' }}` (TanStack Router type-safe
    routes)
-2. **Module 08**: `npx shadcn@latest init` is interactive; added manual
+2. **Module 09**: `npx shadcn@latest init` is interactive; added manual
    `components.json` + `utils.ts` fallback
-3. **Module 10**: `profile?.links.map(...)` spread fails TypeScript; fixed to
+3. **Module 11**: `profile?.links.map(...)` spread fails TypeScript; fixed to
    `profile ? Math.max(...) : 0`
-4. **Module 11**: `Route.useRouter()` doesn't exist; changed to `useRouter()`
+4. **Module 12**: `Route.useRouter()` doesn't exist; changed to `useRouter()`
    from `@tanstack/react-router`
-5. **Module 12**: Same `Route.useRouter()` fix
-6. **Module 13**: `head: ({ loaderData })` returns `never` when loader throws
+5. **Module 13**: Same `Route.useRouter()` fix
+6. **Module 14**: `head: ({ loaderData })` returns `never` when loader throws
    `notFound()`; simplified to static head
 
 The reference app builds successfully (`npm run build`) and all routes return

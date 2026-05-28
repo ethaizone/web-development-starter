@@ -78,7 +78,7 @@ progress_summary() {
 
   local all_keys=(
     ts-01 ts-02 ts-03 ts-04 ts-05 ts-06 ts-07 ts-08 ts-09 ts-10 ts-11 ts-12
-    wd-01 wd-02 wd-03 wd-04 wd-05 wd-06 wd-07 wd-08 wd-09 wd-10 wd-11 wd-12 wd-13 wd-14
+    wd-01 wd-02 wd-03 wd-04 wd-05 wd-06 wd-07 wd-08 wd-09 wd-10 wd-11 wd-12 wd-13 wd-14 wd-15
     pro root ref
   )
 
@@ -508,7 +508,7 @@ run_selected() {
     return
   fi
 
-  # Web Dev track: wd-01 through wd-14
+  # Web Dev track: wd-01 through wd-15
   if [[ "$selector" =~ ^wd-([0-9]+)$ ]]; then
     local num="${BASH_REMATCH[1]}"
     local dir=""
@@ -559,7 +559,7 @@ run_selected() {
   fi
 
   echo "ERROR: Unknown selector '${selector}'"
-  echo "Use: ts-01..ts-12, wd-01..wd-14, pro, root, ref"
+  echo "Use: ts-01..ts-12, wd-01..wd-15, pro, root, ref"
   exit 1
 }
 

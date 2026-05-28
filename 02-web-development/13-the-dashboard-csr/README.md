@@ -267,7 +267,7 @@ export function ProfileEditForm({ profile, onSaved }: ProfileEditFormProps) {
 
 We updated `src/components/link-editor.tsx` to support optimistic removal:
 
-The `LinkEditor` from Module 10 already supports removing links. Add optimistic
+The `LinkEditor` from Module 11 already supports removing links. Add optimistic
 behavior:
 
 ```tsx
@@ -404,5 +404,5 @@ git commit -m "Build interactive dashboard with profile editing and link managem
 
 ---
 
-**Next:** [Module 13 — The Public Page (SSR)](../13-the-public-page-ssr/) →
+**Next:** [Module 14 — The Public Page (SSR)](../14-the-public-page-ssr/) →
 Server-side rendering with analytics tracking.

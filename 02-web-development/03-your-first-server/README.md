@@ -92,7 +92,7 @@ The prompts were answered as follows:
 - **Git:** `Yes`
 
 > ⚠️ Do **not** add the `shadcn` add-on when prompted. We'll set up shadcn/ui
-> manually in Module 08 so you understand each step.
+> manually in Module 09 so you understand each step.
 
 ### Step 2: Installed dependencies
 
@@ -127,7 +127,8 @@ We read through these files to understand the scaffold:
 npm run dev
 ```
 
-Open `http://localhost:3000` in the browser — the default TanStack Start page was visible.
+Open `http://localhost:3000` in the browser — the default TanStack Start page
+was visible.
 
 ### Step 6: Made the first change
 
@@ -152,17 +153,23 @@ function HomePage() {
 }
 ```
 
-After saving, the browser updated automatically via HMR. The changes were reflected without a manual refresh, confirming everything worked.
+After saving, the browser updated automatically via HMR. The changes were
+reflected without a manual refresh, confirming everything worked.
 
 ### Step 7: Committed the initial project
 
-This is your first checkpoint. Initialize git and commit:
+This is your first checkpoint. Apply what you learned in
+[Module 02 — Git Basics](../02-git-basics/) — initialize a repository and commit
+your work:
 
 ```bash
 git init
 git add .
 git commit -m "Initial TanStack Start project scaffold"
 ```
+
+You just created your first **save point**. Every future module will end with a
+commit, building a timeline of your entire project.
 
 ## Commands You'll Use
 
@@ -197,5 +204,5 @@ git commit -m "Initial TanStack Start project scaffold"
 
 ---
 
-**Next:** [Module 03 — Routing](../03-routing/) → Add multiple pages and
+**Next:** [Module 04 — Routing](../04-routing/) → Add multiple pages and
 navigate between them.

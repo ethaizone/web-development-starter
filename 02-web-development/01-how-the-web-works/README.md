@@ -121,7 +121,7 @@ the end of `<body>` (for JS) — the order matters for performance.
 
 TanStack Start supports **both**. You'll use SSR for public profile pages and
 CSR for the interactive dashboard — this is a key architectural decision we'll
-revisit in Module 12 and Module 13.
+revisit in Module 13 and Module 14.
 
 ### What is an API?
 
@@ -137,7 +137,7 @@ Browser → GET /alice     → Server → HTML response  → Browser renders pag
 In TanStack Start, you'll use **server functions** instead of building a
 separate API. They achieve the same goal — your client code calls a function,
 and it runs on the server — but with type safety and no manual endpoint setup.
-(More in Module 10.)
+(More in Module 11.)
 
 ### Full Picture: What Happens When You Visit a DevStack Bio Profile
 
@@ -160,15 +160,15 @@ and it runs on the server — but with type safety and no manual endpoint setup.
 | Pattern                | Description                                                            | You'll use it in     |
 | ---------------------- | ---------------------------------------------------------------------- | -------------------- |
 | Request → Response     | The fundamental cycle                                                  | Every module         |
-| Form submission (POST) | Client sends data, server processes it                                 | Module 07, 11        |
-| Fetch data (GET)       | Client asks for data, server returns JSON                              | Module 10            |
-| Redirect (3xx)         | Server tells browser to go somewhere else                              | Module 11 (auth)     |
-| Cookie                 | Small piece of data the server asks the browser to store and send back | Module 11 (sessions) |
+| Form submission (POST) | Client sends data, server processes it                                 | Module 08, 12        |
+| Fetch data (GET)       | Client asks for data, server returns JSON                              | Module 11            |
+| Redirect (3xx)         | Server tells browser to go somewhere else                              | Module 12 (auth)     |
+| Cookie                 | Small piece of data the server asks the browser to store and send back | Module 12 (sessions) |
 
 ## Commands You'll Use
 
 There are no commands in this module — it's all concepts. Starting from Module
-02, you'll be running commands to set up your project.
+03, you'll be running commands to set up your project.
 
 ## Deep Dive
 
@@ -181,5 +181,5 @@ There are no commands in this module — it's all concepts. Starting from Module
 
 ---
 
-**Next:** [Module 02 — Your First Server](../02-your-first-server/) → Set up
-TanStack Start and see your first page render.
+**Next:** [Module 02 — Git Basics](../02-git-basics/) → Learn version control
+before you write your first line of code.

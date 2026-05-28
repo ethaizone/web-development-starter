@@ -309,7 +309,7 @@ async function seed() {
   await db.insert(users).values({
     id: "user-alice",
     email: "alice@example.com",
-    passwordHash: "not-a-real-hash", // Will be replaced in Module 11
+    passwordHash: "not-a-real-hash", // Will be replaced in Module 12
   });
 
   // Create a profile for the test user
@@ -440,8 +440,8 @@ migrations (in `drizzle/`) were committed.
 ### Step 9: Verified
 
 We visited `/alice` and saw real data from the database. Visiting `/nonexistent`
-returned a 404 page. Drizzle Studio confirmed the data matched what was shown
-on the page.
+returned a 404 page. Drizzle Studio confirmed the data matched what was shown on
+the page.
 
 ### Step 10: Committed
 
@@ -483,5 +483,5 @@ git commit -m "Set up SQLite + Drizzle ORM, define schema, add seed data, load p
 
 ---
 
-**Next:** [Module 10 — Server Functions](../10-server-functions/) → Create a
+**Next:** [Module 11 — Server Functions](../11-server-functions/) → Create a
 full-stack boundary between client and server.

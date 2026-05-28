@@ -217,7 +217,8 @@ function HomePage() {
 }
 ```
 
-We visited `http://localhost:3000` and confirmed styled text was visible (large bold title, blue button, centered layout) — Tailwind was working.
+We visited `http://localhost:3000` and confirmed styled text was visible (large
+bold title, blue button, centered layout) — Tailwind was working.
 
 ### Step 6: Styled the profile page
 
@@ -348,5 +349,5 @@ git commit -m "Install and configure Tailwind CSS v4, style all pages"
 
 ---
 
-**Next:** [Module 06 — Components & Props](../06-components-and-props/) → Break
+**Next:** [Module 07 — Components & Props](../07-components-and-props/) → Break
 your UI into reusable pieces.

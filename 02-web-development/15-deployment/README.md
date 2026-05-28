@@ -1,39 +1,10 @@
-# Module 14 — Git & Deployment
+# Module 15 — Deployment
 
 ## What you'll learn
 
-Review your Git workflow, build the project for production, and deploy it to the
-internet.
+Build the project for production and deploy it to the internet.
 
 ## Key Concepts
-
-### Git Review
-
-By now you've been using Git throughout this project. Here's a quick review:
-
-| Command                   | Purpose                              |
-| ------------------------- | ------------------------------------ |
-| `git init`                | Initialize a new repository          |
-| `git status`              | See what files have changed          |
-| `git add .`               | Stage all changes                    |
-| `git add file.ts`         | Stage a specific file                |
-| `git commit -m "message"` | Commit staged changes with a message |
-| `git log --oneline`       | View commit history                  |
-| `git diff`                | See unstaged changes                 |
-| `git branch`              | List branches                        |
-| `git checkout -b name`    | Create and switch to a new branch    |
-| `git push origin main`    | Push commits to a remote repository  |
-
-### Commit Messages
-
-Use descriptive commit messages that explain **why**, not just what:
-
-```
-❌ "fix stuff"
-❌ "updates"
-✅ "Add password hashing with bcrypt for secure auth"
-✅ "Fix profile page 404 when username contains uppercase"
-```
 
 ### Building for Production
 

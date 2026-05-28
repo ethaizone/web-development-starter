@@ -139,7 +139,7 @@ src/routes/
 ```
 
 The `_authed.tsx` layout can check authentication in `beforeLoad` and redirect
-unauthenticated users. You'll use this pattern in Module 11.
+unauthenticated users. You'll use this pattern in Module 12.
 
 ### Auto-Generated Route Tree
 
@@ -156,7 +156,8 @@ If routes seem stale, restart the dev server.
 
 ### Step 1: Updated the root layout
 
-We added navigation to `src/routes/__root.tsx`. The `RootComponent` function was updated with a shared layout:
+We added navigation to `src/routes/__root.tsx`. The `RootComponent` function was
+updated with a shared layout:
 
 ```tsx
 function RootComponent() {
@@ -243,7 +244,7 @@ function RegisterPage() {
     <div className="max-w-md mx-auto">
       <h1 className="text-2xl font-bold">Create Your Account</h1>
       <p className="mt-2 text-gray-600">
-        Registration form coming in Module 11.
+        Registration form coming in Module 12.
       </p>
     </div>
   );
@@ -263,7 +264,7 @@ function LoginPage() {
   return (
     <div className="max-w-md mx-auto">
       <h1 className="text-2xl font-bold">Log In</h1>
-      <p className="mt-2 text-gray-600">Login form coming in Module 11.</p>
+      <p className="mt-2 text-gray-600">Login form coming in Module 12.</p>
     </div>
   );
 }
@@ -309,7 +310,7 @@ function DashboardPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold">Dashboard</h1>
-      <p className="mt-2 text-gray-600">Profile editing coming in Module 12.</p>
+      <p className="mt-2 text-gray-600">Profile editing coming in Module 13.</p>
     </div>
   );
 }
@@ -332,7 +333,7 @@ function PublicProfilePage() {
     <div className="text-center py-12">
       <h1 className="text-3xl font-bold">{username}'s Profile</h1>
       <p className="mt-2 text-gray-600">
-        Public profile page coming in Module 13.
+        Public profile page coming in Module 14.
       </p>
     </div>
   );
@@ -391,5 +392,5 @@ git commit -m "Add route structure: home, register, login, dashboard, profile"
 
 ---
 
-**Next:** [Module 04 — HTML & the DOM](../04-html-and-dom/) → Understand what
+**Next:** [Module 05 — HTML & the DOM](../05-html-and-dom/) → Understand what
 HTML elements are and how the browser turns them into a page.

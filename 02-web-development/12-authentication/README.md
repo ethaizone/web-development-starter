@@ -557,7 +557,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 
 ### Step 9: Updated server functions to use session-based auth
 
-In Module 10, `getMyProfile` and `addLink` accepted a `userId` from the client
+In Module 11, `getMyProfile` and `addLink` accepted a `userId` from the client
 (or hardcoded the test user). With sessions in place, we updated them to read
 the user ID from the session instead.
 
@@ -720,5 +720,5 @@ No new commands — authentication is implemented in code.
 
 ---
 
-**Next:** [Module 12 — The Dashboard (CSR)](../12-the-dashboard-csr/) → Build
+**Next:** [Module 13 — The Dashboard (CSR)](../13-the-dashboard-csr/) → Build
 the full interactive dashboard.

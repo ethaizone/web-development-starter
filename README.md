@@ -21,11 +21,11 @@ level, follow the step-by-step guides, and build real projects along the way.
 
 ## Tracks
 
-| Track                   | Folder                                                       | Description                                                                                          |
-| ----------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| TypeScript Fundamentals | [01-typescript-fundamentals/](./01-typescript-fundamentals/) | Learn TypeScript from scratch via the command line. 12 modules with runnable examples and exercises. |
-| Web Development         | [02-web-development/](./02-web-development/)                 | Learn how **DevStack Bio** was built — a developer profile hub, documented step by step. 14 modules covering the full stack. |
-| Professional Guidelines | [03-professional-guidelines/](./03-professional-guidelines/) | Pointers to advanced topics: Linux, Docker, CI/CD, deployment. Read anytime.                         |
+| Track                   | Folder                                                       | Description                                                                                                                  |
+| ----------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| TypeScript Fundamentals | [01-typescript-fundamentals/](./01-typescript-fundamentals/) | Learn TypeScript from scratch via the command line. 12 modules with runnable examples and exercises.                         |
+| Web Development         | [02-web-development/](./02-web-development/)                 | Learn how **DevStack Bio** was built — a developer profile hub, documented step by step. 15 modules covering the full stack. |
+| Professional Guidelines | [03-professional-guidelines/](./03-professional-guidelines/) | Pointers to advanced topics: Linux, Docker, CI/CD, deployment. Read anytime.                                                 |
 
 ## Tech Stack
 
@@ -79,14 +79,16 @@ Each module is a self-contained folder:
 
 ### Web Development (02)
 
-One project, documented step by step across 14 modules:
+One project, documented step by step across 15 modules:
 
 ```
 02-web-development/
 ├── README.md                  ← How this track works (read this first)
 ├── 01-how-the-web-works/
 │   └── README.md              ← Concepts only
-├── 02-your-first-server/
+├── 02-git-basics/
+│   └── README.md              ← Concepts only
+├── 03-your-first-server/
 │   └── README.md              ← Concepts + what we built
 ...
 ```
@@ -113,9 +115,9 @@ Read whatever interests you. Skip the rest.
 ## Demo App: DevStack Bio
 
 The web development track documents how a self-hosted developer profile hub was
-built — a customizable Linktree alternative. See [demo-app.md](./demo-app.md) for
-the full specification and [devstack-bio-reference/](./devstack-bio-reference/)
-for the finished code.
+built — a customizable Linktree alternative. See [demo-app.md](./demo-app.md)
+for the full specification and
+[devstack-bio-reference/](./devstack-bio-reference/) for the finished code.
 
 Features covered:
 

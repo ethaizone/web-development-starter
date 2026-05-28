@@ -638,5 +638,5 @@ git commit -m "Install shadcn/ui, replace custom inputs with accessible componen
 
 ---
 
-**Next:** [Module 09 — Database & Drizzle](../09-database-and-drizzle/) → Store
+**Next:** [Module 10 — Database & Drizzle](../10-database-and-drizzle/) → Store
 your data in SQLite with type-safe queries.

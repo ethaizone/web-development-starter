@@ -328,7 +328,7 @@ export const getMyProfile = createServerFn({ method: "GET" })
 export const addLink = createServerFn({ method: "POST" })
   .inputValidator(addLinkSchema)
   .handler(async ({ data }) => {
-    // TODO: Get profileId from session in Module 11
+    // TODO: Get profileId from session in Module 12
     // For now, hardcode the test user's profile
     const profile = await findProfileByUsername("alice");
     if (!profile) throw notFound();
@@ -582,5 +582,5 @@ No new CLI commands — server functions are code, not commands.
 
 ---
 
-**Next:** [Module 11 — Authentication](../11-authentication/) → Add
+**Next:** [Module 12 — Authentication](../12-authentication/) → Add
 registration, login, and protected routes.

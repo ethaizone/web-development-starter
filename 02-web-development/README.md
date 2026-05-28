@@ -36,16 +36,17 @@ its source code anytime to see how everything fits together.
 | #   | Module                | What we cover                                        |
 | --- | --------------------- | ---------------------------------------------------- |
 | 01  | How the Web Works     | HTTP, request/response, client vs server, DNS        |
-| 02  | Your First Server     | TanStack Start setup, dev server, first page render  |
-| 03  | Routing               | File-based routing, dynamic routes, layouts          |
-| 04  | HTML & the DOM        | Elements, semantic HTML, how browsers parse HTML     |
-| 05  | Styling with Tailwind | Utility classes, responsive design, dark mode        |
-| 06  | Components & Props    | React components, JSX, props, composition            |
-| 07  | State & Interactivity | `useState`, event handlers, forms, controlled inputs |
-| 08  | shadcn/ui             | Install, use components, customize theme             |
-| 09  | Database & Drizzle    | SQLite, schema definition, migrations, queries       |
-| 10  | Server Functions      | `createServerFn`, client vs server boundary          |
-| 11  | Authentication        | Registration, login, sessions, route guards          |
-| 12  | The Dashboard (CSR)   | Profile editing, link CRUD, optimistic UI            |
-| 13  | The Public Page (SSR) | Route loaders, SEO, analytics, 404 handling          |
-| 14  | Git & Deployment      | Git workflow review, build for production, deploy    |
+| 02  | Git Basics            | Version control, commits, branches, push/pull, tags  |
+| 03  | Your First Server     | TanStack Start setup, dev server, first page render  |
+| 04  | Routing               | File-based routing, dynamic routes, layouts          |
+| 05  | HTML & the DOM        | Elements, semantic HTML, how browsers parse HTML     |
+| 06  | Styling with Tailwind | Utility classes, responsive design, dark mode        |
+| 07  | Components & Props    | React components, JSX, props, composition            |
+| 08  | State & Interactivity | `useState`, event handlers, forms, controlled inputs |
+| 09  | shadcn/ui             | Install, use components, customize theme             |
+| 10  | Database & Drizzle    | SQLite, schema definition, migrations, queries       |
+| 11  | Server Functions      | `createServerFn`, client vs server boundary          |
+| 12  | Authentication        | Registration, login, sessions, route guards          |
+| 13  | The Dashboard (CSR)   | Profile editing, link CRUD, optimistic UI            |
+| 14  | The Public Page (SSR) | Route loaders, SEO, analytics, 404 handling          |
+| 15  | Deployment            | Build for production, deploy to the internet         |

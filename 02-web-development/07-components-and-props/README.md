@@ -100,7 +100,7 @@ src/
 └── components/           ← Reusable components (shared across routes)
     ├── link-card.tsx
     ├── profile-header.tsx
-    └── ui/               ← shadcn/ui components will go here (Module 08)
+    └── ui/               ← shadcn/ui components will go here (Module 09)
 ```
 
 Rule of thumb:
@@ -308,7 +308,7 @@ export const Route = createFileRoute("/$username")({
   component: PublicProfilePage,
 });
 
-// Placeholder data — will come from the database in Module 09
+// Placeholder data — will come from the database in Module 10
 const PLACEHOLDER_PROFILE = {
   username: "",
   displayName: "Alice Chen",
@@ -385,5 +385,5 @@ No new commands. You're creating files and the dev server picks up changes.
 
 ---
 
-**Next:** [Module 07 — State & Interactivity](../07-state-and-interactivity/) →
+**Next:** [Module 08 — State & Interactivity](../08-state-and-interactivity/) →
 Add interactivity with user input, forms, and state.

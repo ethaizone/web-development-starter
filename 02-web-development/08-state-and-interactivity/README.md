@@ -131,7 +131,7 @@ function LoginForm() {
       return;
     }
 
-    // Submit logic (we'll connect to a server function in Module 10)
+    // Submit logic (we'll connect to a server function in Module 11)
     console.log({ email, password });
   };
 
@@ -355,7 +355,7 @@ function RegisterPage() {
     password: string;
   }) => {
     // For now, just navigate to the dashboard
-    // Real registration will be in Module 11
+    // Real registration will be in Module 12
     console.log("Registration data:", data);
     navigate({ to: "/dashboard" });
   };
@@ -499,11 +499,11 @@ function DashboardPage() {
 
 ### Step 5: Verified
 
-We tested the registration form at `/register` with invalid data (empty
-fields, mismatched passwords) — error messages appeared correctly. Submitting
-valid data redirected to `/dashboard`. On the dashboard, adding and removing
-links worked immediately. All state was local — refreshing the page reset the
-links (the database would fix this in Module 09).
+We tested the registration form at `/register` with invalid data (empty fields,
+mismatched passwords) — error messages appeared correctly. Submitting valid data
+redirected to `/dashboard`. On the dashboard, adding and removing links worked
+immediately. All state was local — refreshing the page reset the links (the
+database would fix this in Module 10).
 
 ### Step 6: Committed
 
@@ -539,5 +539,5 @@ No new commands. You're using React hooks, not CLI tools.
 
 ---
 
-**Next:** [Module 08 — shadcn/ui](../08-shadcn-ui/) → Replace hand-built inputs
+**Next:** [Module 09 — shadcn/ui](../09-shadcn-ui/) → Replace hand-built inputs
 with polished, accessible components.

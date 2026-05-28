@@ -217,8 +217,8 @@ function PublicProfilePage() {
 
 ### Step 3: Updated link cards to use semantic color tokens
 
-With the `.dark` theme defined in CSS, we updated the link cards to use shadcn/ui
-semantic color tokens (`border-border`, `text-foreground`, etc.) which
+With the `.dark` theme defined in CSS, we updated the link cards to use
+shadcn/ui semantic color tokens (`border-border`, `text-foreground`, etc.) which
 automatically respond when the `.dark` class is toggled on `<html>`. We updated
 `src/components/link-card.tsx`:
 
@@ -283,5 +283,5 @@ git commit -m "Add SSR with SEO meta tags, analytics tracking, custom 404, and t
 
 ---
 
-**Next:** [Module 14 — Git & Deployment](../14-git-and-deployment/) → Build for
-production and deploy.
+**Next:** [Module 15 — Deployment](../15-deployment/) → Build for production and
+deploy.

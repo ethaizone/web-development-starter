@@ -263,5 +263,5 @@ changes automatically.
 
 ---
 
-**Next:** [Module 05 — Styling with Tailwind](../05-styling-with-tailwind/) →
+**Next:** [Module 06 — Styling with Tailwind](../06-styling-with-tailwind/) →
 Make your pages look good with utility classes.
