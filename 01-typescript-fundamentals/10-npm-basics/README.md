@@ -149,7 +149,7 @@ npx tsx script.ts
 | `npm run dev`                         | Running your dev server/watcher          |
 | `.gitignore` includes `node_modules/` | Always — never commit installed packages |
 
-## What We Built
+## Now build it
 
 This module already has a `package.json` with `nanoid` listed as a dependency.
 Run `npm install` in the `10-npm-basics` folder to download it, then try the

@@ -35,7 +35,7 @@ its source code anytime to see how everything fits together.
 
 | #   | Module                | What we cover                                        |
 | --- | --------------------- | ---------------------------------------------------- |
-| 01  | How the Web Works     | HTTP, request/response, client vs server, DNS        |
+| 01  | How the Web Works     | HTTP, request/response, client vs server, browsers, DNS |
 | 02  | Git Basics            | Version control, commits, branches, push/pull, tags  |
 | 03  | Your First Server     | TanStack Start setup, dev server, first page render  |
 | 04  | Routing               | File-based routing, dynamic routes, layouts          |

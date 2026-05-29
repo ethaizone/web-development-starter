@@ -33,7 +33,8 @@ export const getProfile = createServerFn({ method: "GET" })
 ```
 
 ```tsx
-// Client component — calls the server function
+// Client component — conceptually calls the server function
+// (Real patterns shown in "Calling Server Functions" below)
 import { getProfile } from "../server/functions";
 
 function ProfilePage() {

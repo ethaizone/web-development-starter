@@ -138,16 +138,16 @@ import { log } from "./utils/index.js"; // subfolder
 You'll need to create multiple files for this exercise. Organize them in the
 `exercises/` folder:
 
-1. Create `exercises/link-helpers.ts` with exported functions:
+1. Open `exercises/link-helpers.ts` and implement the exported functions:
    - `formatLinkDisplay(title: string, url: string): string` — returns
      `"title → url"` (with arrow)
    - `isValidUrl(url: string): boolean` — returns true if url starts with
      `http://` or `https://`
 
-2. Create `exercises/link-types.ts` with exported types:
+2. Open `exercises/link-types.ts` and define the exported types:
    - `ProfileLink` — `{ title: string; url: string; category: "social" | "code" | "writing" | "other"; isVisible: boolean }`
 
-3. Create `exercises/modules.ts` as the main file that:
+3. Open `exercises/modules.ts` and write the main file that:
    - Imports the functions from `link-helpers.ts`
    - Imports the type from `link-types.ts`
    - Creates an array of `ProfileLink` objects (at least 4, mix of categories)

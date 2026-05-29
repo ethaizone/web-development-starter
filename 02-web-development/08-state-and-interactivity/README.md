@@ -535,7 +535,6 @@ git commit -m "Add interactive forms: registration form, link editor with state"
 - [React — useState](https://react.dev/reference/react/useState)
 - [React — Responding to Events](https://react.dev/learn/responding-to-events)
 - [React — State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
-- [MDN — FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 
 ---
 

@@ -23,7 +23,7 @@ A real project combines every concept you've learned:
 | 08 — Error Handling     | Network errors, invalid input               |
 | 09 — Modules            | Code split across multiple files            |
 | 10 — NPM Basics         | `nanoid` for unique IDs                     |
-| 11 — Advanced Types     | Discriminated unions for link categories    |
+| 11 — Advanced Types     | Union types for `LinkCategory`              |
 
 ### Project structure
 
@@ -62,7 +62,7 @@ rl.question("What is your name? ", (answer: string) => {
 
 We'll wrap this in a helper to use it with `async/await`.
 
-## What We Built
+## Now Build It
 
 All files in this module already exist in the repo — you can follow along by
 reading each step, then comparing with the corresponding file. If you prefer to
@@ -517,7 +517,7 @@ git commit -m "Build DevStack Bio CLI: mini project using types, async, modules,
 | Error handling     | `try/catch` for GitHub API, `try/catch` for URL validation                  |
 | Modules            | `import/export` across 5 files                                              |
 | NPM                | `nanoid` for generating unique IDs                                          |
-| Advanced types     | `LinkCategory` union type                                                   |
+| Union types        | `LinkCategory` union type                                                   |
 
 ## Extra Challenges
 

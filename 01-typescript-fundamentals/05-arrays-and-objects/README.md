@@ -153,9 +153,8 @@ This is advanced — just know it exists. We'll revisit in Module 06.
 | `[...array].sort()` | Sort without modifying original                |
 | Array of objects    | Lists of structured data (links, users, posts) |
 
-## Practice
+## Now build it
 
-Try this on your own before tackling the formal exercise in `exercises/tech-stack-analyzer.ts`.
 Create `practice-links.ts` in this module's folder and write:
 
 1. An array of 5 tech links, each with `title`, `url`, and `category` properties

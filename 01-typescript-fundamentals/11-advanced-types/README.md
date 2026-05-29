@@ -44,8 +44,8 @@ const firstNumber = getFirstElement<number>([1, 2]); // number | undefined
 // Explicit type parameter
 const firstItem = getFirstElement<string>(["a", "b"]);
 
-// TypeScript infers it — same result
-const firstItem = getFirstElement(["a", "b"]);
+// TypeScript infers it — same result, no type parameter needed
+const firstItemInferred = getFirstElement(["a", "b"]);
 ```
 
 Provide the type parameter when inference isn't clear enough (complex cases).
@@ -213,7 +213,7 @@ No type assertions needed.
 
 ## Now build it
 
-Open `exercises/link-operations.ts` and implement the following (check your work against `exercises/solutions/link-operations.ts`):
+Create `advanced-types.ts` and write:
 
 1. A generic function
    `findByProperty<T>(items: T[], predicate: (item: T) => boolean): T | undefined`

@@ -173,6 +173,30 @@ build_module_prompt() {
     return 1
   fi
 
+  # Determine track-specific style rules
+  local track_style=""
+  if [[ "$module_path" =~ ^01-typescript-fundamentals ]]; then
+    track_style="
+CRITICAL — This is a TS Track module. The exercise section MUST use:
+  - Heading: \`## Now build it\` (NOT \"What We Built\")
+  - Style: Hands-on — instruct the learner to CREATE files and WRITE code
+    themselves. Examples: \"Create variables.ts and declare...\",
+    \"Create control-flow.ts and write...\"
+  - Never replace hands-on instructions with a description of existing
+    example/exercise files. The learner should create their own file.
+  - If exercise stub files already exist (with TODO comments), use \"Open\"
+    instead of \"Create\" for those specific files.
+"
+  elif [[ "$module_path" =~ ^02-web-development ]]; then
+    track_style="
+This is a Web Dev Track module. The build record section MUST use:
+  - Heading: \`## What We Built\` (NOT \"Now build it\")
+  - Style: Narrative — document what was built as a build record
+  - Module 01 (How the Web Works) and Module 02 (Git Basics) are
+    concepts-only — no \"What We Built\" section needed
+"
+  fi
+
   cat <<PROMPT
 You are reviewing a self-learning web development course repository for rule
 violations and learner-proofing issues. Your job is to find problems that break
@@ -202,14 +226,12 @@ Wrong → Right:
 Check the FULL file — headings, body text, code comments, table headers.
 
 ### 2. Cheatsheet Style (AGENTS.md Rule 5) — README.md files only
-- Should follow the format: What you'll learn → Key concepts → Commands you'll
-  use → Common patterns → What We Built → Deep dive
+${track_style}
+General style rules:
 - No fluff, no history lessons, no filler paragraphs
 - Major new concepts should explain "why" (answer "why should I care?")
 - Code examples should be inline in markdown, not separate files
   (unless it is a Tiny Example that needs to be runnable)
-- Module 01 (How the Web Works) and Module 02 (Git Basics) in Web Dev Track
-  are concepts-only — no "What We Built" section needed
 
 ### 3. Code References (CONTEXT.md Principle 4)
 - Must reference code by file path + function/variable name

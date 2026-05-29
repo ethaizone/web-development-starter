@@ -36,7 +36,7 @@ When the body is a single expression, you can drop the braces and `return`:
 const greet = (name: string): string => `Hello, ${name}!`;
 ```
 
-Both forms do the same thing. You'll see arrow functions everywhere in React.
+Both forms do the same thing. You'll see arrow functions frequently in modern TypeScript.
 
 ### Optional and default parameters
 
@@ -139,9 +139,7 @@ Create a new file called `functions.ts` in this module's folder and write these 
 4. Call each function and print the results.
 5. Run it with `npx tsx functions.ts` and check the output.
 
----
-
-📖 **Deep dive:**
+## Deep dive
 
 - [TypeScript Handbook — More on Functions](https://www.typescriptlang.org/docs/handbook/2/functions.html)
 - [MDN — Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)

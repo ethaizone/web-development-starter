@@ -174,7 +174,7 @@ reflected without a manual refresh, confirming everything worked.
 
 ### Step 7: Committed the initial project
 
-This is your first checkpoint. Apply what you learned in
+This is your first save point. Apply what you learned in
 [Module 02 — Git Basics](../02-git-basics/) — initialize a repository and commit
 your work:
 

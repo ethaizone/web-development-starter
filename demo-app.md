@@ -1,4 +1,4 @@
-Here is a comprehensive project requirement handoff document for the curriculum. It integrates TanStack Start, Drizzle ORM, SQLite, Tailwind CSS, and shadcn/ui, structured clearly for handing off to learners.
+Project specification for **DevStack Bio** — the application built throughout the Web Dev Track. Covers the tech stack, database schema, and feature requirements.
 
 ## 📝 Project Specification: DevStack Bio
 
@@ -72,7 +72,7 @@ export const analytics = sqliteTable("analytics", {
 
 ## 4. Feature Requirements
 
-## Module 1: Authentication & Layout (SSR Core)
+## Part 1: Authentication & Layout (SSR Core)
 
 - Registration: Users can sign up with an email and a unique username.
 - Validation: The username must be safe for URL parameters (no spaces or special
@@ -82,7 +82,7 @@ export const analytics = sqliteTable("analytics", {
 - Security Guard: Implement a TanStack Router layout middleware that blocks
   unauthenticated visitors from accessing the dashboard routes.
 
-## Module 2: The Interactive Admin Dashboard (CSR & Server Functions)
+## Part 2: The Interactive Admin Dashboard (CSR & Server Functions)
 
 - Route: /dashboard
 - Profile Editing: Form inputs using shadcn Input, Textarea, and a theme
@@ -95,7 +95,7 @@ export const analytics = sqliteTable("analytics", {
     via native React asynchronous states, interacting seamlessly through
     createServerFn endpoints without a full page refresh.
 
-## Module 3: The Public Bio Page (SSR & Analytics)
+## Part 3: The Public Bio Page (SSR & Analytics)
 
 - Route: /$username (Dynamic File Route)
 - Behavior: When a guest navigates to this URL, TanStack Start uses a route

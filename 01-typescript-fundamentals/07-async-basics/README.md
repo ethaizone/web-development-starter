@@ -149,7 +149,7 @@ You'll see this pattern in all the examples for this module.
 
 ## Now build it
 
-Create a new file called `async-basics.ts` in this module's folder and write:
+Create `async-basics.ts` and write:
 
 1. An async function `fetchGitHubRepos(username: string)` that fetches
    `https://api.github.com/users/${username}/repos` and returns the JSON
@@ -158,7 +158,6 @@ Create a new file called `async-basics.ts` in this module's folder and write:
    `fetchGitHubRepos`, then prints the top `count` repos by star count (use
    `repo.stargazers_count`)
 3. Wrap your calls in an `async function main()` and call `main()` at the bottom
-4. Run it with `npx tsx async-basics.ts` and check the output
 
 Note: If you get rate-limited by GitHub API, you'll see an error. We'll handle
 errors properly in Module 08.

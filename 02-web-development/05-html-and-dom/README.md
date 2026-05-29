@@ -119,6 +119,10 @@ function Counter() {
 }
 ```
 
+> `useState` is a React hook for managing component state — you'll learn it in
+> [Module 08](../08-state-and-interactivity/). The key takeaway here: in React,
+> you describe **what** the UI should look like, and React handles the DOM.
+
 ### Common HTML Elements You'll Use
 
 | Element         | Purpose                           | DevStack Bio usage                |

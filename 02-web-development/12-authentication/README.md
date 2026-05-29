@@ -177,7 +177,6 @@ We created `src/server/auth.functions.ts`:
 
 ```ts
 import { createServerFn } from "@tanstack/react-start";
-import { redirect } from "@tanstack/react-router";
 import bcrypt from "bcryptjs";
 import { db } from "../db";
 import { users, profiles } from "../db/schema";

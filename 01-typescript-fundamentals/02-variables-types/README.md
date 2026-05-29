@@ -121,23 +121,23 @@ Note: `tsx` has no built-in watch mode — re-run the command after each change.
 | Type annotation on parameter | Functions (covered in Module 03)               |
 | Union type `A \| B`          | When a value can be more than one type         |
 
-## What We Built
+## Now build it
 
-### `examples/variables.ts`
+Create a file called `variables.ts` and declare variables about yourself:
 
-Variables with `const` and `let`, type annotations, string/number operations,
-and union types.
+1. Your name (`const`, `string`)
+2. Your age (`const`, `number`)
+3. Whether you're learning TypeScript (`const`, `boolean`)
+4. A favorite hobby that might change later (`let`, `string`)
+5. Print them all using template literals:
+   `"My name is Alice, I am 25 years old."`
+6. Change your hobby and print again
 
-Run with: `npx tsx examples/variables.ts`
+Run with: `npx tsx variables.ts`
 
-### Exercise: `exercises/profile-card.ts`
+---
 
-Declare variables for a profile card and print it with template literals.
-Solution: `exercises/solutions/profile-card.ts`.
-
-Run with: `npx tsx exercises/profile-card.ts`
-
-## Deep dive
+📖 **Deep dive:**
 
 - [TypeScript Handbook — Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 - [MDN — JavaScript data types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures)
